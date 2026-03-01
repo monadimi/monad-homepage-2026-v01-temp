@@ -1,0 +1,55 @@
+.section {
+  background: var(--colors-deep-black);
+  padding: var(--spacing-monad2026-section-gap) var(--spacing-lg) 0;
+}
+
+.layout {
+  width: min(100%, var(--layout-monad2026-section-max-width));
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+  align-items: start;
+  gap: 14px;
+}
+
+.copyArea {
+  display: grid;
+  align-content: start;
+  gap: 8px;
+}
+
+.statement {
+  margin: 0;
+  color: var(--colors-text-primary);
+  font-size: 32px;
+  line-height: 1.06;
+}
+
+.highlight {
+  color: var(--colors-accent-green);
+}
+
+.description {
+  margin: 0;
+  color: var(--colors-muted-gray);
+  font-size: 9px;
+  line-height: 1.5;
+}
+
+.cardArea {
+  display: grid;
+  justify-items: center;
+  gap: 6px;
+}
+
+.cardStack {
+  width: 100%;
+  display: grid;
+  gap: var(--spacing-monad2026-card-gap);
+}
+
+@media (max-width: 360px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+}

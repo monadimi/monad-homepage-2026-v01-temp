@@ -1,0 +1,20 @@
+.section {
+  background: var(--colors-deep-black);
+  padding: calc(var(--spacing-monad2026-section-gap) + 12px) var(--spacing-lg) 40px;
+  display: grid;
+  gap: 20px;
+}
+
+.section > * {
+  width: min(100%, var(--layout-monad2026-faq-max-width));
+  margin: 0 auto;
+}
+
+.list {
+  border-top: 1px solid var(--colors-divider);
+}
+
+.section h2 {
+  font-size: 42px;
+  line-height: 1.1;
+}

@@ -1,0 +1,48 @@
+.section {
+  position: relative;
+  overflow: hidden;
+  background: var(--colors-deep-black);
+  padding: var(--spacing-monad2026-section-gap) var(--spacing-lg) 0;
+}
+
+.patternLayer {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--spacing-xxs);
+  opacity: 0.08;
+  pointer-events: none;
+}
+
+.patternWord {
+  color: var(--colors-text-primary);
+  font-size: var(--typography-small);
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.content {
+  position: relative;
+  z-index: var(--z-index-content);
+  display: grid;
+  justify-items: center;
+  gap: 8px;
+  text-align: center;
+  width: min(100%, var(--layout-monad2026-proof-max-width));
+  margin: 0 auto;
+}
+
+.title {
+  margin: 0;
+  color: var(--colors-accent-green);
+  font-size: var(--typography-section-title);
+  line-height: 1.2;
+}
+
+.description {
+  margin: 0;
+  color: var(--colors-muted-gray);
+  font-size: 10px;
+  line-height: 1.45;
+}

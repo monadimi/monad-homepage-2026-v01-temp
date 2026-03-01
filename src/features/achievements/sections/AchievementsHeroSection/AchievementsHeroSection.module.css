@@ -1,0 +1,45 @@
+.section {
+  position: relative;
+  width: 100%;
+  min-height: var(--layout-achievements-hero-height);
+  overflow: hidden;
+  background: var(--colors-background-deep-black);
+}
+
+.backgroundImage {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(50%);
+}
+
+.fadeOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0) 48%,
+    rgba(0, 0, 0, 0.9) 84%,
+    var(--colors-background-deep-black) 100%
+  );
+}
+
+.statsRow {
+  position: relative;
+  z-index: var(--z-index-content);
+  min-height: var(--layout-achievements-hero-height);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  padding: var(--spacing-hero-padding) 0;
+}
+
+@media (max-width: 1024px) {
+  .statsRow {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-section-padding);
+    align-content: center;
+  }
+}

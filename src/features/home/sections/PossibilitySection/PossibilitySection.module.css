@@ -1,0 +1,11 @@
+.section {
+  width: 100%;
+  height: var(--layout-possibility-height);
+  background: var(--colors-background-primary);
+}
+
+@media (max-width: 768px) {
+  .section {
+    height: var(--layout-possibility-height-mobile);
+  }
+}

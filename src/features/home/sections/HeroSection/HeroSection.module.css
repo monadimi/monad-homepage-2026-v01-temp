@@ -1,0 +1,10 @@
+.section {
+  width: 100%;
+  background: var(--colors-background-primary);
+}
+
+.heroImage {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}

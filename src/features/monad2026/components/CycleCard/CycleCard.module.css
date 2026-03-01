@@ -1,0 +1,47 @@
+.card {
+  position: relative;
+  min-height: var(--layout-monad2026-cycle-card-height);
+  overflow: hidden;
+  border: 1px solid var(--colors-card-border);
+  border-radius: var(--radius-md);
+  background: var(--colors-card-background);
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0) 28%,
+    rgba(0, 0, 0, 0.84) 100%
+  );
+}
+
+.copy {
+  position: absolute;
+  left: var(--spacing-sm);
+  right: var(--spacing-sm);
+  bottom: var(--spacing-sm);
+  display: grid;
+  gap: var(--spacing-xxs);
+}
+
+.title {
+  margin: 0;
+  color: var(--colors-text-primary);
+  font-size: var(--typography-body);
+  line-height: 1.25;
+}
+
+.subtitle {
+  margin: 0;
+  color: var(--colors-muted-gray);
+  font-size: var(--typography-small);
+  line-height: 1.3;
+}

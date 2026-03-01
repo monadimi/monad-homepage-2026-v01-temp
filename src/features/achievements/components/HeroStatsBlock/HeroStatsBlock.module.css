@@ -1,0 +1,27 @@
+.block {
+  color: var(--colors-text-primary);
+  font-family: var(--typography-font-family-serif);
+  font-weight: var(--typography-weight-regular);
+  line-height: 1.05;
+  text-transform: uppercase;
+}
+
+.left {
+  text-align: left;
+}
+
+.right {
+  text-align: right;
+}
+
+.primary {
+  margin: 0;
+  font-size: var(--typography-scale-hero-serif-large);
+  letter-spacing: 0.01em;
+}
+
+.secondary {
+  margin: 0;
+  font-size: var(--typography-scale-hero-serif-medium);
+  letter-spacing: 0.012em;
+}

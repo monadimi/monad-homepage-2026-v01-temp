@@ -1,0 +1,138 @@
+.section {
+  background: var(--colors-deep-black);
+  padding: var(--spacing-monad2026-section-gap) var(--spacing-lg) 0;
+  display: grid;
+  gap: 26px;
+}
+
+.section > * {
+  width: min(100%, var(--layout-monad2026-section-max-width));
+  margin: 0 auto;
+}
+
+.imageRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.imageCard {
+  display: grid;
+  gap: var(--spacing-xs);
+}
+
+.imageCard img {
+  width: 100%;
+  height: calc(var(--layout-monad2026-intro-media-size) * 0.9);
+  object-fit: cover;
+  border: 1px solid var(--colors-card-border);
+}
+
+.imageTitle {
+  margin: 0;
+  color: var(--colors-accent-green);
+  font-size: 12px;
+  line-height: 1.3;
+}
+
+.imageDescription {
+  margin: 0;
+  color: var(--colors-muted-gray);
+  font-size: 9px;
+  line-height: 1.45;
+}
+
+.phraseBlock {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: end;
+  gap: 8px;
+}
+
+.phraseText {
+  margin: 0;
+  color: var(--colors-text-primary);
+  font-size: 28px;
+  line-height: 0.98;
+}
+
+.phraseHighlight {
+  color: var(--colors-accent-green);
+}
+
+.logoWrap {
+  display: grid;
+  justify-items: center;
+}
+
+.logoWrap > * {
+  transform: scale(0.5);
+  transform-origin: center;
+}
+
+.cycleImageRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.miniCard {
+  display: grid;
+  gap: 3px;
+}
+
+.miniCard img {
+  width: 100%;
+  height: calc(var(--layout-monad2026-intro-media-size) * 0.78);
+  object-fit: cover;
+  border: 1px solid var(--colors-card-border);
+}
+
+.miniTitle {
+  margin: 0;
+  color: var(--colors-accent-green);
+  font-size: 10px;
+  line-height: 1.3;
+}
+
+.miniHighlight {
+  margin: 0;
+  color: var(--colors-muted-gray);
+  font-size: 9px;
+  line-height: 1.35;
+}
+
+.activityGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.activityColumn {
+  display: grid;
+  gap: 4px;
+}
+
+.columnTitle {
+  margin: 0;
+  color: var(--colors-accent-green);
+  font-size: 12px;
+  line-height: 1.3;
+}
+
+.columnItem {
+  margin: 0;
+  color: var(--colors-muted-gray);
+  font-size: 9px;
+  line-height: 1.45;
+}
+
+.conferenceBlock {
+  display: grid;
+  justify-items: end;
+  gap: 4px;
+}
+
+.conferenceBlock .columnItem {
+  text-align: right;
+}

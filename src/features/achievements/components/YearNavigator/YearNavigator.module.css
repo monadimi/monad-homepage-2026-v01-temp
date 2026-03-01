@@ -1,0 +1,38 @@
+.navigator {
+  display: inline-flex;
+  align-items: center;
+  gap: calc(var(--spacing-xl) * 2);
+}
+
+.arrowButton {
+  width: calc(var(--spacing-xl) * 1.5);
+  height: calc(var(--spacing-xl) * 1.5);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: transparent;
+  color: var(--colors-text-secondary);
+  font-family: var(--typography-font-family-primary);
+  font-size: calc(var(--typography-scale-body) * 1.85);
+  line-height: 1;
+  cursor: pointer;
+  transition: color var(--motion-fade-duration) ease;
+}
+
+.arrowButton:hover:not(:disabled) {
+  color: var(--colors-text-primary);
+}
+
+.arrowButton:disabled {
+  opacity: 0.25;
+  cursor: default;
+}
+
+.yearLabel {
+  color: var(--colors-text-primary);
+  font-family: var(--typography-font-family-primary);
+  font-size: calc(var(--typography-scale-body) * 1.6);
+  font-weight: var(--typography-weight-medium);
+  letter-spacing: var(--typography-letter-spacing-nav);
+}

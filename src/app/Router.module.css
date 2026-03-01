@@ -1,0 +1,8 @@
+.appShell {
+  min-height: 100vh;
+  background: var(--colors-deep-black);
+}
+
+.mainContent {
+  width: 100%;
+}

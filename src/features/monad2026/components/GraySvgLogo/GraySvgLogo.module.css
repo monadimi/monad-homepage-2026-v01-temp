@@ -1,0 +1,12 @@
+.logo {
+  width: calc(var(--spacing-section) * 0.9);
+  height: calc(var(--spacing-section) * 0.9);
+}
+
+.logoStroke {
+  fill: none;
+  stroke: var(--colors-svg-gray-stroke);
+  stroke-width: 6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}

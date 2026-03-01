@@ -1,0 +1,32 @@
+.section {
+  background: var(--colors-deep-black);
+  padding: var(--spacing-monad2026-section-gap) var(--spacing-lg) 0;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr var(--layout-monad2026-intro-media-size);
+  align-items: center;
+  gap: var(--spacing-monad2026-card-gap);
+  width: min(100%, var(--layout-monad2026-section-max-width));
+  margin: 0 auto;
+}
+
+.copy {
+  display: grid;
+  gap: var(--spacing-xs);
+}
+
+.description {
+  margin: 0;
+  color: var(--colors-muted-gray);
+  font-size: 9px;
+  line-height: 1.5;
+}
+
+.mediaBox {
+  width: var(--layout-monad2026-intro-media-size);
+  height: var(--layout-monad2026-intro-media-size);
+  background: #d6d8db;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}

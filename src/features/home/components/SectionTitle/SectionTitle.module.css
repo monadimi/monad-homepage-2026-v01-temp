@@ -1,0 +1,19 @@
+.base {
+  margin: 0;
+  color: var(--colors-text-primary);
+}
+
+.display {
+  font-family: var(--typography-font-family-display);
+  font-weight: var(--typography-weight-light);
+  font-size: var(--typography-scale-section-heading);
+  line-height: 1.02;
+}
+
+.mono {
+  font-family: var(--typography-font-family-mono);
+  font-weight: var(--typography-weight-light);
+  font-size: var(--typography-scale-section-heading);
+  line-height: 1.02;
+  letter-spacing: calc(var(--typography-letter-spacing-nav) * 0.46);
+}

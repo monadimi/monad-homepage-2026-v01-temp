@@ -1,0 +1,9 @@
+.page {
+  background: var(--colors-deep-black);
+}
+
+.pageInner {
+  width: 100%;
+  margin: 0 auto;
+  background: var(--colors-deep-black);
+}

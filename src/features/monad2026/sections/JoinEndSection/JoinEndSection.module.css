@@ -1,0 +1,46 @@
+.section {
+  position: relative;
+  overflow: hidden;
+  margin-top: var(--spacing-monad2026-section-gap);
+}
+
+.backgroundImage {
+  position: relative;
+  width: 100%;
+  max-width: var(--layout-monad2026-image-max-width);
+  height: auto;
+  object-fit: contain;
+  margin: 0 auto;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    var(--colors-overlay-dark) 0%,
+    rgba(0, 0, 0, 0.22) 52%,
+    var(--colors-overlay-dark) 100%
+  );
+}
+
+.content {
+  position: absolute;
+  inset: 0;
+  z-index: var(--z-index-content);
+  max-width: var(--layout-monad2026-image-max-width);
+  margin: 0 auto;
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  gap: 8px;
+}
+
+.title {
+  margin: 0;
+  color: var(--colors-accent-green);
+  font-family: var(--typography-font-family-serif);
+  font-size: var(--typography-scale-hero-serif-medium);
+  line-height: 1;
+  font-style: italic;
+}

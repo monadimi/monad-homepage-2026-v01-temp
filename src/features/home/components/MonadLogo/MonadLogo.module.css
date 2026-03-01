@@ -1,0 +1,13 @@
+.base {
+  width: auto;
+  height: auto;
+}
+
+.section {
+  width: 86px;
+}
+
+.footerMark {
+  width: 24px;
+  opacity: 0.9;
+}

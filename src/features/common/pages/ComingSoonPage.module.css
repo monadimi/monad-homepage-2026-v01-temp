@@ -1,0 +1,28 @@
+.section {
+  min-height: var(--layout-coming-soon-min-height);
+  background: var(--colors-placeholder-background);
+}
+
+.content {
+  min-height: inherit;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-xs);
+}
+
+.title {
+  margin: 0;
+  font-family: var(--typography-font-family-display);
+  font-weight: var(--typography-weight-light);
+  font-size: calc(var(--typography-scale-section-heading) * 0.72);
+  letter-spacing: var(--typography-letter-spacing-nav);
+  text-transform: uppercase;
+}
+
+.subtitle {
+  margin: 0;
+  color: var(--colors-text-muted);
+  font-size: var(--typography-scale-body);
+}

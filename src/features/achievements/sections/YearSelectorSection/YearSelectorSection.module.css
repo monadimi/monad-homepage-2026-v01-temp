@@ -1,0 +1,10 @@
+.section {
+  background: var(--colors-background-deep-black);
+  padding: calc(var(--spacing-section-padding) * 1.35) 0
+    calc(var(--spacing-section-padding) * 1.1);
+}
+
+.content {
+  display: flex;
+  justify-content: center;
+}

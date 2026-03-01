@@ -1,0 +1,5 @@
+.root {
+  width: min(100%, var(--layout-max-width));
+  margin: 0 auto;
+  padding: 0 var(--spacing-page-horizontal);
+}
