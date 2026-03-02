@@ -1,7 +1,7 @@
 // MONAD 로고 공통 컴포넌트입니다.
 // 용도에 따라 section/footerMark 크기만 바꿔 재사용합니다.
 import { memo } from 'react'
-import logoImage from '../../../../assets/logo.png'
+import logoImage from '../../../../assets/monad-logo.png'
 import styles from './MonadLogo.module.css'
 
 type MonadLogoVariant = 'section' | 'footerMark'

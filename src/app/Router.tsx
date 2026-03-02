@@ -7,6 +7,7 @@ import {
   NavigationService,
   type NavigableRoute,
 } from '../core/navigation/NavigationService'
+import { SeoHeadManager } from '../core/seo/SeoHeadManager'
 import { AchievementsPage } from '../features/achievements/pages/AchievementsPage'
 import { ComingSoonPage } from '../features/common/pages/ComingSoonPage'
 import { HomePage } from '../features/home/pages/HomePage'
@@ -19,6 +20,7 @@ import styles from './Router.module.css'
 const AppLayout = memo(function AppLayout() {
   return (
     <div className={styles.appShell}>
+      <SeoHeadManager />
       <Header />
       <main className={styles.mainContent}>
         <Outlet />

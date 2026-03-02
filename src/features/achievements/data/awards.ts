@@ -1,6 +1,6 @@
 // 업적 데이터 접근 레이어입니다.
 // 실제 데이터 원본은 awards.json이며, 이 파일은 앱에서 쓰기 쉬운 형태로 변환합니다.
-import awardPlaceholderImage from '../../../assets/award_placeholder.svg'
+import awardPlaceholderImage from '../../../assets/award-placeholder.svg'
 import awardsSource from './awards.json'
 
 export interface Award {

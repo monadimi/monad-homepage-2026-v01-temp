@@ -29,22 +29,23 @@ export class HomeContentModel {
     {
       label: 'Surfing',
       iconSrc: surfingIcon,
+      // 아직 공식 채널이 없어 임시로 비활성 링크를 유지합니다.
       href: '#',
     },
     {
       label: 'Dimiwiki',
       iconSrc: dimiwikiIcon,
-      href: '#',
+      href: 'https://wiki.dimigo.hs.kr/wiki/%EB%8F%99%EC%95%84%EB%A6%AC:%EB%AA%A8%EB%82%98%EB%93%9C',
     },
     {
       label: 'Instagram',
       iconSrc: instagramIcon,
-      href: '#',
+      href: 'https://www.instagram.com/monad_dimigo',
     },
     {
       label: 'GitHub',
       iconSrc: githubIcon,
-      href: '#',
+      href: 'https://github.com/monadimi',
     },
   ]
 

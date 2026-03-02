@@ -1,0 +1,17 @@
+{
+  "name": "MONAD",
+  "short_name": "MONAD",
+  "description": "MONAD는 학생 주도의 AI·SW 커뮤니티입니다.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0f0f0f",
+  "theme_color": "#0f0f0f",
+  "icons": [
+    {
+      "src": "/monad-favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

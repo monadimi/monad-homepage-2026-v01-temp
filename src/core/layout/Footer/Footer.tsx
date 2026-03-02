@@ -1,7 +1,7 @@
 // 공통 푸터입니다.
 // 홈/업적 페이지 모두 동일한 컴포넌트를 재사용합니다.
 import { memo } from 'react'
-import dimigoLogo from '../../../assets/dimigo.png'
+import dimigoLogo from '../../../assets/dimigo-logo.png'
 import { MonadLogo } from '../../../features/home/components/MonadLogo/MonadLogo'
 import {
   HomeContentModel,
