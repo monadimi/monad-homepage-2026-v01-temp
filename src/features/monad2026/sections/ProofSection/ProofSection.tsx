@@ -3,25 +3,30 @@ import { memo } from 'react'
 import { CTAButton } from '../../components/CTAButton/CTAButton'
 import styles from './ProofSection.module.css'
 
-const repeatedWord = '팀원이 증명합니다.'
+const repeatedWord = '실적들이 나열될 곳입니다 '
+
+const patternRows = Array.from({ length: 14 }, (_, index) => `${repeatedWord}${repeatedWord}${index}`)
 
 export const ProofSection = memo(function ProofSection() {
   return (
     <section className={styles.section} aria-label="팀원이 증명합니다">
       <div className={styles.patternLayer} aria-hidden="true">
-        {Array.from({ length: 40 }).map((_, index) => (
+        {patternRows.map((line, index) => (
           <span key={`pattern-${index}`} className={styles.patternWord}>
-            {repeatedWord}
+            {line}
           </span>
         ))}
       </div>
 
       <div className={styles.content}>
-        <h2 className={styles.title}>팀원이 증명합니다.</h2>
+        <h2 className={styles.title}>
+          <span className={styles.accent}>팀원</span>이 증명합니다.
+        </h2>
         <p className={styles.description}>
-          모나드에서의 1년은 실전 프로젝트, 협업, 발표까지 연결되는 성장의 시간을 만듭니다.
+          대충 우리 동아리원들 대단하다는 내용 대충 우리 동아리원들 대단하다는 내용
+          대충 우리 동아리원들 대단하다는 내용 대충 우리 동아리원들 대단하다는 내용
         </p>
-        <CTAButton label="지원하기" variant="outline" />
+        <CTAButton label="더 알아보기" variant="outline" />
       </div>
     </section>
   )

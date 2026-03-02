@@ -1,0 +1,354 @@
+.section {
+  position: relative;
+  width: 100%;
+  min-height: 500px;
+  display: grid;
+  /* 마름모 프로필 사진 영역을 요청에 맞춰 소폭 확장합니다. */
+  grid-template-columns: 340px minmax(360px, 549px) minmax(280px, 1fr);
+  gap: 30px;
+  align-items: stretch;
+  background: linear-gradient(96deg, #0d0d0d 30%, #121317 100%);
+  border-top: 0.75px solid rgba(255, 255, 255, 0.55);
+  border-bottom: 0.75px solid rgba(255, 255, 255, 0.55);
+  padding-right: 30px;
+  overflow: hidden;
+}
+
+.photoPanel {
+  position: relative;
+  overflow: hidden;
+}
+
+.photoMask {
+  position: absolute;
+  inset: 0;
+  clip-path: polygon(0 0, 67% 0, 56% 100%, 0 100%);
+}
+
+.photoMask img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+
+.profilePanel {
+  display: grid;
+  align-content: center;
+  gap: 26px;
+  padding: 20px 0;
+  animation: fadeSlideIn 360ms ease;
+}
+
+.identityBlock {
+  display: grid;
+  gap: 16px;
+}
+
+.nameRow {
+  display: flex;
+  align-items: flex-end;
+  gap: 15px;
+}
+
+.nameRow h2 {
+  margin: 0;
+  color: #4de6b3;
+  font-size: clamp(42px, 3.9vw, 56px);
+  line-height: 1;
+  letter-spacing: 0.02em;
+}
+
+.nameRow span {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: clamp(20px, 1.7vw, 24px);
+  line-height: 1;
+}
+
+.intro {
+  margin: 0;
+  color: #ffffff;
+  font-size: clamp(16px, 1.4vw, 20px);
+  line-height: 1.35;
+}
+
+.roleRow {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.roleChip {
+  height: 30px;
+  padding: 0 10px;
+  border: 0.75px solid rgba(255, 255, 255, 0.88);
+  border-radius: 37.5px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 16px;
+}
+
+.roleChip span {
+  font-size: 14px;
+}
+
+.roleChipPlanner {
+  border-color: rgba(77, 230, 179, 0.92);
+  background: rgba(77, 230, 179, 0.12);
+  color: #8ff2d2;
+}
+
+.roleChipDeveloper {
+  border-color: rgba(145, 181, 255, 0.92);
+  background: rgba(145, 181, 255, 0.12);
+  color: #9fc4ff;
+}
+
+.roleChipDesigner {
+  border-color: rgba(255, 193, 102, 0.92);
+  background: rgba(255, 193, 102, 0.14);
+  color: #ffc166;
+}
+
+.stackArea {
+  display: grid;
+  gap: 15px;
+}
+
+.stackArea h3 {
+  margin: 0;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.stackGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+}
+
+.stackColumn {
+  display: grid;
+  gap: 20px;
+}
+
+.stackRow {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: 20px;
+}
+
+.stackIcon,
+.stackLabel {
+  height: 24px;
+  min-width: 24px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 2px;
+  background: #1f232b;
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  padding: 0 4px;
+}
+
+.stackLabel {
+  background: #242424;
+  font-size: 12px;
+  min-width: 72px;
+}
+
+.progressTrack {
+  position: relative;
+  height: 0;
+  border-top: 4px solid rgba(255, 255, 255, 0.95);
+  border-radius: 999px;
+}
+
+.progressFill {
+  position: absolute;
+  left: 0;
+  top: -4px;
+  width: calc(var(--stack-progress) * 100%);
+  border-top: 4px solid #4de6b3;
+  border-radius: 999px;
+  transform-origin: left;
+  animation: progressGrow 700ms ease;
+}
+
+.quote {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: clamp(18px, 1.7vw, 24px);
+  line-height: 1.2;
+}
+
+.achievementPanel {
+  display: grid;
+  align-content: center;
+  gap: 10px;
+  padding: 20px 0;
+}
+
+.achievementPanel ul {
+  margin: 0;
+  padding-left: 24px;
+  display: grid;
+  gap: 7px;
+}
+
+.achievementPanel li {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: clamp(17px, 1.5vw, 22px);
+  line-height: 1.4;
+}
+
+.githubLink {
+  margin-top: 10px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: rgba(255, 255, 255, 0.95);
+  font-size: 20px;
+  text-decoration: underline;
+}
+
+.githubLink img {
+  width: 20px;
+  height: 20px;
+}
+
+.topGradient,
+.bottomGradient {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 50px;
+  pointer-events: none;
+}
+
+.topGradient {
+  top: 0;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.55) 0%, rgba(255, 255, 255, 0) 100%);
+  opacity: 0.18;
+}
+
+.bottomGradient {
+  bottom: 0;
+  background: linear-gradient(0deg, rgba(255, 255, 255, 0.55) 0%, rgba(255, 255, 255, 0) 100%);
+  opacity: 0.18;
+}
+
+@keyframes progressGrow {
+  from {
+    transform: scaleX(0);
+  }
+
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes fadeSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 1200px) {
+  .section {
+    grid-template-columns: 260px minmax(0, 1fr);
+    gap: 20px;
+    padding: 20px;
+  }
+
+  .achievementPanel {
+    grid-column: 1 / -1;
+    padding: 0;
+  }
+
+  .photoPanel {
+    height: 360px;
+  }
+
+  .photoMask {
+    clip-path: polygon(0 0, 78% 0, 66% 100%, 0 100%);
+  }
+}
+
+@media (max-width: 768px) {
+  .section {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    min-height: 0;
+    padding: 0 16px 20px;
+  }
+
+  .photoPanel {
+    height: 280px;
+    margin: 0 -16px;
+  }
+
+  .photoMask {
+    clip-path: none;
+    inset: 0;
+  }
+
+  .profilePanel {
+    gap: 16px;
+    padding: 0;
+  }
+
+  .nameRow h2 {
+    font-size: 48px;
+  }
+
+  .nameRow span {
+    font-size: 20px;
+  }
+
+  .intro {
+    font-size: 16px;
+  }
+
+  .roleChip {
+    font-size: 14px;
+    height: 28px;
+  }
+
+  .stackGrid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .stackColumn {
+    gap: 12px;
+  }
+
+  .quote {
+    font-size: 18px;
+  }
+
+  .achievementPanel ul {
+    gap: 4px;
+  }
+
+  .achievementPanel li {
+    font-size: 14px;
+  }
+
+  .githubLink {
+    font-size: 14px;
+  }
+}

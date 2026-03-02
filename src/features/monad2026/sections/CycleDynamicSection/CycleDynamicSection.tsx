@@ -1,11 +1,27 @@
-// "모나드는 [웹플]이 필요합니다." 정적 소개 섹션입니다.
+// "모나드는 [웹플]이 필요합니다." 소개 섹션입니다.
 import { memo } from 'react'
+import needCardAImage from '../../../../assets/2026_activity_gray_a.svg'
+import needCardBImage from '../../../../assets/2026_activity_gray_b.svg'
 import { CycleCard } from '../../components/CycleCard/CycleCard'
-import { GraySvgLogo } from '../../components/GraySvgLogo/GraySvgLogo'
-import { cycleItems } from '../../data/cycleData'
+import type { CycleCardData } from '../../data/cycleData'
 import styles from './CycleDynamicSection.module.css'
 
-const fixedItem = cycleItems[0]
+const needCards: readonly CycleCardData[] = [
+  {
+    id: 'need-card-a',
+    title: '좋은 점 1',
+    subtitle:
+      '모나드는 세계 최고 동아리이기 때문에 어쩌고 저쩌고 이래서 웹플에게 좋습니다. 모나드는 세계 최고 동아리이기 때문에 어쩌고 저쩌고 이래서 웹플에게 좋습니다.',
+    image: needCardAImage,
+  },
+  {
+    id: 'need-card-b',
+    title: '좋은 점 1',
+    subtitle:
+      '모나드는 세계 최고 동아리이기 때문에 어쩌고 저쩌고 이래서 웹플에게 좋습니다. 모나드는 세계 최고 동아리이기 때문에 어쩌고 저쩌고 이래서 웹플에게 좋습니다.',
+    image: needCardBImage,
+  },
+]
 
 export const CycleDynamicSection = memo(function CycleDynamicSection() {
   return (
@@ -17,18 +33,12 @@ export const CycleDynamicSection = memo(function CycleDynamicSection() {
             <br />
             <span className={styles.highlight}>[웹플]</span>이 필요합니다.
           </p>
-          <p className={styles.description}>
-            개발과 기획을 넘나들며 혼자서도 끝까지 구현할 수 있는 힘을 키우는 교육
-            사이클을 운영합니다.
-          </p>
         </div>
 
         <div className={styles.cardArea}>
-          <GraySvgLogo />
-          <div className={styles.cardStack}>
-            <CycleCard card={fixedItem.cards[0]} />
-            <CycleCard card={fixedItem.cards[1]} />
-          </div>
+          {needCards.map((card) => (
+            <CycleCard key={card.id} card={card} />
+          ))}
         </div>
       </div>
     </section>

@@ -1,0 +1,131 @@
+.section {
+  position: relative;
+  width: 100%;
+  height: clamp(260px, 27.35vw, 394px);
+  overflow: hidden;
+  background: #0f0f0f;
+  border-bottom: 0.75px solid rgba(255, 255, 255, 0.2);
+}
+
+.marqueeTrack {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: stretch;
+  width: max-content;
+  animation: memberMarquee 38s linear infinite;
+}
+
+.heroCard {
+  position: relative;
+  width: clamp(124px, 15.24vw, 220px);
+  flex: 0 0 auto;
+  border-right: 0.5px solid rgba(255, 255, 255, 0.2);
+  overflow: hidden;
+  /* skew 변환 대신 clip-path를 사용해 반응형에서도 평행사변형 마스크를 안정적으로 유지합니다. */
+  clip-path: polygon(14% 0, 100% 0, 86% 100%, 0 100%);
+}
+
+.heroCard img {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  /* 카드 크기 변화에 따라 overscan을 같이 늘려 가장자리 여백이 생기지 않게 합니다. */
+  width: calc(100% + clamp(42px, 4vw, 68px));
+  height: calc(100% + clamp(56px, 5vw, 84px));
+  object-fit: cover;
+  object-position: center;
+  filter: grayscale(1) contrast(1.02) brightness(0.82);
+  transform: translate(-50%, -50%) scale(1.12);
+  will-change: transform;
+}
+
+.heroCardOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.14) 0%, rgba(0, 0, 0, 0.74) 100%);
+}
+
+.heroCardName {
+  position: absolute;
+  left: 50%;
+  bottom: 12px;
+  transform: translateX(-50%);
+  margin: 0;
+  color: rgba(255, 255, 255, 0.45);
+  font-size: clamp(10px, 0.95vw, 14px);
+}
+
+.centerOverlay {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  gap: 10px;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.centerOverlay img {
+  width: clamp(58px, 6.95vw, 100px);
+  height: auto;
+}
+
+.centerOverlay h1 {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: clamp(30px, 3.62vw, 52px);
+  line-height: 1;
+  letter-spacing: 0.015em;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+.centerOverlay p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.88);
+  font-size: clamp(16px, 1.8vw, 26px);
+  line-height: 1.2;
+}
+
+@keyframes memberMarquee {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-33.3333%);
+  }
+}
+
+@media (max-width: 768px) {
+  .section {
+    height: 220px;
+  }
+
+  .heroCard {
+    width: 120px;
+    clip-path: polygon(16% 0, 100% 0, 84% 100%, 0 100%);
+  }
+
+  .heroCard img {
+    width: calc(100% + 56px);
+    height: calc(100% + 78px);
+    transform: translate(-50%, -50%) scale(1.14);
+  }
+
+  .centerOverlay {
+    gap: 6px;
+    padding: 8px;
+  }
+
+  .centerOverlay h1 {
+    font-size: 34px;
+  }
+
+  .centerOverlay p {
+    font-size: 16px;
+  }
+}

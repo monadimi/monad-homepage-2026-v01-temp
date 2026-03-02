@@ -1,32 +1,55 @@
 .section {
-  background: var(--colors-deep-black);
-  padding: var(--spacing-monad2026-section-gap) var(--spacing-lg) 0;
+  width: 100%;
+  padding: 40px clamp(16px, 5vw, 160px);
 }
 
 .grid {
+  width: 100%;
   display: grid;
-  grid-template-columns: 1fr var(--layout-monad2026-intro-media-size);
+  grid-template-columns: minmax(0, 1fr) clamp(160px, 26vw, 400px);
   align-items: center;
-  gap: var(--spacing-monad2026-card-gap);
-  width: min(100%, var(--layout-monad2026-section-max-width));
-  margin: 0 auto;
+  gap: clamp(20px, 3vw, 40px);
 }
 
 .copy {
   display: grid;
-  gap: var(--spacing-xs);
+  gap: 10px;
 }
 
 .description {
   margin: 0;
-  color: var(--colors-muted-gray);
-  font-size: 9px;
+  max-width: 100%;
+  color: rgba(255, 255, 255, 0.82);
+  font-family: 'NEXON Lv2 Gothic', var(--typography-font-family-primary);
+  font-size: clamp(12px, 1.1vw, 16px);
   line-height: 1.5;
+  letter-spacing: 0.04em;
 }
 
 .mediaBox {
-  width: var(--layout-monad2026-intro-media-size);
-  height: var(--layout-monad2026-intro-media-size);
-  background: #d6d8db;
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 3px;
+  background: #d9d9d9;
+}
+
+@media (max-width: 980px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .mediaBox {
+    width: min(100%, 260px);
+    justify-self: end;
+  }
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: 26px 20px 22px;
+  }
+
+  .mediaBox {
+    width: min(100%, 120px);
+  }
 }

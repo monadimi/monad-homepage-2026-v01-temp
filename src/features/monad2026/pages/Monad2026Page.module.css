@@ -1,9 +1,44 @@
 .page {
-  background: var(--colors-deep-black);
+  position: relative;
+  overflow: hidden;
+  background: #0d0d0d;
+}
+
+.page::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 50px;
+  width: 810px;
+  height: 1440px;
+  transform: translateX(-50%) rotate(-90deg);
+  background: linear-gradient(90deg, #0d0d0d 60.096%, rgba(13, 13, 13, 0) 100%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.page::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(13, 13, 13, 0.1) 0%, rgba(13, 13, 13, 0.4) 100%),
+    repeating-linear-gradient(
+      0deg,
+      rgba(77, 230, 179, 0.02) 0,
+      rgba(77, 230, 179, 0.02) 1px,
+      transparent 1px,
+      transparent 34px
+    );
+  opacity: 0.5;
+  pointer-events: none;
+  z-index: 0;
 }
 
 .pageInner {
+  position: relative;
+  z-index: 1;
   width: 100%;
   margin: 0 auto;
-  background: var(--colors-deep-black);
+  background: transparent;
 }

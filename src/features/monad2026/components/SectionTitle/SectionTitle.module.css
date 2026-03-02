@@ -1,8 +1,16 @@
 .title {
   margin: 0;
-  color: var(--colors-accent-green);
-  font-family: var(--typography-font-family-primary);
-  font-size: var(--typography-section-title);
-  line-height: 1.25;
-  font-weight: var(--typography-weight-medium);
+  color: #4de6b3;
+  font-family: 'NEXON Lv2 Gothic', var(--typography-font-family-primary);
+  font-size: clamp(30px, 3.35vw, 48px);
+  line-height: 1.5;
+  letter-spacing: 0.04em;
+  font-weight: 700;
+}
+
+@media (max-width: 768px) {
+  .title {
+    font-size: clamp(22px, 7vw, 34px);
+    line-height: 1.35;
+  }
 }

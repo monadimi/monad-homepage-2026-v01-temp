@@ -10,7 +10,8 @@ export const ITIntroSection = memo(function ITIntroSection() {
         <div className={styles.copy}>
           <SectionTitle text="IT 중심 동아리" />
           <p className={styles.description}>
-            실무에 가까운 개발 과정을 경험하며 문제를 구조적으로 해결하는 힘을 기릅니다.
+            우리는 기획보다는 IT에 더 집중합니다. 우리는 기획보다는 IT에 더 집중합니다.
+            우리는 기획보다는 IT에 더 집중합니다. 우리는 기획보다는 IT에 더 집중합니다.
           </p>
         </div>
         <div className={styles.mediaBox} aria-hidden="true" />

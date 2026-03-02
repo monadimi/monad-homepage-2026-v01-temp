@@ -1,0 +1,124 @@
+.section {
+  padding: 40px clamp(24px, 11.1vw, 160px);
+}
+
+.layout {
+  width: min(100%, 1120px);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 450px) minmax(36px, 62px) minmax(0, 450px);
+  column-gap: clamp(28px, 5.5vw, 79px);
+  align-items: center;
+}
+
+.card {
+  display: grid;
+  gap: 10px;
+}
+
+.mediaWrap {
+  position: relative;
+  width: 100%;
+  min-height: clamp(260px, 34.7vw, 500px);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.mediaWrap img {
+  position: absolute;
+  top: 0;
+  left: -6.66%;
+  width: 113.33%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.copy {
+  display: grid;
+  gap: 10px;
+  text-align: center;
+}
+
+.headline {
+  margin: 0;
+  color: #ffffff;
+  font-family: 'NEXON Lv2 Gothic', var(--typography-font-family-primary);
+  font-size: clamp(24px, 2.5vw, 36px);
+  line-height: 2;
+  letter-spacing: 0.04em;
+  font-weight: 500;
+}
+
+.accent {
+  color: #4de6b3;
+}
+
+.description {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.8);
+  font-family: 'NEXON Lv2 Gothic', var(--typography-font-family-primary);
+  font-size: clamp(13px, 1.4vw, 20px);
+  line-height: 1.39;
+  letter-spacing: 0.04em;
+}
+
+.centerMark {
+  display: grid;
+  justify-items: center;
+  gap: 2px;
+}
+
+.logoScale {
+  opacity: 0.34;
+  filter: grayscale(1);
+  transform: scale(0.39);
+  transform-origin: center;
+}
+
+.centerLabel {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.2);
+  font-family: 'NEXON Lv2 Gothic', var(--typography-font-family-primary);
+  font-size: clamp(14px, 1.4vw, 20px);
+  line-height: 1.2;
+  letter-spacing: 0.04em;
+  font-weight: 700;
+}
+
+@media (max-width: 1100px) {
+  .layout {
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: 20px;
+  }
+
+  .centerMark {
+    order: 2;
+  }
+
+  .card {
+    order: 1;
+  }
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: 26px 20px;
+  }
+
+  .copy {
+    gap: 4px;
+  }
+
+  .headline {
+    line-height: 1.45;
+  }
+
+  .description {
+    font-size: 10px;
+    line-height: 1.4;
+  }
+
+  .centerMark {
+    display: none;
+  }
+}

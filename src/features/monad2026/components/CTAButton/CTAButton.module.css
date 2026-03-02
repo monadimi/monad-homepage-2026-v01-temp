@@ -1,37 +1,68 @@
 .button {
-  min-height: 30px;
-  padding: 0 20px;
-  border-radius: 999px;
-  border: 1px solid transparent;
-  font-family: var(--typography-font-family-primary);
-  font-size: 12px;
-  letter-spacing: var(--typography-letter-spacing-nav);
-  line-height: 1;
+  min-width: 113px;
+  min-height: 50px;
+  padding: 5px 20px;
+  border-radius: 79px;
+  border: 1.5px solid #4de6b3;
+  background: rgba(255, 255, 255, 0.01);
+  backdrop-filter: blur(5px);
+  font-family: 'NEXON Lv2 Gothic', var(--typography-font-family-primary);
+  font-size: clamp(14px, 1.4vw, 20px);
+  letter-spacing: 0.04em;
+  line-height: 2;
   cursor: pointer;
+  color: #4de6b3;
   transition:
-    border-color var(--animation-fade-duration) ease,
-    color var(--animation-fade-duration) ease,
-    background-color var(--animation-fade-duration) ease;
+    transform 220ms ease,
+    box-shadow 220ms ease,
+    color 220ms ease,
+    background-color 220ms ease,
+    border-color 220ms ease;
+}
+
+.button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 22px rgba(77, 230, 179, 0.28);
+}
+
+.button:active {
+  transform: translateY(0);
+}
+
+.button:focus-visible {
+  outline: 2px solid rgba(77, 230, 179, 0.8);
+  outline-offset: 2px;
 }
 
 .outline {
-  background: transparent;
-  color: var(--colors-accent-green);
-  border-color: var(--colors-accent-green);
+  background: rgba(255, 255, 255, 0.01);
+  color: #4de6b3;
+  border-color: #4de6b3;
 }
 
 .outline:hover {
-  color: var(--colors-text-primary);
-  border-color: var(--colors-text-primary);
+  background: #4de6b3;
+  color: #05231a;
+  border-color: #4de6b3;
 }
 
 .solid {
-  background: var(--colors-accent-green);
-  color: var(--colors-deep-black);
-  border-color: var(--colors-accent-green);
+  background: #4de6b3;
+  color: #081d17;
+  border-color: #4de6b3;
 }
 
 .solid:hover {
-  background: var(--colors-text-primary);
-  border-color: var(--colors-text-primary);
+  background: #78f0c5;
+  border-color: #78f0c5;
+}
+
+@media (max-width: 768px) {
+  .button {
+    min-width: 94px;
+    min-height: 34px;
+    padding: 3px 16px;
+    font-size: 12px;
+    line-height: 1.9;
+  }
 }

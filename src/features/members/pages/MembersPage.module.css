@@ -1,0 +1,75 @@
+.page {
+  width: 100%;
+  background: linear-gradient(180deg, #141414 0%, #0d0d0d 100%);
+}
+
+.yearHeadingSection {
+  width: 100%;
+  padding: 30px 16px;
+  display: grid;
+  justify-items: center;
+  gap: 10px;
+  text-align: center;
+}
+
+.yearHeadingSection h2 {
+  margin: 0;
+  color: #ffffff;
+  font-size: clamp(44px, 3.25vw, 56px);
+  line-height: 1;
+  font-weight: 600;
+}
+
+.yearHeadingSection p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: clamp(22px, 1.6vw, 26px);
+  line-height: 1;
+}
+
+.yearSelectorSection {
+  width: 100%;
+  margin-top: -22px;
+  padding: 0 16px 24px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.yearButton {
+  height: 28px;
+  min-width: 68px;
+  border-radius: 999px;
+  border: 0.75px solid rgba(255, 255, 255, 0.48);
+  background: transparent;
+  color: rgba(255, 255, 255, 0.74);
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.yearButtonActive,
+.yearButton:hover {
+  border-color: #4de6b3;
+  color: #4de6b3;
+  background: rgba(77, 230, 179, 0.12);
+}
+
+@media (max-width: 768px) {
+  .yearHeadingSection {
+    padding: 20px 16px;
+    gap: 8px;
+  }
+
+  .yearHeadingSection h2 {
+    font-size: 46px;
+  }
+
+  .yearHeadingSection p {
+    font-size: 20px;
+  }
+
+  .yearSelectorSection {
+    margin-top: -6px;
+    padding-bottom: 14px;
+  }
+}

@@ -10,7 +10,9 @@ import {
 import { AchievementsPage } from '../features/achievements/pages/AchievementsPage'
 import { ComingSoonPage } from '../features/common/pages/ComingSoonPage'
 import { HomePage } from '../features/home/pages/HomePage'
+import { MembersPage } from '../features/members/pages/MembersPage'
 import { Monad2026Page } from '../features/monad2026/pages/Monad2026Page'
+import { ProjectsPage } from '../features/projects/pages/ProjectsPage'
 import styles from './Router.module.css'
 
 // 모든 페이지에서 재사용되는 공통 셸입니다.
@@ -43,10 +45,24 @@ const routeChildren = [
       }
     }
 
+    if (route.key === 'members') {
+      return {
+        path: route.segment,
+        element: <MembersPage />,
+      }
+    }
+
     if (route.key === 'monad2026') {
       return {
         path: route.segment,
         element: <Monad2026Page />,
+      }
+    }
+
+    if (route.key === 'projects') {
+      return {
+        path: route.segment,
+        element: <ProjectsPage />,
       }
     }
 

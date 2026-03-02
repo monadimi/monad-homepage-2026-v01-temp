@@ -29,3 +29,5 @@ dist-ssr
 # Local screenshots/debug artifacts (root only)
 /monad2026-*.png
 /unsplash-grid-preview*.png
+# Members 페이지 피그마 검수 스크린샷
+/members-page-*.png

@@ -1,20 +1,43 @@
 .section {
-  background: var(--colors-deep-black);
-  padding: calc(var(--spacing-monad2026-section-gap) + 12px) var(--spacing-lg) 40px;
-  display: grid;
-  gap: 20px;
+  padding: 44px clamp(24px, 17.4vw, 250px) 44px;
 }
 
-.section > * {
-  width: min(100%, var(--layout-monad2026-faq-max-width));
+.inner {
+  width: min(100%, 940px);
   margin: 0 auto;
+  display: grid;
+  gap: clamp(16px, 2.4vw, 34px);
+}
+
+.title {
+  margin: 0;
+  color: #4de6b3;
+  font-family: 'NEXON Lv2 Gothic', var(--typography-font-family-primary);
+  font-size: clamp(36px, 3.9vw, 56px);
+  line-height: 2;
+  letter-spacing: 0.04em;
+  font-weight: 700;
 }
 
 .list {
-  border-top: 1px solid var(--colors-divider);
+  display: grid;
+  gap: clamp(12px, 2.4vw, 34px);
 }
 
-.section h2 {
-  font-size: 42px;
-  line-height: 1.1;
+@media (max-width: 768px) {
+  .section {
+    padding: 22px 20px 36px;
+  }
+
+  .inner {
+    gap: 12px;
+  }
+
+  .title {
+    line-height: 1.2;
+  }
+
+  .list {
+    gap: 10px;
+  }
 }

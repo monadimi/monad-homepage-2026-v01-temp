@@ -1,46 +1,58 @@
 .section {
   position: relative;
   overflow: hidden;
-  margin-top: var(--spacing-monad2026-section-gap);
+  height: clamp(360px, 55.6vw, 800px);
+  isolation: isolate;
 }
 
 .backgroundImage {
-  position: relative;
+  position: absolute;
+  inset: 0;
   width: 100%;
-  max-width: var(--layout-monad2026-image-max-width);
-  height: auto;
-  object-fit: contain;
-  margin: 0 auto;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  opacity: 0.72;
 }
 
 .overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    180deg,
-    var(--colors-overlay-dark) 0%,
-    rgba(0, 0, 0, 0.22) 52%,
-    var(--colors-overlay-dark) 100%
-  );
+  background:
+    linear-gradient(180deg, rgba(13, 13, 13, 0.9) 0%, rgba(13, 13, 13, 0.18) 52%, rgba(13, 13, 13, 0.88) 100%),
+    linear-gradient(180deg, rgba(0, 0, 0, 0) 65%, #0d0d0d 100%);
 }
 
 .content {
-  position: absolute;
-  inset: 0;
+  position: relative;
   z-index: var(--z-index-content);
-  max-width: var(--layout-monad2026-image-max-width);
-  margin: 0 auto;
+  height: 100%;
   display: grid;
   align-content: center;
   justify-items: center;
-  gap: 8px;
+  gap: 14px;
+  text-align: center;
+  padding: clamp(40px, 8vw, 120px) var(--spacing-md) 80px;
 }
 
 .title {
   margin: 0;
-  color: var(--colors-accent-green);
-  font-family: var(--typography-font-family-serif);
-  font-size: var(--typography-scale-hero-serif-medium);
-  line-height: 1;
+  color: #4de6b3;
+  font-family: 'Newsreader', var(--typography-font-family-serif);
+  font-size: clamp(46px, 6.7vw, 96px);
+  line-height: 2;
   font-style: italic;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+}
+
+@media (max-width: 768px) {
+  .content {
+    gap: 8px;
+    padding: 20px 14px 44px;
+  }
+
+  .title {
+    line-height: 1.4;
+  }
 }

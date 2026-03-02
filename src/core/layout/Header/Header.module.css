@@ -152,21 +152,6 @@
 @media (max-width: 768px) {
   .headerInner {
     height: 48px;
-  }
-
-  .navList {
-    gap: 14px;
-  }
-
-  .navLink {
-    height: 48px;
-    font-size: 11px;
-    letter-spacing: 0.04em;
-  }
-}
-
-@media (max-width: 360px) {
-  .headerInner {
     justify-content: flex-end;
   }
 
@@ -176,16 +161,31 @@
 
   .hamburgerButton {
     position: relative;
-    height: var(--layout-header-height);
-    width: var(--layout-header-height);
+    height: 48px;
+    width: 48px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
   }
+
+  .mobileMenu {
+    display: block;
+  }
+
+  .mobileNavList {
+    padding: var(--spacing-sm) 0 var(--spacing-md);
+    gap: 0;
+  }
+
+  .mobileNavLink {
+    min-height: 44px;
+    font-size: 13px;
+    letter-spacing: 0.03em;
+  }
 }
 
-@media (min-width: 361px) {
+@media (min-width: 769px) {
   .mobileMenu {
     display: none;
   }

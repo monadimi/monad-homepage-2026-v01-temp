@@ -1,56 +1,97 @@
 .section {
   position: relative;
   overflow: hidden;
-  background: var(--colors-deep-black);
+  height: clamp(360px, 55.6vw, 800px);
+  isolation: isolate;
 }
 
 .backgroundImage {
-  position: relative;
+  position: absolute;
+  inset: 0;
   width: 100%;
-  max-width: var(--layout-monad2026-image-max-width);
-  height: auto;
-  object-fit: contain;
-  margin: 0 auto;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  opacity: 0.72;
 }
 
 .overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    180deg,
-    rgba(0, 0, 0, 0.32) 0%,
-    rgba(0, 0, 0, 0.1) 52%,
-    var(--colors-overlay-dark) 100%
-  );
+  background:
+    linear-gradient(180deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.08) 55%, rgba(13, 13, 13, 0.86) 100%),
+    linear-gradient(180deg, rgba(13, 13, 13, 0) 68%, #0d0d0d 100%);
 }
 
 .content {
-  position: absolute;
-  inset: 0;
+  position: relative;
   z-index: var(--z-index-content);
-  max-width: var(--layout-monad2026-image-max-width);
-  margin: 0 auto;
+  height: 100%;
   display: grid;
   align-content: center;
   justify-items: center;
-  gap: 8px;
+  gap: 14px;
   text-align: center;
-  padding: 44px var(--spacing-md);
+  padding: clamp(40px, 8vw, 120px) var(--spacing-md) 80px;
 }
 
 .title {
   margin: 0;
-  color: var(--colors-accent-green);
-  font-family: var(--typography-font-family-serif);
-  font-size: var(--typography-hero-serif);
-  line-height: 1;
-  font-weight: var(--typography-weight-regular);
+  color: #4de6b3;
+  font-family: 'Newsreader', var(--typography-font-family-serif);
+  font-size: clamp(46px, 6.7vw, 96px);
+  line-height: 2;
+  font-weight: 400;
   font-style: italic;
+  letter-spacing: 0.04em;
+  animation: heroTitleIn 650ms ease-out both;
 }
 
 .subtitle {
   margin: 0;
-  color: var(--colors-muted-gray);
-  font-size: 13px;
-  line-height: 1.35;
+  color: rgba(255, 255, 255, 0.78);
+  font-family: 'NEXON Lv2 Gothic', var(--typography-font-family-primary);
+  font-size: clamp(14px, 2.2vw, 32px);
+  line-height: 2;
+  letter-spacing: 0.04em;
+  animation: heroSubtitleIn 650ms 90ms ease-out both;
+}
+
+@keyframes heroTitleIn {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes heroSubtitleIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .content {
+    gap: 8px;
+    padding: 20px 14px 44px;
+  }
+
+  .title {
+    line-height: 1.4;
+  }
+
+  .subtitle {
+    line-height: 1.5;
+  }
 }

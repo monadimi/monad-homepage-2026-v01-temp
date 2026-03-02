@@ -24,11 +24,15 @@ export const AccordionItem = memo(function AccordionItem({
         className={styles.trigger}
         onClick={() => onToggle(id)}
         aria-expanded={isOpen}
+        aria-controls={`${id}-answer`}
       >
         <span className={styles.question}>{question}</span>
         <span className={styles.icon}>+</span>
       </button>
-      <div className={styles.answerWrap}>
+
+      <div className={styles.divider} aria-hidden="true" />
+
+      <div id={`${id}-answer`} className={styles.answerWrap}>
         <div className={styles.answerInner}>
           <p className={styles.answer}>{answer}</p>
         </div>

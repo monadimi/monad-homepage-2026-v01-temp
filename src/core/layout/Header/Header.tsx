@@ -30,6 +30,7 @@ export const Header = memo(function Header() {
             type="button"
             className={styles.hamburgerButton}
             aria-label="Toggle navigation menu"
+            aria-controls="mobile-global-navigation"
             aria-expanded={isMenuOpen}
             onClick={() => setIsMenuOpen((current) => !current)}
           >
@@ -72,7 +73,11 @@ export const Header = memo(function Header() {
         className={`${styles.mobileMenu} ${isMenuOpen ? styles.mobileMenuOpen : ''}`}
       >
         <Container>
-          <nav className={styles.mobileNavigation} aria-label="Mobile navigation">
+          <nav
+            id="mobile-global-navigation"
+            className={styles.mobileNavigation}
+            aria-label="Mobile navigation"
+          >
             <ul className={styles.mobileNavList}>
               {navItems.map((item) => (
                 <li key={`mobile-${item.key}`} className={styles.mobileNavItem}>

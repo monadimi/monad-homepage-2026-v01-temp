@@ -1,0 +1,519 @@
+{
+  "defaultYear": 2025,
+  "yearOrder": [
+    2025
+  ],
+  "years": [
+    {
+      "year": 2025,
+      "title": "MONAD 2025",
+      "generationLabel": "0기",
+      "heroTitle": "MEMBERS OF MONAD",
+      "heroSubtitle": "모나드의 단자들을 소개합니다.",
+      "members": [
+        {
+          "id": "member-1-김단아",
+          "name": "김단아",
+          "code": "24WP",
+          "intro": "본질을 꿰뚫는 통찰력으로 문제의 해법을 제시하는 사람",
+          "roles": [
+            "planner",
+            "developer",
+            "designer"
+          ],
+          "quote": "자신이 하고싶은 한마디",
+          "github": "https://github.com/",
+          "githubLabel": "김단아 - Overview",
+          "imageKey": "jesiwon",
+          "achievements": [
+            "카이스트 IP-CEO 수료",
+            "2025 SW/AI 미래채움 고교 챌린지 창의상 수상",
+            "AI SoftwarePlay 용인 우수상 수상",
+            "특허 3건 출원",
+            "교내 뮤지컬 동아리 (아르떼) 티켓팅 사이트 제작",
+            "AI 학생 언어 분석 혐오표현 예방 교육 솔루션 HEAR 제작 주도",
+            "셀레니움 기반 위키 탐색 프로그램: 위키드 제작",
+            "AI 편향성 및 필터버블 토론대회 전국 2등"
+          ],
+          "stacks": [
+            {
+              "id": "python",
+              "label": "Python",
+              "iconKey": "python",
+              "value": 0.88
+            },
+            {
+              "id": "typescript",
+              "label": "TypeScript",
+              "iconKey": "typescript",
+              "value": 0.52
+            },
+            {
+              "id": "c",
+              "label": "C",
+              "iconKey": "c",
+              "value": 0.74
+            },
+            {
+              "id": "llm",
+              "label": "LLM(NLP)",
+              "iconKey": "label",
+              "value": 1
+            },
+            {
+              "id": "react",
+              "label": "React",
+              "iconKey": "react",
+              "value": 0.36
+            },
+            {
+              "id": "crawling",
+              "label": "Crawling",
+              "iconKey": "label",
+              "value": 0.69
+            }
+          ]
+        },
+        {
+          "id": "member-2-김호태",
+          "name": "김호태",
+          "code": "24DC",
+          "intro": "본질을 꿰뚫는 통찰력으로 문제의 해법을 제시하는 사람",
+          "roles": [
+            "designer"
+          ],
+          "quote": "자신이 하고싶은 한마디",
+          "github": "https://github.com/",
+          "githubLabel": "김호태 - Overview",
+          "imageKey": "jesiwon",
+          "achievements": [
+            "카이스트 IP-CEO 수료",
+            "2025 SW/AI 미래채움 고교 챌린지 창의상 수상",
+            "AI SoftwarePlay 용인 우수상 수상",
+            "특허 3건 출원",
+            "교내 뮤지컬 동아리 (아르떼) 티켓팅 사이트 제작",
+            "AI 학생 언어 분석 혐오표현 예방 교육 솔루션 HEAR 제작 주도",
+            "셀레니움 기반 위키 탐색 프로그램: 위키드 제작",
+            "AI 편향성 및 필터버블 토론대회 전국 2등"
+          ],
+          "stacks": [
+            {
+              "id": "python",
+              "label": "Python",
+              "iconKey": "python",
+              "value": 0.88
+            },
+            {
+              "id": "typescript",
+              "label": "TypeScript",
+              "iconKey": "typescript",
+              "value": 0.52
+            },
+            {
+              "id": "c",
+              "label": "C",
+              "iconKey": "c",
+              "value": 0.74
+            },
+            {
+              "id": "llm",
+              "label": "LLM(NLP)",
+              "iconKey": "label",
+              "value": 1
+            },
+            {
+              "id": "react",
+              "label": "React",
+              "iconKey": "react",
+              "value": 0.36
+            },
+            {
+              "id": "crawling",
+              "label": "Crawling",
+              "iconKey": "label",
+              "value": 0.69
+            }
+          ]
+        },
+        {
+          "id": "member-3-제시원",
+          "name": "제시원",
+          "code": "24WP",
+          "intro": "본질을 꿰뚫는 통찰력으로 문제의 해법을 제시하는 사람",
+          "roles": [
+            "planner",
+            "developer",
+            "designer"
+          ],
+          "quote": "자신이 하고싶은 한마디",
+          "github": "https://github.com/jecool0523",
+          "githubLabel": "jecool0523 - Overview",
+          "imageKey": "jesiwon",
+          "achievements": [
+            "카이스트 IP-CEO 수료",
+            "2025 SW/AI 미래채움 고교 챌린지 창의상 수상",
+            "AI SoftwarePlay 용인 우수상 수상",
+            "특허 3건 출원",
+            "교내 뮤지컬 동아리 (아르떼) 티켓팅 사이트 제작",
+            "AI 학생 언어 분석 혐오표현 예방 교육 솔루션 HEAR 제작 주도",
+            "셀레니움 기반 위키 탐색 프로그램: 위키드 제작",
+            "AI 편향성 및 필터버블 토론대회 전국 2등"
+          ],
+          "stacks": [
+            {
+              "id": "python",
+              "label": "Python",
+              "iconKey": "python",
+              "value": 0.88
+            },
+            {
+              "id": "typescript",
+              "label": "TypeScript",
+              "iconKey": "typescript",
+              "value": 0.52
+            },
+            {
+              "id": "c",
+              "label": "C",
+              "iconKey": "c",
+              "value": 0.74
+            },
+            {
+              "id": "llm",
+              "label": "LLM(NLP)",
+              "iconKey": "label",
+              "value": 1
+            },
+            {
+              "id": "react",
+              "label": "React",
+              "iconKey": "react",
+              "value": 0.36
+            },
+            {
+              "id": "crawling",
+              "label": "Crawling",
+              "iconKey": "label",
+              "value": 0.69
+            }
+          ]
+        },
+        {
+          "id": "member-4-조수아",
+          "name": "조수아",
+          "code": "24WP",
+          "intro": "본질을 꿰뚫는 통찰력으로 문제의 해법을 제시하는 사람",
+          "roles": [
+            "planner",
+            "developer",
+            "designer"
+          ],
+          "quote": "자신이 하고싶은 한마디",
+          "github": "https://github.com/",
+          "githubLabel": "조수아 - Overview",
+          "imageKey": "jesiwon",
+          "achievements": [
+            "카이스트 IP-CEO 수료",
+            "2025 SW/AI 미래채움 고교 챌린지 창의상 수상",
+            "AI SoftwarePlay 용인 우수상 수상",
+            "특허 3건 출원",
+            "교내 뮤지컬 동아리 (아르떼) 티켓팅 사이트 제작",
+            "AI 학생 언어 분석 혐오표현 예방 교육 솔루션 HEAR 제작 주도",
+            "셀레니움 기반 위키 탐색 프로그램: 위키드 제작",
+            "AI 편향성 및 필터버블 토론대회 전국 2등"
+          ],
+          "stacks": [
+            {
+              "id": "python",
+              "label": "Python",
+              "iconKey": "python",
+              "value": 0.88
+            },
+            {
+              "id": "typescript",
+              "label": "TypeScript",
+              "iconKey": "typescript",
+              "value": 0.52
+            },
+            {
+              "id": "c",
+              "label": "C",
+              "iconKey": "c",
+              "value": 0.74
+            },
+            {
+              "id": "llm",
+              "label": "LLM(NLP)",
+              "iconKey": "label",
+              "value": 1
+            },
+            {
+              "id": "react",
+              "label": "React",
+              "iconKey": "react",
+              "value": 0.36
+            },
+            {
+              "id": "crawling",
+              "label": "Crawling",
+              "iconKey": "label",
+              "value": 0.69
+            }
+          ]
+        },
+        {
+          "id": "member-5-최승빈",
+          "name": "최승빈",
+          "code": "24WP",
+          "intro": "본질을 꿰뚫는 통찰력으로 문제의 해법을 제시하는 사람",
+          "roles": [
+            "planner",
+            "developer",
+            "designer"
+          ],
+          "quote": "자신이 하고싶은 한마디",
+          "github": "https://github.com/",
+          "githubLabel": "최승빈 - Overview",
+          "imageKey": "jesiwon",
+          "achievements": [
+            "카이스트 IP-CEO 수료",
+            "2025 SW/AI 미래채움 고교 챌린지 창의상 수상",
+            "AI SoftwarePlay 용인 우수상 수상",
+            "특허 3건 출원",
+            "교내 뮤지컬 동아리 (아르떼) 티켓팅 사이트 제작",
+            "AI 학생 언어 분석 혐오표현 예방 교육 솔루션 HEAR 제작 주도",
+            "셀레니움 기반 위키 탐색 프로그램: 위키드 제작",
+            "AI 편향성 및 필터버블 토론대회 전국 2등"
+          ],
+          "stacks": [
+            {
+              "id": "python",
+              "label": "Python",
+              "iconKey": "python",
+              "value": 0.88
+            },
+            {
+              "id": "typescript",
+              "label": "TypeScript",
+              "iconKey": "typescript",
+              "value": 0.52
+            },
+            {
+              "id": "c",
+              "label": "C",
+              "iconKey": "c",
+              "value": 0.74
+            },
+            {
+              "id": "llm",
+              "label": "LLM(NLP)",
+              "iconKey": "label",
+              "value": 1
+            },
+            {
+              "id": "react",
+              "label": "React",
+              "iconKey": "react",
+              "value": 0.36
+            },
+            {
+              "id": "crawling",
+              "label": "Crawling",
+              "iconKey": "label",
+              "value": 0.69
+            }
+          ]
+        },
+        {
+          "id": "member-6-최윤혁",
+          "name": "최윤혁",
+          "code": "24WP",
+          "intro": "본질을 꿰뚫는 통찰력으로 문제의 해법을 제시하는 사람",
+          "roles": [
+            "planner",
+            "developer",
+            "designer"
+          ],
+          "quote": "자신이 하고싶은 한마디",
+          "github": "https://github.com/",
+          "githubLabel": "최윤혁 - Overview",
+          "imageKey": "jesiwon",
+          "achievements": [
+            "카이스트 IP-CEO 수료",
+            "2025 SW/AI 미래채움 고교 챌린지 창의상 수상",
+            "AI SoftwarePlay 용인 우수상 수상",
+            "특허 3건 출원",
+            "교내 뮤지컬 동아리 (아르떼) 티켓팅 사이트 제작",
+            "AI 학생 언어 분석 혐오표현 예방 교육 솔루션 HEAR 제작 주도",
+            "셀레니움 기반 위키 탐색 프로그램: 위키드 제작",
+            "AI 편향성 및 필터버블 토론대회 전국 2등"
+          ],
+          "stacks": [
+            {
+              "id": "python",
+              "label": "Python",
+              "iconKey": "python",
+              "value": 0.88
+            },
+            {
+              "id": "typescript",
+              "label": "TypeScript",
+              "iconKey": "typescript",
+              "value": 0.52
+            },
+            {
+              "id": "c",
+              "label": "C",
+              "iconKey": "c",
+              "value": 0.74
+            },
+            {
+              "id": "llm",
+              "label": "LLM(NLP)",
+              "iconKey": "label",
+              "value": 1
+            },
+            {
+              "id": "react",
+              "label": "React",
+              "iconKey": "react",
+              "value": 0.36
+            },
+            {
+              "id": "crawling",
+              "label": "Crawling",
+              "iconKey": "label",
+              "value": 0.69
+            }
+          ]
+        },
+        {
+          "id": "member-7-한준혁",
+          "name": "한준혁",
+          "code": "24WP",
+          "intro": "본질을 꿰뚫는 통찰력으로 문제의 해법을 제시하는 사람",
+          "roles": [
+            "planner",
+            "developer",
+            "designer"
+          ],
+          "quote": "자신이 하고싶은 한마디",
+          "github": "https://github.com/",
+          "githubLabel": "한준혁 - Overview",
+          "imageKey": "jesiwon",
+          "achievements": [
+            "카이스트 IP-CEO 수료",
+            "2025 SW/AI 미래채움 고교 챌린지 창의상 수상",
+            "AI SoftwarePlay 용인 우수상 수상",
+            "특허 3건 출원",
+            "교내 뮤지컬 동아리 (아르떼) 티켓팅 사이트 제작",
+            "AI 학생 언어 분석 혐오표현 예방 교육 솔루션 HEAR 제작 주도",
+            "셀레니움 기반 위키 탐색 프로그램: 위키드 제작",
+            "AI 편향성 및 필터버블 토론대회 전국 2등"
+          ],
+          "stacks": [
+            {
+              "id": "python",
+              "label": "Python",
+              "iconKey": "python",
+              "value": 0.88
+            },
+            {
+              "id": "typescript",
+              "label": "TypeScript",
+              "iconKey": "typescript",
+              "value": 0.52
+            },
+            {
+              "id": "c",
+              "label": "C",
+              "iconKey": "c",
+              "value": 0.74
+            },
+            {
+              "id": "llm",
+              "label": "LLM(NLP)",
+              "iconKey": "label",
+              "value": 1
+            },
+            {
+              "id": "react",
+              "label": "React",
+              "iconKey": "react",
+              "value": 0.36
+            },
+            {
+              "id": "crawling",
+              "label": "Crawling",
+              "iconKey": "label",
+              "value": 0.69
+            }
+          ]
+        },
+        {
+          "id": "member-8-황정빈",
+          "name": "황정빈",
+          "code": "24WP",
+          "intro": "본질을 꿰뚫는 통찰력으로 문제의 해법을 제시하는 사람",
+          "roles": [
+            "planner",
+            "developer",
+            "designer"
+          ],
+          "quote": "자신이 하고싶은 한마디",
+          "github": "https://github.com/",
+          "githubLabel": "황정빈 - Overview",
+          "imageKey": "jesiwon",
+          "achievements": [
+            "카이스트 IP-CEO 수료",
+            "2025 SW/AI 미래채움 고교 챌린지 창의상 수상",
+            "AI SoftwarePlay 용인 우수상 수상",
+            "특허 3건 출원",
+            "교내 뮤지컬 동아리 (아르떼) 티켓팅 사이트 제작",
+            "AI 학생 언어 분석 혐오표현 예방 교육 솔루션 HEAR 제작 주도",
+            "셀레니움 기반 위키 탐색 프로그램: 위키드 제작",
+            "AI 편향성 및 필터버블 토론대회 전국 2등"
+          ],
+          "stacks": [
+            {
+              "id": "python",
+              "label": "Python",
+              "iconKey": "python",
+              "value": 0.88
+            },
+            {
+              "id": "typescript",
+              "label": "TypeScript",
+              "iconKey": "typescript",
+              "value": 0.52
+            },
+            {
+              "id": "c",
+              "label": "C",
+              "iconKey": "c",
+              "value": 0.74
+            },
+            {
+              "id": "llm",
+              "label": "LLM(NLP)",
+              "iconKey": "label",
+              "value": 1
+            },
+            {
+              "id": "react",
+              "label": "React",
+              "iconKey": "react",
+              "value": 0.36
+            },
+            {
+              "id": "crawling",
+              "label": "Crawling",
+              "iconKey": "label",
+              "value": 0.69
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
