@@ -1,75 +1,12 @@
 import { memo, useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import githubIcon from '../../../assets/github.svg'
 import { MonadLogo } from '../../home/components/MonadLogo/MonadLogo'
+import { ProjectsRepository, type ProjectItem } from '../data/projects'
 import styles from './ProjectsPage.module.css'
 
-type ProjectYear = 2025 | 2026
-
-interface ProjectItem {
-  id: string
-  year: ProjectYear
-  title: string
-  summary: string
-  subtitle: string
-  awardTag: string
-  tags: readonly string[]
-}
-
-const years: readonly ProjectYear[] = [2025, 2026]
-
-const baseProjects = [
-  {
-    title: 'HEAR',
-    summary: '혐오를 알아야 혐오를 무너뜨린다. 장관상 수상작 입니다.',
-    subtitle: 'Hatred Expression Academic Reducer',
-    awardTag: '어디어디 대회 장관상',
-    tags: ['AI', 'Minister', 'Jirinda'] as const,
-  },
-  {
-    title: 'NOVA',
-    summary: '학생 주도 데이터 분석으로 실질적인 인사이트를 도출한 프로젝트입니다.',
-    subtitle: 'Neural Observation and Visual Analytics',
-    awardTag: '어디어디 대회 우수상',
-    tags: ['Data', 'Research', 'Model'] as const,
-  },
-  {
-    title: 'PULSE',
-    summary: '학교 환경 데이터와 행동 로그를 연결해 예측 모델을 구축했습니다.',
-    subtitle: 'Predictive Unified Learning Signal Engine',
-    awardTag: '어디어디 대회 은상',
-    tags: ['ML', 'Forecast', 'Deploy'] as const,
-  },
-  {
-    title: 'AURA',
-    summary: 'AI 기반 사용자 피드백 루프로 학습 효율을 높이는 플랫폼입니다.',
-    subtitle: 'Adaptive User Response Assistant',
-    awardTag: '어디어디 대회 장려상',
-    tags: ['Product', 'UX', 'AI'] as const,
-  },
-  {
-    title: 'MIRROR',
-    summary: '소셜 이슈 데이터 시각화를 통해 문제 구조를 쉽게 파악할 수 있습니다.',
-    subtitle: 'Media Insight Relationship Reporting',
-    awardTag: '어디어디 대회 본선',
-    tags: ['Viz', 'Social', 'Insight'] as const,
-  },
-] as const
-
-const projectItems: readonly ProjectItem[] = years.flatMap((year) =>
-  Array.from({ length: 10 }, (_, index) => {
-    const source = baseProjects[index % baseProjects.length]
-
-    return {
-      id: `${year}-${index + 1}`,
-      year,
-      title: source.title,
-      summary: source.summary,
-      subtitle: source.subtitle,
-      awardTag: source.awardTag,
-      tags: source.tags,
-    }
-  }),
-)
+const allProjects = ProjectsRepository.getAllProjects()
+const years = ProjectsRepository.getYearOrder()
+const autoRotateIntervalMs = ProjectsRepository.getRotationIntervalMs()
 
 interface ProjectCardProps {
   project: ProjectItem
@@ -137,14 +74,15 @@ const ProjectCard = memo(function ProjectCard({
 
 export const ProjectsPage = memo(function ProjectsPage() {
   const gridRef = useRef<HTMLElement | null>(null)
-  const [selectedYear, setSelectedYear] = useState<ProjectYear>(2025)
+  const [selectedYear, setSelectedYear] = useState<number>(
+    ProjectsRepository.getDefaultYear(),
+  )
   const [featuredIndex, setFeaturedIndex] = useState(0)
 
   const filteredProjects = useMemo(
-    () => projectItems.filter((project) => project.year === selectedYear),
+    () => ProjectsRepository.getProjectsByYear(selectedYear),
     [selectedYear],
   )
-
 
   useEffect(() => {
     if (filteredProjects.length <= 1) {
@@ -153,7 +91,7 @@ export const ProjectsPage = memo(function ProjectsPage() {
 
     const intervalId = window.setInterval(() => {
       setFeaturedIndex((current) => (current + 1) % filteredProjects.length)
-    }, 5500)
+    }, autoRotateIntervalMs)
 
     return () => {
       window.clearInterval(intervalId)
@@ -161,7 +99,7 @@ export const ProjectsPage = memo(function ProjectsPage() {
   }, [filteredProjects])
 
   const featuredProject =
-    filteredProjects[featuredIndex] ?? filteredProjects[0] ?? projectItems[0]
+    filteredProjects[featuredIndex] ?? filteredProjects[0] ?? allProjects[0] ?? null
 
   const compactProjects = useMemo(() => {
     if (filteredProjects.length === 0) {
@@ -174,10 +112,18 @@ export const ProjectsPage = memo(function ProjectsPage() {
   }, [filteredProjects])
 
   const handleNextFeatured = useCallback(() => {
+    if (filteredProjects.length === 0) {
+      return
+    }
+
     setFeaturedIndex((current) => (current + 1) % filteredProjects.length)
   }, [filteredProjects.length])
 
   const handlePreviousFeatured = useCallback(() => {
+    if (filteredProjects.length === 0) {
+      return
+    }
+
     setFeaturedIndex((current) => {
       if (current === 0) {
         return filteredProjects.length - 1
@@ -190,6 +136,10 @@ export const ProjectsPage = memo(function ProjectsPage() {
   const handleScrollToGrid = useCallback(() => {
     gridRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
   }, [])
+
+  if (!featuredProject) {
+    return null
+  }
 
   return (
     <article className={styles.page}>
@@ -294,7 +244,13 @@ export const ProjectsPage = memo(function ProjectsPage() {
             <ProjectCard
               key={`${project.id}-${index}`}
               project={project}
-              onMouseEnter={() => setFeaturedIndex(filteredProjects.indexOf(project))}
+              onMouseEnter={() => {
+                const sourceIndex = filteredProjects.indexOf(project)
+
+                if (sourceIndex >= 0) {
+                  setFeaturedIndex(sourceIndex)
+                }
+              }}
             />
           ))}
 

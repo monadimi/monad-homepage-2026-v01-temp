@@ -1,6 +1,6 @@
 // MONAD 2026 히어로 섹션입니다.
 import { memo } from 'react'
-import heroImage from '../../../../assets/2026hero.png'
+import heroImage from '../../../../assets/monad-2026-hero.png'
 import { CTAButton } from '../../components/CTAButton/CTAButton'
 import styles from './Hero2026Section.module.css'
 

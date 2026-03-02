@@ -1,6 +1,6 @@
 // 랜딩 상단 Hero 이미지 섹션입니다.
 import { memo } from 'react'
-import heroImage from '../../../../assets/hero.png'
+import heroImage from '../../../../assets/home-hero.png'
 import styles from './HeroSection.module.css'
 
 export const HeroSection = memo(function HeroSection() {

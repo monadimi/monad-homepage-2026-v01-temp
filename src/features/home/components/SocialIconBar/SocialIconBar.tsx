@@ -23,13 +23,32 @@ export const SocialIconBar = memo(function SocialIconBar({
 }: SocialIconBarProps) {
   return (
     <ul className={`${styles.list} ${variantClassNameMap[variant]}`}>
-      {items.map((item) => (
-        <li key={item.label} className={styles.item}>
-          <a href={item.href} aria-label={item.label} className={styles.link}>
-            <img src={item.iconSrc} alt="" className={styles.icon} aria-hidden="true" />
-          </a>
-        </li>
-      ))}
+      {items.map((item) => {
+        const isPlaceholderLink = item.href.trim() === '#'
+        const isExternalLink = /^https?:\/\//i.test(item.href)
+
+        return (
+          <li key={item.label} className={styles.item}>
+            <a
+              href={item.href}
+              aria-label={item.label}
+              className={styles.link}
+              target={isExternalLink ? '_blank' : undefined}
+              rel={isExternalLink ? 'noopener noreferrer' : undefined}
+              onClick={
+                isPlaceholderLink
+                  ? (event) => {
+                      // 미정 링크는 화면 이동 없이 아이콘만 유지합니다.
+                      event.preventDefault()
+                    }
+                  : undefined
+              }
+            >
+              <img src={item.iconSrc} alt="" className={styles.icon} aria-hidden="true" />
+            </a>
+          </li>
+        )
+      })}
     </ul>
   )
 })

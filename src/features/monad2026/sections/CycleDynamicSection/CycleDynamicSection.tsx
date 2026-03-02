@@ -1,7 +1,7 @@
 // "모나드는 [웹플]이 필요합니다." 소개 섹션입니다.
 import { memo } from 'react'
-import needCardAImage from '../../../../assets/2026_activity_gray_a.svg'
-import needCardBImage from '../../../../assets/2026_activity_gray_b.svg'
+import needCardAImage from '../../../../assets/monad-2026-activity-gray-a.svg'
+import needCardBImage from '../../../../assets/monad-2026-activity-gray-b.svg'
 import { CycleCard } from '../../components/CycleCard/CycleCard'
 import type { CycleCardData } from '../../data/cycleData'
 import styles from './CycleDynamicSection.module.css'

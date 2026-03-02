@@ -1,7 +1,7 @@
 // 업적 페이지 상단 Hero 섹션입니다.
 // 배경 이미지 위에 좌/우 통계 텍스트 블록을 배치합니다.
 import { memo } from 'react'
-import achievementsHeroBackground from '../../../../assets/achievements_hero_bg.png'
+import achievementsHeroBackground from '../../../../assets/achievements-hero-bg.png'
 import { Container } from '../../../../core/layout/Container/Container'
 import { HeroStatsBlock } from '../../components/HeroStatsBlock/HeroStatsBlock'
 import styles from './AchievementsHeroSection.module.css'

@@ -1,6 +1,6 @@
 // 교육 파트 소개 섹션입니다.
 import { memo } from 'react'
-import educationVisual from '../../../../assets/2026_activity_general.svg'
+import educationVisual from '../../../../assets/monad-2026-activity-general.svg'
 import { GraySvgLogo } from '../../components/GraySvgLogo/GraySvgLogo'
 import styles from './EducationSection.module.css'
 

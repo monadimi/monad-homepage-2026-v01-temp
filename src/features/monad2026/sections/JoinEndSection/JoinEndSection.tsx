@@ -1,6 +1,6 @@
 // 하단 Join Us 배경 섹션입니다.
 import { memo } from 'react'
-import joinImage from '../../../../assets/2026end.png'
+import joinImage from '../../../../assets/monad-2026-join-end.png'
 import { CTAButton } from '../../components/CTAButton/CTAButton'
 import styles from './JoinEndSection.module.css'
 

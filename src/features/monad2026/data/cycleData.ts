@@ -1,8 +1,8 @@
 // 동적 사이클 섹션 데이터입니다.
-import cycleDeconImage from '../../../assets/2026_cycle_decon.svg'
-import cycleEbiImage from '../../../assets/2026_cycle_ebi.svg'
-import cycleLiberationImage from '../../../assets/2026_cycle_liberation.svg'
-import cycleWebplImage from '../../../assets/2026_cycle_webpl.svg'
+import cycleDeconImage from '../../../assets/monad-2026-cycle-decon.svg'
+import cycleEbiImage from '../../../assets/monad-2026-cycle-ebi.svg'
+import cycleLiberationImage from '../../../assets/monad-2026-cycle-liberation.svg'
+import cycleWebplImage from '../../../assets/monad-2026-cycle-webpl.svg'
 
 export type CycleKey = 'webpl' | 'ebi' | 'liberation' | 'decon'
 
