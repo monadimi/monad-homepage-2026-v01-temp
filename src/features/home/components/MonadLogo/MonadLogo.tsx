@@ -8,6 +8,7 @@ type MonadLogoVariant = 'section' | 'footerMark'
 
 interface MonadLogoProps {
   variant?: MonadLogoVariant
+  className?: string
 }
 
 const variantClassNameMap: Record<MonadLogoVariant, string> = {
@@ -17,12 +18,13 @@ const variantClassNameMap: Record<MonadLogoVariant, string> = {
 
 export const MonadLogo = memo(function MonadLogo({
   variant = 'section',
+  className,
 }: MonadLogoProps) {
   return (
     <img
       src={logoImage}
       alt="Monad logo"
-      className={`${styles.base} ${variantClassNameMap[variant]}`}
+      className={`${styles.base} ${variantClassNameMap[variant]} ${className ?? ''}`.trim()}
     />
   )
 })

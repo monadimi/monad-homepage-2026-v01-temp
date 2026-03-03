@@ -1,24 +1,33 @@
 .card {
   position: relative;
-  overflow: hidden;
   min-height: var(--layout-achievements-card-height);
-  border: 1px solid var(--colors-card-border);
-  border-radius: var(--radius-md);
-  background: var(--colors-card-background);
-  box-shadow: var(--shadow-subtle);
-  transition:
-    transform var(--motion-fade-duration) ease,
-    box-shadow var(--motion-fade-duration) ease;
 }
 
-.card:hover {
-  transform: translateY(calc(var(--spacing-xxs) * -1));
-  box-shadow: 0 14px 26px rgba(0, 0, 0, 0.28);
+.cardButton {
+  position: relative;
+  width: 100%;
+  min-height: var(--layout-achievements-card-height);
+  padding: 0;
+  border: 1px solid var(--colors-card-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: var(--colors-card-background);
+  box-shadow: var(--shadow-subtle);
+  cursor: pointer;
+  text-align: left;
+}
+
+.visualLayer {
+  position: relative;
+  width: 100%;
+  min-height: var(--layout-achievements-card-height);
+  transition: filter var(--motion-fade-duration) ease;
 }
 
 .image {
   width: 100%;
   height: 100%;
+  min-height: var(--layout-achievements-card-height);
   object-fit: cover;
 }
 
@@ -61,4 +70,50 @@
   color: var(--colors-text-muted);
   font-size: var(--typography-scale-card-subtitle);
   line-height: 1.2;
+}
+
+.hoverOverlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(6, 8, 15, 0.48);
+  opacity: 0;
+  transition: opacity var(--motion-fade-duration) ease;
+}
+
+.moreText {
+  border: 1px solid rgba(255, 255, 255, 0.62);
+  border-radius: 999px;
+  padding: 8px 16px;
+  color: var(--colors-text-primary);
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  background: rgba(4, 8, 15, 0.6);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .cardButton:hover .visualLayer,
+  .cardButton:focus-visible .visualLayer {
+    filter: blur(2px) brightness(0.75);
+  }
+
+  .cardButton:hover .hoverOverlay,
+  .cardButton:focus-visible .hoverOverlay {
+    opacity: 1;
+  }
+}
+
+@media (max-width: 768px) {
+  .hoverOverlay {
+    opacity: 1;
+    background: rgba(6, 8, 15, 0.2);
+    pointer-events: none;
+  }
+
+  .moreText {
+    font-size: 11px;
+    padding: 6px 12px;
+  }
 }

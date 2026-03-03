@@ -26,6 +26,10 @@
 - `subtitle` (string): 부제/주최 정보
 - `highlight` (string): 강조 텍스트 (예: 대상, 우수상)
 - `imageKey` (string): 카드 이미지 키 (렌더링 레이어에서 URL 매핑)
+- `description` (string, optional): 카드 확장 상태에서 노출할 상세 설명
+- `teamMembers` (string[], optional): 수상 프로젝트 참여 인원 목록
+- `prize` (string, optional): 상금/지원금 정보
+- `serviceUrl` (string, optional): 서비스 데모/소개 링크
 
 ## 유지보수 가이드
 

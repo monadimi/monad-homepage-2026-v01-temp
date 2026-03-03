@@ -2,6 +2,7 @@
 // 데스크톱은 가로 메뉴, 모바일은 햄버거 메뉴를 사용합니다.
 import { memo, useState } from 'react'
 import { NavLink } from 'react-router-dom'
+import monadLogoWithText from '../../../assets/monad-logo-wtxt.png'
 import { Container } from '../Container/Container'
 import { NavigationService } from '../../navigation/NavigationService'
 import styles from './Header.module.css'
@@ -26,6 +27,17 @@ export const Header = memo(function Header() {
     <header className={styles.header}>
       <Container>
         <div className={styles.headerInner}>
+          {/* 모바일 전용 좌측 브랜드 로고입니다. */}
+          <NavLink
+            to="/"
+            end
+            className={styles.mobileBrandLink}
+            aria-label="Go to MONAD home"
+            onClick={() => setIsMenuOpen(false)}
+          >
+            <img src={monadLogoWithText} alt="MONAD" className={styles.mobileBrandImage} />
+          </NavLink>
+
           <button
             type="button"
             className={styles.hamburgerButton}
