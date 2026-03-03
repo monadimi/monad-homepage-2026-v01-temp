@@ -31,3 +31,13 @@ dist-ssr
 /unsplash-grid-preview*.png
 # Members 페이지 피그마 검수 스크린샷
 /members-page-*.png
+
+# Python local tools cache
+__pycache__/
+*.pyc
+
+# Python virtual env / caches
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
