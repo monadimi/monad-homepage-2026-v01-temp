@@ -1,6 +1,7 @@
 // Achievements 페이지 조립 컴포넌트입니다.
 // 연도 상태를 기준으로 Hero/연도 선택기/그리드를 연결합니다.
 import { memo, useEffect, useMemo, useState } from 'react'
+import { text, textFormat } from '../../../content/text/textService'
 import { AwardsRepository } from '../data/awards'
 import { AwardsGridSection } from '../sections/AwardsGridSection/AwardsGridSection'
 import { AchievementsHeroSection } from '../sections/AchievementsHeroSection/AchievementsHeroSection'
@@ -63,9 +64,13 @@ export const AchievementsPage = memo(function AchievementsPage() {
   const canGoNext = AwardsRepository.hasNextYear(year)
 
   const formattedTotalEarn = `₩${animatedTotalEarn.toLocaleString('ko-KR')}`
-  const formattedYearCoverage = `OVER ${trackedYearCount} YEAR${
-    trackedYearCount > 1 ? 'S' : ''
-  }`
+  const formattedYearCoverage = textFormat(
+    'achievements',
+    'hero.coverageTemplate',
+    { count: trackedYearCount, suffix: trackedYearCount > 1 ? 'S' : '' },
+    `OVER ${trackedYearCount} YEAR${trackedYearCount > 1 ? 'S' : ''}`,
+  )
+  const totalEarnLabel = text('achievements', 'hero.totalEarnLabel', 'TOTAL EARN')
 
   const handlePreviousYear = () => {
     const nextYear = AwardsRepository.getPreviousYear(year)
@@ -89,7 +94,7 @@ export const AchievementsPage = memo(function AchievementsPage() {
         leftPrimary={`${totalAwardsCount} AWARDS`}
         leftSecondary={formattedYearCoverage}
         rightPrimary={formattedTotalEarn}
-        rightSecondary="TOTAL EARN"
+        rightSecondary={totalEarnLabel}
       />
 
       <YearSelectorSection

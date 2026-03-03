@@ -1,5 +1,6 @@
 // "모나드는 [웹플]이 필요합니다." 소개 섹션입니다.
 import { memo } from 'react'
+import { text } from '../../../../content/text/textService'
 import { CycleCard } from '../../components/CycleCard/CycleCard'
 import { cycleItems } from '../../data/cycleData'
 import styles from './CycleDynamicSection.module.css'
@@ -36,13 +37,15 @@ export const CycleDynamicSection = memo(function CycleDynamicSection({
   const boundedIndex = Math.max(0, Math.min(cycleItems.length - 1, activeIndex))
   const cycle = cycleItems[boundedIndex]
   const particle = getSubjectParticle(cycle.label)
+  const statementPrefix = text('monad2026', 'cycle.statementPrefix', '모나드는')
+  const statementSuffix = text('monad2026', 'cycle.statementSuffix', '필요합니다.')
 
   return (
     <section className={styles.section} aria-label="모나드는 순환 포지션이 필요합니다">
       <div className={styles.layout}>
         <div className={styles.copyArea}>
           <p className={styles.statement}>
-            모나드는
+            {statementPrefix}
             <span className={styles.wordSlot} aria-live="polite">
               <span
                 className={styles.wordTrack}
@@ -57,7 +60,7 @@ export const CycleDynamicSection = memo(function CycleDynamicSection({
                 ))}
               </span>
             </span>
-            {particle} 필요합니다.
+            {particle} {statementSuffix}
           </p>
           <p className={styles.description}>{cycle.description}</p>
         </div>

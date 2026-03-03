@@ -33,24 +33,35 @@ interface ProjectsSource {
 }
 
 const typedProjectsSource: ProjectsSource = projectsSource
+const sourceYears = Array.isArray(typedProjectsSource.years) ? typedProjectsSource.years : []
+const sourceYearOrder = Array.isArray(typedProjectsSource.yearOrder)
+  ? typedProjectsSource.yearOrder.filter((year): year is number => typeof year === 'number')
+  : []
 
 export class ProjectsRepository {
-  private static readonly defaultYear = typedProjectsSource.defaultYear
+  private static readonly defaultYear =
+    typeof typedProjectsSource.defaultYear === 'number'
+      ? typedProjectsSource.defaultYear
+      : sourceYearOrder[0] ?? new Date().getFullYear()
 
-  private static readonly yearOrder = typedProjectsSource.yearOrder
+  private static readonly yearOrder = sourceYearOrder
 
-  private static readonly rotationIntervalMs = typedProjectsSource.rotationIntervalMs
+  private static readonly rotationIntervalMs =
+    typeof typedProjectsSource.rotationIntervalMs === 'number' &&
+    typedProjectsSource.rotationIntervalMs > 0
+      ? typedProjectsSource.rotationIntervalMs
+      : 4500
 
-  private static readonly projects: readonly ProjectItem[] = typedProjectsSource.years.flatMap(
+  private static readonly projects: readonly ProjectItem[] = sourceYears.flatMap(
     (yearGroup) =>
-      yearGroup.projects.map((project) => ({
+      (Array.isArray(yearGroup.projects) ? yearGroup.projects : []).map((project) => ({
         id: project.id,
         year: yearGroup.year,
         title: project.title,
         summary: project.summary,
         subtitle: project.subtitle,
         awardTag: project.awardTag,
-        tags: project.tags,
+        tags: Array.isArray(project.tags) ? project.tags : [],
       })),
   )
 

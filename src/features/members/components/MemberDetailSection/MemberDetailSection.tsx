@@ -1,5 +1,6 @@
 import { memo, type CSSProperties } from 'react'
 import githubIcon from '../../../../assets/github.svg'
+import { text } from '../../../../content/text/textService'
 import type { MemberProfile } from '../../data/members'
 import styles from './MemberDetailSection.module.css'
 
@@ -43,11 +44,13 @@ function getStackIcon(iconKey: MemberProfile['stacks'][number]['iconKey']): stri
 export const MemberDetailSection = memo(function MemberDetailSection({
   member,
 }: MemberDetailSectionProps) {
+  const sectionAriaLabel = text('members', 'detail.sectionAria', 'Member detail')
+  const stackTitle = text('members', 'detail.stackTitle', '기술 스택')
   const leftStacks = member.stacks.filter((_, index) => index % 2 === 0)
   const rightStacks = member.stacks.filter((_, index) => index % 2 === 1)
 
   return (
-    <section className={styles.section} aria-label="Member detail">
+    <section className={styles.section} aria-label={sectionAriaLabel}>
       <div className={styles.photoPanel}>
         <div className={styles.photoMask}>
           <img src={member.image} alt={`${member.name} profile`} />
@@ -78,7 +81,7 @@ export const MemberDetailSection = memo(function MemberDetailSection({
         </div>
 
         <div className={styles.stackArea}>
-          <h3>기술 스택</h3>
+          <h3>{stackTitle}</h3>
           <div className={styles.stackGrid}>
             <div className={styles.stackColumn}>
               {leftStacks.map((stack) => (

@@ -10,6 +10,7 @@ import {
   type KeyboardEvent,
   type PointerEvent,
 } from 'react'
+import { text } from '../../../../content/text/textService'
 import styles from './ApplyTicketTransition.module.css'
 
 type TransitionStage = 'ticket' | 'tear' | 'warp'
@@ -221,6 +222,28 @@ export const ApplyTicketTransition = memo(function ApplyTicketTransition({
   )
 
   const tearProgress = clamp(dragDistance / TEAR_TRIGGER_DISTANCE, 0, 1)
+  const airlineName = text('monad2026', 'ticket.airlineName', 'MONAD AIR')
+  const boardingPassText = text('monad2026', 'ticket.boardingPassText', 'BOARDING PASS')
+  const routeFromCode = text('monad2026', 'ticket.route.fromCode', 'NOW')
+  const routeFromCity = text('monad2026', 'ticket.route.fromCity', '현재')
+  const routeToCode = text('monad2026', 'ticket.route.toCode', 'MON')
+  const routeToCity = text('monad2026', 'ticket.route.toCity', 'MONAD')
+  const flightInfo = text('monad2026', 'ticket.info.flight', 'MN-2026')
+  const dateInfo = text('monad2026', 'ticket.info.date', '2026.03.01')
+  const zoneInfo = text('monad2026', 'ticket.info.zone', 'A')
+  const stampText = text('monad2026', 'ticket.bottom.stamp', 'GATE 7 · BOARD 20:26')
+  const seatText = text('monad2026', 'ticket.bottom.seat', '01A')
+  const dragHintDefault = text(
+    'monad2026',
+    'ticket.dragHint.default',
+    '아래로 드래그해서 절취선을 뜯으세요',
+  )
+  const dragHintReady = text('monad2026', 'ticket.dragHint.ready', '이제 놓으면 뜯깁니다')
+  const ticketCode = text(
+    'monad2026',
+    'ticket.code',
+    'PAX YOU · MONAD-2026-BOARDING',
+  )
 
   const ticketStyle = {
     '--ticket-top-offset': `${(-tearProgress * 20).toFixed(2)}px`,
@@ -249,33 +272,33 @@ export const ApplyTicketTransition = memo(function ApplyTicketTransition({
 
           <div className={styles.ticketTopHalf}>
             <div className={styles.ticketHeaderRow}>
-              <p className={styles.airlineName}>MONAD AIR</p>
-              <p className={styles.boardingPassText}>BOARDING PASS</p>
+              <p className={styles.airlineName}>{airlineName}</p>
+              <p className={styles.boardingPassText}>{boardingPassText}</p>
             </div>
 
             <div className={styles.routeRow}>
               <div className={styles.routeCol}>
-                <p className={styles.routeCode}>NOW</p>
-                <p className={styles.routeCity}>현재</p>
+                <p className={styles.routeCode}>{routeFromCode}</p>
+                <p className={styles.routeCity}>{routeFromCity}</p>
               </div>
               <span className={styles.routeArrow} aria-hidden="true">
                 ✈
               </span>
               <div className={styles.routeCol}>
-                <p className={styles.routeCode}>MON</p>
-                <p className={styles.routeCity}>MONAD</p>
+                <p className={styles.routeCode}>{routeToCode}</p>
+                <p className={styles.routeCity}>{routeToCity}</p>
               </div>
             </div>
 
             <div className={styles.infoGrid}>
               <span className={styles.infoItem}>
-                <b>FLIGHT</b> MN-2026
+                <b>FLIGHT</b> {flightInfo}
               </span>
               <span className={styles.infoItem}>
-                <b>DATE</b> 2026.03.01
+                <b>DATE</b> {dateInfo}
               </span>
               <span className={styles.infoItem}>
-                <b>ZONE</b> A
+                <b>ZONE</b> {zoneInfo}
               </span>
             </div>
           </div>
@@ -294,14 +317,14 @@ export const ApplyTicketTransition = memo(function ApplyTicketTransition({
             onKeyDown={handleKeyDown}
           >
             <div className={styles.bottomTopRow}>
-              <span className={styles.stamp}>GATE 7 · BOARD 20:26</span>
-              <span className={styles.seatBadge}>01A</span>
+              <span className={styles.stamp}>{stampText}</span>
+              <span className={styles.seatBadge}>{seatText}</span>
             </div>
             <p className={styles.dragHint}>
-              {tearProgress >= 0.82 ? '이제 놓으면 뜯깁니다' : '아래로 드래그해서 절취선을 뜯으세요'}
+              {tearProgress >= 0.82 ? dragHintReady : dragHintDefault}
             </p>
             <div className={styles.barcode} aria-hidden="true" />
-            <p className={styles.ticketCode}>PAX YOU · MONAD-2026-BOARDING</p>
+            <p className={styles.ticketCode}>{ticketCode}</p>
           </div>
         </article>
       </div>

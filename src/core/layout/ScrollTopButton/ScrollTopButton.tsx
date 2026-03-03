@@ -1,4 +1,5 @@
 import { memo, useEffect, useState } from 'react'
+import { text } from '../../../content/text/textService'
 import styles from './ScrollTopButton.module.css'
 
 const SHOW_THRESHOLD_PX = 220
@@ -6,6 +7,8 @@ const SHOW_THRESHOLD_PX = 220
 // 우측 하단 고정 '맨 위로' 버튼입니다.
 export const ScrollTopButton = memo(function ScrollTopButton() {
   const [isVisible, setIsVisible] = useState(false)
+  const ariaLabel = text('global', 'scrollTop.ariaLabel', '맨 위로 이동')
+  const tooltipTitle = text('global', 'scrollTop.title', '맨 위로')
 
   useEffect(() => {
     const handleScroll = () => {
@@ -29,8 +32,8 @@ export const ScrollTopButton = memo(function ScrollTopButton() {
       type="button"
       className={`${styles.scrollTopButton} ${isVisible ? styles.visible : ''}`.trim()}
       onClick={handleClick}
-      aria-label="맨 위로 이동"
-      title="맨 위로"
+      aria-label={ariaLabel}
+      title={tooltipTitle}
     >
       <svg
         className={styles.icon}

@@ -8,7 +8,9 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "json-manager": "python3 tools/json-manager/server.py"
+    "json-manager": "python3 tools/json-manager/server.py",
+    "validate:texts": "python3 tools/json-manager/validate_text_bundles.py",
+    "validate:data": "python3 tools/json-manager/validate_feature_data.py"
   },
   "dependencies": {
     "react": "^19.2.0",

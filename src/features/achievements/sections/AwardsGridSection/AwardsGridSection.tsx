@@ -1,6 +1,7 @@
 // 업적 카드 그리드 섹션입니다.
 // 전달받은 카드 목록을 4열 기준 그리드로 렌더링합니다.
 import { memo, useEffect, useMemo, useState } from 'react'
+import { text } from '../../../../content/text/textService'
 import { Container } from '../../../../core/layout/Container/Container'
 import type { Award } from '../../data/awards'
 import { AwardCard } from '../../components/AwardCard/AwardCard'
@@ -19,6 +20,17 @@ export const AwardsGridSection = memo(function AwardsGridSection({
   const selectedAward = useMemo(
     () => awards.find((award) => award.id === selectedAwardId) ?? null,
     [awards, selectedAwardId],
+  )
+  const closeAriaLabel = text('achievements', 'modal.closeAria', '상세 팝업 닫기')
+  const teamAriaLabel = text('achievements', 'modal.teamAria', '팀원')
+  const teamTitle = text('achievements', 'modal.teamTitle', '팀원')
+  const prizeAriaLabel = text('achievements', 'modal.prizeAria', '상금')
+  const prizeTitle = text('achievements', 'modal.prizeTitle', '상금')
+  const serviceAriaLabel = text('achievements', 'modal.serviceAria', '서비스 링크')
+  const serviceTitle = text(
+    'achievements',
+    'modal.serviceTitle',
+    '서비스 이용해보기',
   )
 
   const closeModal = () => {
@@ -75,7 +87,7 @@ export const AwardsGridSection = memo(function AwardsGridSection({
             <button
               type="button"
               className={styles.modalCloseButton}
-              aria-label="상세 팝업 닫기"
+              aria-label={closeAriaLabel}
               onClick={closeModal}
             >
               ×
@@ -100,20 +112,20 @@ export const AwardsGridSection = memo(function AwardsGridSection({
             <div className={styles.modalBody}>
               <p className={styles.modalDescription}>{selectedAward.description}</p>
 
-              <section className={styles.metaSection} aria-label="팀원">
-                <h4 className={styles.metaLabel}>팀원</h4>
+              <section className={styles.metaSection} aria-label={teamAriaLabel}>
+                <h4 className={styles.metaLabel}>{teamTitle}</h4>
                 <p className={styles.metaValue}>
                   {selectedAward.teamMembers.join(', ')}
                 </p>
               </section>
 
-              <section className={styles.metaSection} aria-label="상금">
-                <h4 className={styles.metaLabel}>상금</h4>
+              <section className={styles.metaSection} aria-label={prizeAriaLabel}>
+                <h4 className={styles.metaLabel}>{prizeTitle}</h4>
                 <p className={styles.metaValue}>{selectedAward.prize}</p>
               </section>
 
-              <section className={styles.metaSection} aria-label="서비스 링크">
-                <h4 className={styles.metaLabel}>서비스 이용해보기</h4>
+              <section className={styles.metaSection} aria-label={serviceAriaLabel}>
+                <h4 className={styles.metaLabel}>{serviceTitle}</h4>
                 <a
                   className={styles.metaLink}
                   href={selectedAward.serviceUrl}

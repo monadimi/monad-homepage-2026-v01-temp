@@ -1,0 +1,411 @@
+{
+  "id": "monad2026",
+  "locale": "ko",
+  "entries": [
+    {
+      "id": "hero.title",
+      "value": "We need you.",
+      "description": "MONAD 2026 히어로 제목"
+    },
+    {
+      "id": "hero.subtitle",
+      "value": "모나드의 최초가 될 1기를 모집합니다.",
+      "description": "MONAD 2026 히어로 부제"
+    },
+    {
+      "id": "hero.cta",
+      "value": "지원하기",
+      "description": "MONAD 2026 히어로 버튼 라벨"
+    },
+    {
+      "id": "itIntro.title",
+      "value": "IT 중심 동아리",
+      "description": "IT 소개 섹션 제목"
+    },
+    {
+      "id": "itIntro.description",
+      "value": "우리는 기획보다는 IT에 더 집중합니다. 우리는 기획보다는 IT에 더 집중합니다. 우리는 기획보다는 IT에 더 집중합니다. 우리는 기획보다는 IT에 더 집중합니다.",
+      "description": "IT 소개 섹션 설명"
+    },
+    {
+      "id": "swaiIntro.title",
+      "value": "SW/AI 융합 동아리",
+      "description": "SWAI 소개 섹션 제목"
+    },
+    {
+      "id": "swaiIntro.description",
+      "value": "우리는 기획보다는 IT에 더 집중합니다. 우리는 기획보다는 IT에 더 집중합니다. 우리는 기획보다는 IT에 더 집중합니다. 우리는 기획보다는 IT에 더 집중합니다.",
+      "description": "SWAI 소개 섹션 설명"
+    },
+    {
+      "id": "proof.titleAccent",
+      "value": "팀원",
+      "description": "증명 섹션 제목 강조 단어"
+    },
+    {
+      "id": "proof.titleSuffix",
+      "value": "이 증명합니다.",
+      "description": "증명 섹션 제목 나머지 문구"
+    },
+    {
+      "id": "proof.description",
+      "value": "대충 우리 동아리원들 대단하다는 내용 대충 우리 동아리원들 대단하다는 내용 대충 우리 동아리원들 대단하다는 내용 대충 우리 동아리원들 대단하다는 내용",
+      "description": "증명 섹션 설명"
+    },
+    {
+      "id": "proof.cta",
+      "value": "더 알아보기",
+      "description": "증명 섹션 버튼 라벨"
+    },
+    {
+      "id": "proof.patternWord",
+      "value": "실적들이 나열될 곳입니다 ",
+      "description": "배경 반복 텍스트"
+    },
+    {
+      "id": "education.first.titleAccent",
+      "value": "멘토 멘티",
+      "description": "교육 카드1 제목 강조"
+    },
+    {
+      "id": "education.first.titleSuffix",
+      "value": "로 배웁니다.",
+      "description": "교육 카드1 제목 후반"
+    },
+    {
+      "id": "education.first.description",
+      "value": "저희는 서로 멘토와 멘티로 어쩌고 저쩌고 저희는 서로 멘토와 멘티로 어쩌고 저쩌고 저희는 서로 멘토와 멘티로 어쩌고 저쩌고.",
+      "description": "교육 카드1 설명"
+    },
+    {
+      "id": "education.second.titleAccent",
+      "value": "해커톤",
+      "description": "교육 카드2 제목 강조"
+    },
+    {
+      "id": "education.second.titleSuffix",
+      "value": "을 진행합니다.",
+      "description": "교육 카드2 제목 후반"
+    },
+    {
+      "id": "education.second.description",
+      "value": "저희는 해커톤을 진행해서 어쩌고 저쩌고 저희는 해커톤을 진행해서 어쩌고 저쩌고 저희는 해커톤을 진행해서 어쩌고 저쩌고.",
+      "description": "교육 카드2 설명"
+    },
+    {
+      "id": "cycle.statementPrefix",
+      "value": "모나드는",
+      "description": "순환 섹션 문장 앞부분"
+    },
+    {
+      "id": "cycle.statementSuffix",
+      "value": "필요합니다.",
+      "description": "순환 섹션 문장 뒷부분"
+    },
+    {
+      "id": "cycle.webpl.label",
+      "value": "웹플",
+      "description": "순환 라벨 - 웹플"
+    },
+    {
+      "id": "cycle.webpl.description",
+      "value": "웹 개발의 기본기와 제품화 감각을 함께 키우며 아이디어를 실제 서비스로 연결합니다.",
+      "description": "순환 설명 - 웹플"
+    },
+    {
+      "id": "cycle.webpl.cardA.title",
+      "value": "웹플 프로젝트",
+      "description": "웹플 카드1 제목"
+    },
+    {
+      "id": "cycle.webpl.cardA.subtitle",
+      "value": "기획부터 배포까지 전 과정 실습",
+      "description": "웹플 카드1 부제"
+    },
+    {
+      "id": "cycle.webpl.cardB.title",
+      "value": "프론트엔드 스터디",
+      "description": "웹플 카드2 제목"
+    },
+    {
+      "id": "cycle.webpl.cardB.subtitle",
+      "value": "컴포넌트 구조와 상태 관리 심화",
+      "description": "웹플 카드2 부제"
+    },
+    {
+      "id": "cycle.ebi.label",
+      "value": "이비",
+      "description": "순환 라벨 - 이비"
+    },
+    {
+      "id": "cycle.ebi.description",
+      "value": "브랜딩과 비즈니스 인사이트를 접목해 기술 프로젝트를 실제 문제 해결의 흐름으로 확장합니다.",
+      "description": "순환 설명 - 이비"
+    },
+    {
+      "id": "cycle.ebi.cardA.title",
+      "value": "브랜딩 워크숍",
+      "description": "이비 카드1 제목"
+    },
+    {
+      "id": "cycle.ebi.cardA.subtitle",
+      "value": "제품 메시지와 사용자 관점 정리",
+      "description": "이비 카드1 부제"
+    },
+    {
+      "id": "cycle.ebi.cardB.title",
+      "value": "문제정의 세션",
+      "description": "이비 카드2 제목"
+    },
+    {
+      "id": "cycle.ebi.cardB.subtitle",
+      "value": "실행 가능한 MVP 범위 설정",
+      "description": "이비 카드2 부제"
+    },
+    {
+      "id": "cycle.liberation.label",
+      "value": "해방",
+      "description": "순환 라벨 - 해방"
+    },
+    {
+      "id": "cycle.liberation.description",
+      "value": "고정된 기술 영역에서 벗어나 새로운 도메인을 탐색하며 스스로 확장 가능한 학습 루프를 만듭니다.",
+      "description": "순환 설명 - 해방"
+    },
+    {
+      "id": "cycle.liberation.cardA.title",
+      "value": "도메인 리서치",
+      "description": "해방 카드1 제목"
+    },
+    {
+      "id": "cycle.liberation.cardA.subtitle",
+      "value": "사회 문제 기반 기술 적용 탐색",
+      "description": "해방 카드1 부제"
+    },
+    {
+      "id": "cycle.liberation.cardB.title",
+      "value": "실험 프로젝트",
+      "description": "해방 카드2 제목"
+    },
+    {
+      "id": "cycle.liberation.cardB.subtitle",
+      "value": "짧은 주기 프로토타입 반복",
+      "description": "해방 카드2 부제"
+    },
+    {
+      "id": "cycle.decon.label",
+      "value": "디컨",
+      "description": "순환 라벨 - 디컨"
+    },
+    {
+      "id": "cycle.decon.description",
+      "value": "복잡한 문제를 분해하고 핵심을 구조화해 협업 가능한 개발 문서와 실행 계획으로 정리합니다.",
+      "description": "순환 설명 - 디컨"
+    },
+    {
+      "id": "cycle.decon.cardA.title",
+      "value": "문제 분해 세션",
+      "description": "디컨 카드1 제목"
+    },
+    {
+      "id": "cycle.decon.cardA.subtitle",
+      "value": "요구사항과 우선순위 구조화",
+      "description": "디컨 카드1 부제"
+    },
+    {
+      "id": "cycle.decon.cardB.title",
+      "value": "아키텍처 리뷰",
+      "description": "디컨 카드2 제목"
+    },
+    {
+      "id": "cycle.decon.cardB.subtitle",
+      "value": "설계 검증과 리스크 분석",
+      "description": "디컨 카드2 부제"
+    },
+    {
+      "id": "activity.startup.title",
+      "value": "창업동아리 활동",
+      "description": "활동 섹션 상단 타이틀"
+    },
+    {
+      "id": "activity.startup.item1.title",
+      "value": "1팀 1배포 목표",
+      "description": "창업동아리 활동 아이템1 제목"
+    },
+    {
+      "id": "activity.startup.item1.description",
+      "value": "단순 기획에서 멈추지 않고 직접 실천하는 동아리",
+      "description": "창업동아리 활동 아이템1 설명"
+    },
+    {
+      "id": "activity.startup.item2.title",
+      "value": "입학설명회 준비",
+      "description": "창업동아리 활동 아이템2 제목"
+    },
+    {
+      "id": "activity.startup.item2.description",
+      "value": "입학설명회를 준비합니다. 입학설명회를 준비합니다.",
+      "description": "창업동아리 활동 아이템2 설명"
+    },
+    {
+      "id": "activity.startup.item3.title",
+      "value": "공통대회 참가",
+      "description": "창업동아리 활동 아이템3 제목"
+    },
+    {
+      "id": "activity.startup.item3.description",
+      "value": "코드페어, 코드페어, 코드페어, 등의 공통대회를 참가합니다",
+      "description": "창업동아리 활동 아이템3 설명"
+    },
+    {
+      "id": "activity.general.title",
+      "value": "일반동아리 활동",
+      "description": "활동 섹션 하단 타이틀"
+    },
+    {
+      "id": "activity.general.conferenceTitle",
+      "value": "IT 컨퍼런스",
+      "description": "일반동아리 활동 우측 블록 제목"
+    },
+    {
+      "id": "activity.general.conferenceDescription",
+      "value": "동아리 17차시 동안 한 주에 2~3명씩 발표해서 생기부를 채웁니다. 또한 심화탐구 팀도 구성하여 발표를 진행합니다.",
+      "description": "일반동아리 활동 우측 블록 설명"
+    },
+    {
+      "id": "faq.title",
+      "value": "FAQ.",
+      "description": "FAQ 섹션 제목"
+    },
+    {
+      "id": "faq.item1.question",
+      "value": "지원 자격이 어떻게 되나요?",
+      "description": "FAQ 1번 질문"
+    },
+    {
+      "id": "faq.item1.answer",
+      "value": "모집 공고 기준으로 모나드 활동에 꾸준히 참여할 수 있는 학생이라면 누구나 지원할 수 있습니다.",
+      "description": "FAQ 1번 답변"
+    },
+    {
+      "id": "faq.item2.question",
+      "value": "지원 기간은 어떻게 되나요?",
+      "description": "FAQ 2번 질문"
+    },
+    {
+      "id": "faq.item2.answer",
+      "value": "지원 폼 오픈 후 마감 기한까지 제출 가능하며, 마감 이후에는 개별 문의를 받고 있습니다.",
+      "description": "FAQ 2번 답변"
+    },
+    {
+      "id": "faq.item3.question",
+      "value": "개발 경험이 없어도 지원할 수 있나요?",
+      "description": "FAQ 3번 질문"
+    },
+    {
+      "id": "faq.item3.answer",
+      "value": "기초 트랙부터 시작할 수 있어서 경험이 없어도 지원할 수 있습니다.",
+      "description": "FAQ 3번 답변"
+    },
+    {
+      "id": "faq.item4.question",
+      "value": "창업 동아리와 일반 동아리는 어떤 차이가 있나요?",
+      "description": "FAQ 4번 질문"
+    },
+    {
+      "id": "faq.item4.answer",
+      "value": "창업 동아리는 MVP 실험 중심, 일반 동아리는 기술 역량 중심으로 운영됩니다.",
+      "description": "FAQ 4번 답변"
+    },
+    {
+      "id": "faq.item5.question",
+      "value": "면접은 어떻게 진행되나요?",
+      "description": "FAQ 5번 질문"
+    },
+    {
+      "id": "faq.item5.answer",
+      "value": "지원서 기반 질의응답으로 진행되며 활동 의지와 협업 태도를 중심으로 확인합니다.",
+      "description": "FAQ 5번 답변"
+    },
+    {
+      "id": "join.title",
+      "value": "Join us.",
+      "description": "Join 섹션 제목"
+    },
+    {
+      "id": "join.cta",
+      "value": "지원하기",
+      "description": "Join 섹션 버튼 라벨"
+    },
+    {
+      "id": "ticket.airlineName",
+      "value": "MONAD AIR",
+      "description": "티켓 항공사 이름"
+    },
+    {
+      "id": "ticket.boardingPassText",
+      "value": "BOARDING PASS",
+      "description": "티켓 상단 보딩패스 문구"
+    },
+    {
+      "id": "ticket.route.fromCode",
+      "value": "NOW",
+      "description": "티켓 출발 코드"
+    },
+    {
+      "id": "ticket.route.fromCity",
+      "value": "현재",
+      "description": "티켓 출발 도시"
+    },
+    {
+      "id": "ticket.route.toCode",
+      "value": "MON",
+      "description": "티켓 도착 코드"
+    },
+    {
+      "id": "ticket.route.toCity",
+      "value": "MONAD",
+      "description": "티켓 도착 도시"
+    },
+    {
+      "id": "ticket.info.flight",
+      "value": "MN-2026",
+      "description": "티켓 편명"
+    },
+    {
+      "id": "ticket.info.date",
+      "value": "2026.03.01",
+      "description": "티켓 날짜"
+    },
+    {
+      "id": "ticket.info.zone",
+      "value": "A",
+      "description": "티켓 탑승 구역"
+    },
+    {
+      "id": "ticket.bottom.stamp",
+      "value": "GATE 7 · BOARD 20:26",
+      "description": "티켓 하단 스탬프"
+    },
+    {
+      "id": "ticket.bottom.seat",
+      "value": "01A",
+      "description": "티켓 좌석 배지"
+    },
+    {
+      "id": "ticket.dragHint.default",
+      "value": "아래로 드래그해서 절취선을 뜯으세요",
+      "description": "티켓 드래그 기본 힌트"
+    },
+    {
+      "id": "ticket.dragHint.ready",
+      "value": "이제 놓으면 뜯깁니다",
+      "description": "티켓 드래그 완료 임계 힌트"
+    },
+    {
+      "id": "ticket.code",
+      "value": "PAX YOU · MONAD-2026-BOARDING",
+      "description": "티켓 하단 코드"
+    }
+  ]
+}

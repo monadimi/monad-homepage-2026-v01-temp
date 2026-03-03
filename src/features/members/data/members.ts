@@ -1,4 +1,5 @@
 // 멤버 페이지 JSON 데이터를 앱 렌더링 모델로 변환하는 레이어입니다.
+import { text } from '../../../content/text/textService'
 import membersSource from './members.json'
 
 export type MemberRoleKey = 'planner' | 'developer' | 'designer'
@@ -77,22 +78,26 @@ interface MembersSource {
 }
 
 const typedMembersSource: MembersSource = membersSource
+const sourceYears = Array.isArray(typedMembersSource.years) ? typedMembersSource.years : []
+const sourceYearOrder = Array.isArray(typedMembersSource.yearOrder)
+  ? typedMembersSource.yearOrder.filter((year): year is number => typeof year === 'number')
+  : []
 
 // 역할 키를 화면 표기 라벨/아이콘으로 변환하는 사전입니다.
 const roleRegistry: Readonly<Record<MemberRoleKey, MemberRole>> = {
   planner: {
     key: 'planner',
-    label: '기획',
+    label: text('members', 'role.planner.label', '기획'),
     icon: '💡',
   },
   developer: {
     key: 'developer',
-    label: '개발',
+    label: text('members', 'role.developer.label', '개발'),
     icon: '</>',
   },
   designer: {
     key: 'designer',
-    label: '디자인',
+    label: text('members', 'role.designer.label', '디자인'),
     icon: '🎨',
   },
 }
@@ -122,30 +127,39 @@ function normalizeRole(roleKey: string): MemberRole {
 }
 
 export class MembersRepository {
-  private static readonly defaultYear = typedMembersSource.defaultYear
+  private static readonly yearOrder = sourceYearOrder
 
-  private static readonly yearOrder = typedMembersSource.yearOrder
+  // 페이지 첫 진입 시 항상 "멤버가 실제로 존재하는 최신 연도"를 우선으로 사용합니다.
+  // (예: 최신 연도 블록이 비어 있으면 직전 연도로 자동 폴백)
+  private static readonly defaultYear =
+    sourceYears
+      .filter((yearGroup) => Array.isArray(yearGroup.members) && yearGroup.members.length > 0)
+      .map((yearGroup) => yearGroup.year)
+      .sort((a, b) => b - a)[0] ??
+    (MembersRepository.yearOrder.length > 0
+      ? Math.max(...MembersRepository.yearOrder)
+      : typedMembersSource.defaultYear)
 
   private static readonly yearGroups: readonly MemberYearGroup[] =
-    typedMembersSource.years.map((yearGroup) => ({
+    sourceYears.map((yearGroup) => ({
       year: yearGroup.year,
       title: yearGroup.title,
       generationLabel: yearGroup.generationLabel,
       heroTitle: yearGroup.heroTitle,
       heroSubtitle: yearGroup.heroSubtitle,
-      members: yearGroup.members.map((member) => ({
+      members: (Array.isArray(yearGroup.members) ? yearGroup.members : []).map((member) => ({
         id: member.id,
         name: member.name,
         code: member.code,
         intro: member.intro,
-        roles: member.roles.map((roleKey) => normalizeRole(roleKey)),
+        roles: (Array.isArray(member.roles) ? member.roles : []).map((roleKey) => normalizeRole(roleKey)),
         quote: member.quote,
         github: member.github,
         githubLabel: member.githubLabel,
         // imageKey가 없거나 잘못된 경우에도 UI가 깨지지 않도록 기본 이미지를 사용합니다.
         image: imageRegistry[member.imageKey] ?? imageRegistry.jesiwon,
-        achievements: member.achievements,
-        stacks: member.stacks.map((stack) => ({
+        achievements: Array.isArray(member.achievements) ? member.achievements : [],
+        stacks: (Array.isArray(member.stacks) ? member.stacks : []).map((stack) => ({
           id: stack.id,
           label: stack.label,
           // iconKey 제한을 두지 않고 JSON 값을 그대로 전달합니다.
@@ -154,6 +168,15 @@ export class MembersRepository {
         })),
       })),
     }))
+
+  private static readonly emptyYearGroup: MemberYearGroup = {
+    year: MembersRepository.defaultYear,
+    title: `MONAD ${MembersRepository.defaultYear}`,
+    generationLabel: '미정',
+    heroTitle: 'MEMBERS OF MONAD',
+    heroSubtitle: '모나드의 단자들을 소개합니다.',
+    members: [],
+  }
 
   public static getDefaultYear(): number {
     return MembersRepository.defaultYear
@@ -168,9 +191,18 @@ export class MembersRepository {
   }
 
   public static getDefaultYearGroup(): MemberYearGroup {
-    return (
-      MembersRepository.getYearGroupByYear(MembersRepository.defaultYear) ??
-      MembersRepository.yearGroups[0]
+    const preferred = MembersRepository.getYearGroupByYear(MembersRepository.defaultYear)
+    if (preferred && preferred.members.length > 0) {
+      return preferred
+    }
+
+    const firstNonEmpty = MembersRepository.yearGroups.find(
+      (yearGroup) => yearGroup.members.length > 0,
     )
+    if (firstNonEmpty) {
+      return firstNonEmpty
+    }
+
+    return MembersRepository.yearGroups[0] ?? MembersRepository.emptyYearGroup
   }
 }
