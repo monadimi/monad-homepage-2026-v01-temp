@@ -1,10 +1,10 @@
 # MONAD Homepage 2026
 
-디미고 전공동아리 **MONAD** 홈페이지 프론트엔드 프로젝트입니다.
+디미고 최고의 동아리 **MONAD** 홈페이지 프론트엔드 프로젝트입니다.
 
 - React + TypeScript + Vite 기반 SPA
 - 공통 Header / Footer 재사용 구조
-- 데이터(awards, members, projects)는 JSON 기반으로 관리
+- 데이터(awards, members, projects) + UI 텍스트는 JSON 기반으로 관리
 - 로컬 전용 JSON GUI 관리 툴 포함
 
 ---
@@ -76,9 +76,30 @@ npm run preview
 - `src/features/members/data/MEMBERS_DATA_STRUCTURE.md`
 - `src/features/projects/data/PROJECTS_DATA_STRUCTURE.md`
 
+UI 텍스트 번들:
+- 레지스트리: `src/content/text/text-bundles.json`
+- 번들 파일(현재):  
+  `global.ko.json`, `home.ko.json`, `monad2026.ko.json`,  
+  `achievements.ko.json`, `members.ko.json`, `projects.ko.json`
+- 구조 문서: `src/content/text/TEXT_BUNDLES_STRUCTURE.md`
+
+LWEET의 Text 탭은 위 레지스트리를 기준으로 자동 생성됩니다.
+
+텍스트 번들 검증:
+
+```bash
+npm run validate:texts
+```
+
+페이지 데이터(JSON) 검증:
+
+```bash
+npm run validate:data
+```
+
 ---
 
-## 5) 로컬 JSON GUI 매니저
+## 5) 로컬 JSON GUI 매니저 (LWEET)
 
 JSON을 코드 편집 없이 GUI로 추가/수정/삭제할 수 있는 로컬 툴입니다.
 
@@ -151,4 +172,3 @@ tools/json-manager/   # 로컬 JSON GUI 관리 툴 (Python + HTML)
 - 페이지 전환 시 스크롤은 항상 상단으로 초기화됩니다.
 - SEO 메타는 `src/core/seo`에서 중앙 관리합니다.
 - 콘텐츠 수정은 가능하면 JSON + 데이터 구조 문서를 함께 갱신해 주세요.
-

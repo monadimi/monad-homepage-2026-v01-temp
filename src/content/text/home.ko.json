@@ -1,0 +1,61 @@
+{
+  "id": "home",
+  "locale": "ko",
+  "entries": [
+    {
+      "id": "ticker.message",
+      "value": "모나드 1기 모집 중 Join Our 1st Generation",
+      "description": "홈 상단 티커 반복 문구"
+    },
+    {
+      "id": "whatIs.title",
+      "value": "what is MONAD?",
+      "description": "What is MONAD 섹션 제목"
+    },
+    {
+      "id": "whatIs.description",
+      "value": "단순히 코딩 실력을 키우는 것을 넘어, 기술로 사회적 문제를\n풀어내고 싶은 사람들이 모인 동아리입니다.\n인공지능부터 알고리즘, 웹 개발, 보안, 더 나아가\n양자 같은 미래 기술까지 폭 넓게 다룹니다.",
+      "description": "What is MONAD 섹션 설명 (줄바꿈 유지)"
+    },
+    {
+      "id": "social.surfing.label",
+      "value": "Surfing",
+      "description": "소셜 아이콘 라벨 - Surfing"
+    },
+    {
+      "id": "social.surfing.href",
+      "value": "#",
+      "description": "소셜 링크 - Surfing"
+    },
+    {
+      "id": "social.dimiwiki.label",
+      "value": "Dimiwiki",
+      "description": "소셜 아이콘 라벨 - Dimiwiki"
+    },
+    {
+      "id": "social.dimiwiki.href",
+      "value": "https://wiki.dimigo.hs.kr/wiki/%EB%8F%99%EC%95%84%EB%A6%AC:%EB%AA%A8%EB%82%98%EB%93%9C",
+      "description": "소셜 링크 - Dimiwiki"
+    },
+    {
+      "id": "social.instagram.label",
+      "value": "Instagram",
+      "description": "소셜 아이콘 라벨 - Instagram"
+    },
+    {
+      "id": "social.instagram.href",
+      "value": "https://www.instagram.com/monad_dimigo",
+      "description": "소셜 링크 - Instagram"
+    },
+    {
+      "id": "social.github.label",
+      "value": "GitHub",
+      "description": "소셜 아이콘 라벨 - GitHub"
+    },
+    {
+      "id": "social.github.href",
+      "value": "https://github.com/monadimi",
+      "description": "소셜 링크 - GitHub"
+    }
+  ]
+}

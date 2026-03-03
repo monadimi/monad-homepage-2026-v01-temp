@@ -1,0 +1,101 @@
+{
+  "id": "global",
+  "locale": "ko",
+  "entries": [
+    {
+      "id": "nav.home",
+      "value": "Home",
+      "description": "헤더 메뉴 Home"
+    },
+    {
+      "id": "nav.achievements",
+      "value": "Achievements",
+      "description": "헤더 메뉴 Achievements"
+    },
+    {
+      "id": "nav.members",
+      "value": "Members",
+      "description": "헤더 메뉴 Members"
+    },
+    {
+      "id": "nav.projects",
+      "value": "Projects",
+      "description": "헤더 메뉴 Projects"
+    },
+    {
+      "id": "nav.monad2026",
+      "value": "MONAD 2026",
+      "description": "헤더 메뉴 MONAD 2026"
+    },
+    {
+      "id": "page.home",
+      "value": "MONAD",
+      "description": "Home SEO 타이틀"
+    },
+    {
+      "id": "page.achievements",
+      "value": "Achievements",
+      "description": "Achievements 페이지 타이틀"
+    },
+    {
+      "id": "page.members",
+      "value": "Members",
+      "description": "Members 페이지 타이틀"
+    },
+    {
+      "id": "page.projects",
+      "value": "Projects",
+      "description": "Projects 페이지 타이틀"
+    },
+    {
+      "id": "page.monad2026",
+      "value": "MONAD 2026",
+      "description": "MONAD 2026 페이지 타이틀"
+    },
+    {
+      "id": "footer.cookiePolicy",
+      "value": "Cookie Policy",
+      "description": "푸터 쿠키 정책 링크 라벨"
+    },
+    {
+      "id": "footer.copyrightTemplate",
+      "value": "© {year} MONAD. All rights reserved.",
+      "description": "푸터 카피라이트 템플릿"
+    },
+    {
+      "id": "scrollTop.ariaLabel",
+      "value": "맨 위로 이동",
+      "description": "우측 하단 맨 위 버튼 접근성 라벨"
+    },
+    {
+      "id": "scrollTop.title",
+      "value": "맨 위로",
+      "description": "우측 하단 맨 위 버튼 툴팁"
+    },
+    {
+      "id": "header.homeAria",
+      "value": "Go to MONAD home",
+      "description": "헤더 로고 링크 aria-label"
+    },
+    {
+      "id": "header.menuToggleAria",
+      "value": "Toggle navigation menu",
+      "description": "헤더 햄버거 메뉴 버튼 aria-label"
+    },
+    {
+      "id": "header.desktopNavAria",
+      "value": "Global navigation",
+      "description": "헤더 데스크톱 네비게이션 aria-label"
+    },
+    {
+      "id": "header.mobileNavAria",
+      "value": "Mobile navigation",
+      "description": "헤더 모바일 네비게이션 aria-label"
+    },
+    {
+      "id": "comingSoon.subtitle",
+      "value": "Coming Soon",
+      "description": "ComingSoon 페이지 부제"
+    }
+  ]
+}

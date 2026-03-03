@@ -1,16 +1,26 @@
 // 교육 파트 소개 섹션입니다.
 import { memo } from 'react'
 import educationVisual from '../../../../assets/monad-2026-activity-general.svg'
+import { text } from '../../../../content/text/textService'
 import { GraySvgLogo } from '../../components/GraySvgLogo/GraySvgLogo'
 import styles from './EducationSection.module.css'
 
-const educationDescription =
-  '저희는 서로 멘토와 멘티로 어쩌고 저쩌고 저희는 서로 멘토와 멘티로 어쩌고 저쩌고 저희는 서로 멘토와 멘티로 어쩌고 저쩌고.'
-
-const hackathonDescription =
-  '저희는 해커톤을 진행해서 어쩌고 저쩌고 저희는 해커톤을 진행해서 어쩌고 저쩌고 저희는 해커톤을 진행해서 어쩌고 저쩌고.'
-
 export const EducationSection = memo(function EducationSection() {
+  const firstTitleAccent = text('monad2026', 'education.first.titleAccent', '멘토 멘티')
+  const firstTitleSuffix = text('monad2026', 'education.first.titleSuffix', '로 배웁니다.')
+  const firstDescription = text(
+    'monad2026',
+    'education.first.description',
+    '저희는 서로 멘토와 멘티로 어쩌고 저쩌고 저희는 서로 멘토와 멘티로 어쩌고 저쩌고 저희는 서로 멘토와 멘티로 어쩌고 저쩌고.',
+  )
+  const secondTitleAccent = text('monad2026', 'education.second.titleAccent', '해커톤')
+  const secondTitleSuffix = text('monad2026', 'education.second.titleSuffix', '을 진행합니다.')
+  const secondDescription = text(
+    'monad2026',
+    'education.second.description',
+    '저희는 해커톤을 진행해서 어쩌고 저쩌고 저희는 해커톤을 진행해서 어쩌고 저쩌고 저희는 해커톤을 진행해서 어쩌고 저쩌고.',
+  )
+
   return (
     <section className={styles.section} aria-label="교육 활동">
       <div className={styles.layout}>
@@ -20,9 +30,10 @@ export const EducationSection = memo(function EducationSection() {
           </div>
           <div className={styles.copy}>
             <h3 className={styles.headline}>
-              <span className={styles.accent}>멘토 멘티</span>로 배웁니다.
+              <span className={styles.accent}>{firstTitleAccent}</span>
+              {firstTitleSuffix}
             </h3>
-            <p className={styles.description}>{educationDescription}</p>
+            <p className={styles.description}>{firstDescription}</p>
           </div>
         </article>
 
@@ -39,9 +50,10 @@ export const EducationSection = memo(function EducationSection() {
           </div>
           <div className={styles.copy}>
             <h3 className={styles.headline}>
-              <span className={styles.accent}>해커톤</span>을 진행합니다.
+              <span className={styles.accent}>{secondTitleAccent}</span>
+              {secondTitleSuffix}
             </h3>
-            <p className={styles.description}>{hackathonDescription}</p>
+            <p className={styles.description}>{secondDescription}</p>
           </div>
         </article>
       </div>

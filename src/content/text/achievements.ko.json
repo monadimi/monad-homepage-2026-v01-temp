@@ -1,0 +1,91 @@
+{
+  "id": "achievements",
+  "locale": "ko",
+  "entries": [
+    {
+      "id": "awardCard.detailAriaSuffix",
+      "value": "상세 보기",
+      "description": "업적 카드 버튼 aria-label 접미사"
+    },
+    {
+      "id": "awardCard.moreLabel",
+      "value": "더 알아보기",
+      "description": "업적 카드 hover 라벨"
+    },
+    {
+      "id": "modal.closeAria",
+      "value": "상세 팝업 닫기",
+      "description": "상세 팝업 닫기 버튼 aria-label"
+    },
+    {
+      "id": "modal.teamAria",
+      "value": "팀원",
+      "description": "상세 팝업 팀원 섹션 aria-label"
+    },
+    {
+      "id": "modal.teamTitle",
+      "value": "팀원",
+      "description": "상세 팝업 팀원 섹션 제목"
+    },
+    {
+      "id": "modal.prizeAria",
+      "value": "상금",
+      "description": "상세 팝업 상금 섹션 aria-label"
+    },
+    {
+      "id": "modal.prizeTitle",
+      "value": "상금",
+      "description": "상세 팝업 상금 섹션 제목"
+    },
+    {
+      "id": "modal.serviceAria",
+      "value": "서비스 링크",
+      "description": "상세 팝업 서비스 링크 섹션 aria-label"
+    },
+    {
+      "id": "modal.serviceTitle",
+      "value": "서비스 이용해보기",
+      "description": "상세 팝업 서비스 링크 섹션 제목"
+    },
+    {
+      "id": "yearNavigator.previousAria",
+      "value": "Previous year",
+      "description": "연도 선택 이전 버튼 aria-label"
+    },
+    {
+      "id": "yearNavigator.nextAria",
+      "value": "Next year",
+      "description": "연도 선택 다음 버튼 aria-label"
+    },
+    {
+      "id": "hero.totalEarnLabel",
+      "value": "TOTAL EARN",
+      "description": "업적 히어로 우측 보조 라벨"
+    },
+    {
+      "id": "hero.coverageTemplate",
+      "value": "OVER {count} YEAR{suffix}",
+      "description": "업적 히어로 좌측 보조 라벨 템플릿"
+    },
+    {
+      "id": "fallback.description",
+      "value": "대한민국 정부 및 미국 백악관, UN이 공동개최한 '아주 대단하고 멋진 대회'에서 AI를 이용한 점심메뉴 예측 시스템 '대단한거'로 대상을 받았습니다.",
+      "description": "수상 설명 기본값"
+    },
+    {
+      "id": "fallback.teamMember",
+      "value": "2701김디미",
+      "description": "수상 팀원 기본값 단일 항목"
+    },
+    {
+      "id": "fallback.prize",
+      "value": "1,000,000원",
+      "description": "수상 상금 기본값"
+    },
+    {
+      "id": "fallback.serviceUrl",
+      "value": "https://youtu.be/dQw4w9WgXcQ?si=9SvW5757nWexx7K7",
+      "description": "수상 서비스 링크 기본값"
+    }
+  ]
+}

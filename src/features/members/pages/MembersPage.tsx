@@ -7,6 +7,7 @@ import { MembersRepository } from '../data/members'
 import styles from './MembersPage.module.css'
 
 export const MembersPage = memo(function MembersPage() {
+  const yearOrder = MembersRepository.getYearOrder()
   const [selectedYear, setSelectedYear] = useState<number>(
     MembersRepository.getDefaultYear(),
   )
@@ -24,14 +25,15 @@ export const MembersPage = memo(function MembersPage() {
 
   const selectedMember =
     yearGroup.members.find((member) => member.id === selectedMemberId) ??
-    yearGroup.members[0]
+    yearGroup.members[0] ??
+    null
 
-  const selectedMemberIndex = yearGroup.members.findIndex(
-    (member) => member.id === selectedMember.id,
-  )
+  const selectedMemberIndex = selectedMember
+    ? yearGroup.members.findIndex((member) => member.id === selectedMember.id)
+    : -1
 
   const handlePrevMember = () => {
-    if (yearGroup.members.length === 0) {
+    if (yearGroup.members.length === 0 || selectedMemberIndex < 0) {
       return
     }
 
@@ -44,7 +46,7 @@ export const MembersPage = memo(function MembersPage() {
   }
 
   const handleNextMember = () => {
-    if (yearGroup.members.length === 0) {
+    if (yearGroup.members.length === 0 || selectedMemberIndex < 0) {
       return
     }
 
@@ -54,11 +56,6 @@ export const MembersPage = memo(function MembersPage() {
 
   const handleSelectMember = (memberId: string) => {
     setSelectedMemberId(memberId)
-  }
-
-
-  if (!selectedMember) {
-    return null
   }
 
   const handleChangeYear = (year: number) => {
@@ -73,6 +70,28 @@ export const MembersPage = memo(function MembersPage() {
     setSelectedMemberId(nextGroup.members[0]?.id ?? '')
   }
 
+  const handlePrevYear = () => {
+    if (yearOrder.length === 0) {
+      return
+    }
+
+    const currentIndex = yearOrder.indexOf(selectedYear)
+    const safeIndex = currentIndex >= 0 ? currentIndex : 0
+    const prevIndex = safeIndex <= 0 ? yearOrder.length - 1 : safeIndex - 1
+    handleChangeYear(yearOrder[prevIndex])
+  }
+
+  const handleNextYear = () => {
+    if (yearOrder.length === 0) {
+      return
+    }
+
+    const currentIndex = yearOrder.indexOf(selectedYear)
+    const safeIndex = currentIndex >= 0 ? currentIndex : 0
+    const nextIndex = (safeIndex + 1) % yearOrder.length
+    handleChangeYear(yearOrder[nextIndex])
+  }
+
   return (
     <article className={styles.page}>
       <HeroMemberStrip yearGroup={yearGroup} />
@@ -82,19 +101,27 @@ export const MembersPage = memo(function MembersPage() {
         <p>{yearGroup.generationLabel}</p>
       </section>
 
-      <MemberDetailSection key={selectedMember.id} member={selectedMember} />
+      {selectedMember ? (
+        <>
+          <MemberDetailSection key={selectedMember.id} member={selectedMember} />
 
-      <MemberCarousel
-        members={yearGroup.members}
-        selectedMemberId={selectedMember.id}
-        yearLabel={yearGroup.title}
-        onSelectMember={handleSelectMember}
-        onPrevMember={handlePrevMember}
-        onNextMember={handleNextMember}
-      />
+          <MemberCarousel
+            members={yearGroup.members}
+            selectedMemberId={selectedMember.id}
+            yearLabel={yearGroup.title}
+            onSelectMember={handleSelectMember}
+            onPrevMember={handlePrevMember}
+            onNextMember={handleNextMember}
+            onPrevYear={handlePrevYear}
+            onNextYear={handleNextYear}
+          />
+        </>
+      ) : (
+        <section className={styles.emptyState}>해당 연도에 등록된 멤버가 없습니다.</section>
+      )}
 
       <section className={styles.yearSelectorSection}>
-        {MembersRepository.getYearOrder().map((year) => (
+        {yearOrder.map((year) => (
           <button
             key={year}
             type="button"

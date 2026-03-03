@@ -1,5 +1,6 @@
 // 앱 전역 라우트 메타데이터입니다.
 // Header 표시 라벨과 실제 경로를 함께 관리합니다.
+import { text } from '../../content/text/textService'
 export type AppRouteKey =
   | 'home'
   | 'achievements'
@@ -22,8 +23,8 @@ export const appRoutes: readonly AppRouteDefinition[] = [
     key: 'home',
     path: '/',
     segment: null,
-    navLabel: 'Home',
-    pageTitle: 'Home',
+    navLabel: text('global', 'nav.home', 'Home'),
+    pageTitle: text('global', 'page.home', 'MONAD'),
     isHome: true,
     showInNavigation: true,
   },
@@ -31,8 +32,8 @@ export const appRoutes: readonly AppRouteDefinition[] = [
     key: 'achievements',
     path: '/achievements',
     segment: 'achievements',
-    navLabel: 'Achievements',
-    pageTitle: 'Achievements',
+    navLabel: text('global', 'nav.achievements', 'Achievements'),
+    pageTitle: text('global', 'page.achievements', 'Achievements'),
     isHome: false,
     showInNavigation: true,
   },
@@ -40,8 +41,8 @@ export const appRoutes: readonly AppRouteDefinition[] = [
     key: 'members',
     path: '/members',
     segment: 'members',
-    navLabel: 'Members',
-    pageTitle: 'Members',
+    navLabel: text('global', 'nav.members', 'Members'),
+    pageTitle: text('global', 'page.members', 'Members'),
     isHome: false,
     showInNavigation: true,
   },
@@ -49,8 +50,8 @@ export const appRoutes: readonly AppRouteDefinition[] = [
     key: 'projects',
     path: '/projects',
     segment: 'projects',
-    navLabel: 'Projects',
-    pageTitle: 'Projects',
+    navLabel: text('global', 'nav.projects', 'Projects'),
+    pageTitle: text('global', 'page.projects', 'Projects'),
     isHome: false,
     showInNavigation: true,
   },
@@ -58,8 +59,8 @@ export const appRoutes: readonly AppRouteDefinition[] = [
     key: 'monad2026',
     path: '/monad-2026',
     segment: 'monad-2026',
-    navLabel: 'MONAD 2026',
-    pageTitle: 'MONAD 2026',
+    navLabel: text('global', 'nav.monad2026', 'MONAD 2026'),
+    pageTitle: text('global', 'page.monad2026', 'MONAD 2026'),
     isHome: false,
     showInNavigation: true,
   },

@@ -1,4 +1,4 @@
-# Local JSON Manager
+# LWEET (Local Web Editor for Easy Text)
 
 로컬에서만 실행되는 MONAD JSON GUI 관리 도구입니다.
 
@@ -9,11 +9,29 @@
   - Achievements · Awards
   - Members
   - Projects
+  - Text · *(레지스트리 기반 동적 생성)*
+    - 현재: Global UI / Home / MONAD 2026 / Achievements / Members / Projects
 - 사이드바는 고정, 우측 데이터 영역만 스크롤
 - 각 탭에서 데이터 표(Table) 조회
 - **새 데이터 추가 / 편집 / 삭제** 지원
 - Members의 `stacks`는 전용 행 편집 UI로 관리 (`id/label/iconKey/value`)
+- 텍스트 번들은 레지스트리(`src/content/text/text-bundles.json`) 기반으로 자동 탭 생성
 - 저장은 Python 서버가 처리(유효성 검사 + pretty JSON 포맷)
+
+## 텍스트 번들 구조
+
+- 레지스트리: `src/content/text/text-bundles.json`
+- 실제 번들: `src/content/text/*.ko.json`
+  - `entries` 배열의 각 항목을 편집합니다.
+  - 필수 필드: `id`, `value`
+  - 선택 필드: `description`
+
+검증 명령:
+
+```bash
+npm run validate:texts
+npm run validate:data
+```
 
 ## 실행 제약
 

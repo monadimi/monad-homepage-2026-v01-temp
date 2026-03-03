@@ -1,0 +1,48 @@
+{
+  "version": 1,
+  "defaultLocale": "ko",
+  "bundles": [
+    {
+      "id": "global",
+      "label": "Global UI",
+      "locale": "ko",
+      "description": "네비게이션/공통 UI 텍스트",
+      "file": "src/content/text/global.ko.json"
+    },
+    {
+      "id": "home",
+      "label": "Home",
+      "locale": "ko",
+      "description": "홈 페이지 텍스트",
+      "file": "src/content/text/home.ko.json"
+    },
+    {
+      "id": "monad2026",
+      "label": "MONAD 2026",
+      "locale": "ko",
+      "description": "MONAD 2026 페이지 텍스트",
+      "file": "src/content/text/monad2026.ko.json"
+    },
+    {
+      "id": "achievements",
+      "label": "Achievements UI",
+      "locale": "ko",
+      "description": "Achievements 페이지 UI 텍스트",
+      "file": "src/content/text/achievements.ko.json"
+    },
+    {
+      "id": "members",
+      "label": "Members UI",
+      "locale": "ko",
+      "description": "Members 페이지 UI 텍스트",
+      "file": "src/content/text/members.ko.json"
+    },
+    {
+      "id": "projects",
+      "label": "Projects UI",
+      "locale": "ko",
+      "description": "Projects 페이지 UI 텍스트",
+      "file": "src/content/text/projects.ko.json"
+    }
+  ]
+}

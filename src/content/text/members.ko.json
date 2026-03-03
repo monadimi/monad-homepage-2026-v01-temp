@@ -1,0 +1,61 @@
+{
+  "id": "members",
+  "locale": "ko",
+  "entries": [
+    {
+      "id": "hero.sectionAria",
+      "value": "Members hero strip",
+      "description": "멤버 히어로 영역 aria-label"
+    },
+    {
+      "id": "carousel.sectionAria",
+      "value": "Member carousel",
+      "description": "멤버 캐러셀 영역 aria-label"
+    },
+    {
+      "id": "carousel.previousAria",
+      "value": "Previous member",
+      "description": "캐러셀 이전 버튼 aria-label"
+    },
+    {
+      "id": "carousel.nextAria",
+      "value": "Next member",
+      "description": "캐러셀 다음 버튼 aria-label"
+    },
+    {
+      "id": "carousel.viewSuffix",
+      "value": "보기",
+      "description": "캐러셀 썸네일 버튼 라벨 접미사"
+    },
+    {
+      "id": "carousel.yearLabelTemplate",
+      "value": "< {label} >",
+      "description": "캐러셀 하단 연도 라벨 템플릿"
+    },
+    {
+      "id": "detail.sectionAria",
+      "value": "Member detail",
+      "description": "멤버 상세 영역 aria-label"
+    },
+    {
+      "id": "detail.stackTitle",
+      "value": "기술 스택",
+      "description": "멤버 상세 기술 스택 섹션 제목"
+    },
+    {
+      "id": "role.planner.label",
+      "value": "기획",
+      "description": "멤버 역할 라벨 - planner"
+    },
+    {
+      "id": "role.developer.label",
+      "value": "개발",
+      "description": "멤버 역할 라벨 - developer"
+    },
+    {
+      "id": "role.designer.label",
+      "value": "디자인",
+      "description": "멤버 역할 라벨 - designer"
+    }
+  ]
+}

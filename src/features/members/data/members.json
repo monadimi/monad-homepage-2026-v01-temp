@@ -1,7 +1,8 @@
 {
   "defaultYear": 2025,
   "yearOrder": [
-    2025
+    2025,
+    2026
   ],
   "years": [
     {
@@ -22,8 +23,8 @@
             "designer"
           ],
           "quote": "자신이 하고싶은 한마디",
-          "github": "https://github.com/",
-          "githubLabel": "김단아 - Overview",
+          "github": "https://github.com/abcdana122",
+          "githubLabel": "abcdana122",
           "imageKey": "jesiwon",
           "achievements": [
             "카이스트 IP-CEO 수료",
@@ -58,7 +59,7 @@
               "id": "llm",
               "label": "LLM(NLP)",
               "iconKey": "label",
-              "value": 1
+              "value": 1.0
             },
             {
               "id": "react",
@@ -514,6 +515,14 @@
           ]
         }
       ]
+    },
+    {
+      "year": 2026,
+      "title": "MONAD 2026",
+      "generationLabel": "1기",
+      "heroTitle": "MEMBERS OF MONAD",
+      "heroSubtitle": "모나드의 단자들을 소개합니다.",
+      "members": []
     }
   ]
 }

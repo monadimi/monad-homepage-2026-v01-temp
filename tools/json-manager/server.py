@@ -5,6 +5,7 @@
 - 라이트 모드 사이드바 UI에서 데이터 탭을 선택합니다.
 - 표(Table)로 현재 데이터를 확인합니다.
 - 새 데이터 추가/수정/삭제를 GUI에서 수행하면 Python이 JSON 파일에 반영합니다.
+- UI 텍스트 번들은 레지스트리(text-bundles.json) 기준으로 탭이 자동 생성됩니다.
 - 실행 시 원격 동기화 상태를 확인해 pull이 필요한 상태면 실행을 차단합니다.
 """
 
@@ -12,6 +13,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 import subprocess
 from copy import deepcopy
 from http import HTTPStatus
@@ -22,10 +24,11 @@ from urllib.parse import parse_qs, urlparse
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
 INDEX_HTML_PATH = Path(__file__).with_name("index.html")
+TEXT_REGISTRY_PATH = REPO_ROOT / "src/content/text/text-bundles.json"
 
 
 # 각 데이터 탭의 필드 스키마를 명시적으로 정의합니다.
-DATASET_SPECS: dict[str, dict[str, Any]] = {
+BASE_DATASET_SPECS: dict[str, dict[str, Any]] = {
     "awards": {
         "id": "awards",
         "label": "Achievements · Awards",
@@ -77,8 +80,17 @@ DATASET_SPECS: dict[str, dict[str, Any]] = {
         "year_key": "year",
         "items_key": "members",
         "year_order_key": "yearOrder",
+        "year_meta_fields": ["generationLabel"],
         "fields": [
             {"key": "year", "label": "연도", "input": "number", "required": True, "placeholder": "2025"},
+            {
+                "key": "generationLabel",
+                "label": "기수 라벨",
+                "input": "text",
+                "required": False,
+                "placeholder": "예: 1기",
+                "help": "같은 연도의 멤버 행에서 수정하면 해당 연도의 기수 라벨이 함께 반영됩니다.",
+            },
             {
                 "key": "id",
                 "label": "ID",
@@ -209,6 +221,82 @@ DATASET_SPECS: dict[str, dict[str, Any]] = {
 }
 
 
+def read_text_registry() -> dict[str, Any]:
+    if not TEXT_REGISTRY_PATH.exists():
+        return {"bundles": []}
+
+    with TEXT_REGISTRY_PATH.open(encoding="utf-8") as registry_file:
+        payload = json.load(registry_file)
+
+    if not isinstance(payload, dict):
+        raise RuntimeError("텍스트 레지스트리(text-bundles.json) 형식이 올바르지 않습니다.")
+
+    return payload
+
+
+def build_text_dataset_specs() -> dict[str, dict[str, Any]]:
+    registry_payload = read_text_registry()
+    bundles = registry_payload.get("bundles", [])
+    if not isinstance(bundles, list):
+        raise RuntimeError("텍스트 레지스트리 bundles는 배열이어야 합니다.")
+
+    text_specs: dict[str, dict[str, Any]] = {}
+
+    for bundle in bundles:
+        if not isinstance(bundle, dict):
+            continue
+
+        bundle_id = str(bundle.get("id", "")).strip()
+        bundle_label = str(bundle.get("label", bundle_id)).strip() or bundle_id
+        bundle_locale = str(bundle.get("locale", "ko")).strip() or "ko"
+        bundle_description = str(bundle.get("description", "")).strip()
+        bundle_file = str(bundle.get("file", "")).strip()
+
+        if not bundle_id or not bundle_file:
+            continue
+
+        dataset_id = f"text-{bundle_id}"
+        text_specs[dataset_id] = {
+            "id": dataset_id,
+            "label": f"Text · {bundle_label}",
+            "description": f"{bundle_description} ({bundle_locale})".strip(),
+            "file": bundle_file,
+            "mode": "root_array",
+            "array_key": "entries",
+            "fields": [
+                {
+                    "key": "id",
+                    "label": "텍스트 키",
+                    "input": "text",
+                    "required": True,
+                    "placeholder": "예: nav.home",
+                },
+                {
+                    "key": "value",
+                    "label": "텍스트 값",
+                    "input": "multiline",
+                    "required": True,
+                    "placeholder": "실제 UI에 노출할 문구를 입력하세요.",
+                },
+                {
+                    "key": "description",
+                    "label": "설명",
+                    "input": "text",
+                    "required": False,
+                    "placeholder": "해당 텍스트의 용도 메모",
+                },
+            ],
+        }
+
+    return text_specs
+
+
+DATASET_SPECS: dict[str, dict[str, Any]] = {
+    **BASE_DATASET_SPECS,
+    **build_text_dataset_specs(),
+}
+
+
 def run_git_command(args: list[str]) -> subprocess.CompletedProcess[str]:
     return subprocess.run(
         ["git", "-C", str(REPO_ROOT), *args],
@@ -320,6 +408,7 @@ def get_rows(spec: dict[str, Any], data: dict[str, Any]) -> list[dict[str, Any]]
         if not isinstance(year_block, dict):
             continue
         year_value = year_block.get(spec["year_key"])
+        year_meta_fields = spec.get("year_meta_fields", [])
         items = year_block.get(spec["items_key"], [])
         if not isinstance(items, list):
             continue
@@ -328,6 +417,10 @@ def get_rows(spec: dict[str, Any], data: dict[str, Any]) -> list[dict[str, Any]]
             if not isinstance(item, dict):
                 continue
             row = {"year": year_value}
+            if isinstance(year_meta_fields, list):
+                for meta_key in year_meta_fields:
+                    if isinstance(meta_key, str) and meta_key in year_block:
+                        row[meta_key] = deepcopy(year_block[meta_key])
             row.update(deepcopy(item))
             rows.append(row)
 
@@ -352,13 +445,45 @@ def update_year_order(data: dict[str, Any], year_order_key: str, year: int) -> N
         year_order.sort(reverse=descending)
 
 
-def create_year_block(spec: dict[str, Any], year: int) -> dict[str, Any]:
+def create_year_block(spec: dict[str, Any], data: dict[str, Any], year: int) -> dict[str, Any]:
+    def infer_members_generation_label() -> str:
+        years = data.get(spec["years_key"], [])
+        if not isinstance(years, list):
+            return "미정"
+
+        candidates: list[tuple[int, int]] = []
+        for year_block in years:
+            if not isinstance(year_block, dict):
+                continue
+
+            year_value = year_block.get(spec["year_key"])
+            generation_label = year_block.get("generationLabel")
+            if not isinstance(year_value, int) or not isinstance(generation_label, str):
+                continue
+
+            match = re.fullmatch(r"\s*(\d+)\s*기\s*", generation_label)
+            if not match:
+                continue
+
+            candidates.append((year_value, int(match.group(1))))
+
+        if not candidates:
+            return "미정"
+
+        candidates.sort(key=lambda item: item[0])
+        base_year, base_generation = candidates[0]
+        inferred_generation = base_generation + (year - base_year)
+        if inferred_generation < 0:
+            return "미정"
+
+        return f"{inferred_generation}기"
+
     # members는 연도 블록에 UI 문구 메타가 필요하므로 기본값을 채웁니다.
     if spec["id"] == "members":
         return {
             "year": year,
             "title": f"MONAD {year}",
-            "generationLabel": "미정",
+            "generationLabel": infer_members_generation_label(),
             "heroTitle": "MEMBERS OF MONAD",
             "heroSubtitle": "모나드의 단자들을 소개합니다.",
             "members": [],
@@ -647,7 +772,7 @@ def append_row(spec: dict[str, Any], row: dict[str, Any]) -> int:
             break
 
     if target_block is None:
-        target_block = create_year_block(spec, year_value)
+        target_block = create_year_block(spec, data, year_value)
         years.append(target_block)
 
     items = target_block.setdefault(spec["items_key"], [])
@@ -656,6 +781,15 @@ def append_row(spec: dict[str, Any], row: dict[str, Any]) -> int:
 
     row_without_year = deepcopy(row)
     row_without_year.pop("year", None)
+
+    year_meta_fields = spec.get("year_meta_fields", [])
+    if isinstance(year_meta_fields, list):
+        for meta_key in year_meta_fields:
+            if not isinstance(meta_key, str):
+                continue
+            if meta_key in row_without_year:
+                target_block[meta_key] = row_without_year.pop(meta_key)
+
     items.append(row_without_year)
 
     year_order_key = spec.get("year_order_key")
@@ -694,9 +828,17 @@ def update_row(spec: dict[str, Any], key: dict[str, Any], row: dict[str, Any]) -
 
     row_without_year = deepcopy(row)
     row_without_year.pop("year", None)
+    year_meta_fields = spec.get("year_meta_fields", [])
     old_year = target["year"]
 
     if old_year == new_year:
+        if isinstance(year_meta_fields, list):
+            for meta_key in year_meta_fields:
+                if not isinstance(meta_key, str):
+                    continue
+                if meta_key in row_without_year:
+                    target["year_block"][meta_key] = row_without_year.pop(meta_key)
+
         target["container"][target["index"]] = row_without_year
     else:
         del target["container"][target["index"]]
@@ -712,12 +854,19 @@ def update_row(spec: dict[str, Any], key: dict[str, Any], row: dict[str, Any]) -
                 break
 
         if new_block is None:
-            new_block = create_year_block(spec, new_year)
+            new_block = create_year_block(spec, data, new_year)
             years.append(new_block)
 
         items = new_block.setdefault(spec["items_key"], [])
         if not isinstance(items, list):
             raise RuntimeError("아이템 데이터 구조가 올바르지 않습니다.")
+
+        if isinstance(year_meta_fields, list):
+            for meta_key in year_meta_fields:
+                if not isinstance(meta_key, str):
+                    continue
+                if meta_key in row_without_year:
+                    new_block[meta_key] = row_without_year.pop(meta_key)
 
         items.append(row_without_year)
 

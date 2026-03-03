@@ -1,5 +1,6 @@
 import { memo, useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import githubIcon from '../../../assets/github.svg'
+import { text } from '../../../content/text/textService'
 import { MonadLogo } from '../../home/components/MonadLogo/MonadLogo'
 import { ProjectsRepository, type ProjectItem } from '../data/projects'
 import styles from './ProjectsPage.module.css'
@@ -19,6 +20,16 @@ const ProjectCard = memo(function ProjectCard({
   large = false,
   onMouseEnter,
 }: ProjectCardProps) {
+  const platformChip = text(
+    'projects',
+    'common.platformChip',
+    'AI-Powered Analysis Platform',
+  )
+  const homeAriaLabel = text('projects', 'card.homeAria', 'Go home')
+  const githubAriaLabel = text('projects', 'card.githubAria', 'GitHub link')
+  const schoolLabel = text('projects', 'card.schoolLabel', '학교 선택')
+  const schoolPlaceholder = text('projects', 'card.schoolPlaceholder', '학교를 선택하세요')
+
   return (
     <article
       className={`${styles.projectCard} ${large ? styles.projectCardLarge : ''}`}
@@ -26,7 +37,7 @@ const ProjectCard = memo(function ProjectCard({
     >
       <div className={styles.cardGlow} aria-hidden="true" />
 
-      <div className={styles.cardPlatformChip}>AI-Powered Analysis Platform</div>
+      <div className={styles.cardPlatformChip}>{platformChip}</div>
 
       <div className={styles.cardMiniBrand}>
         <MonadLogo variant="footerMark" />
@@ -52,18 +63,18 @@ const ProjectCard = memo(function ProjectCard({
       {large ? (
         <div className={styles.cardLinksAndSelect}>
           <div className={styles.cardLinks}>
-            <a href="/" aria-label="Go home" className={styles.iconLink}>
+            <a href="/" aria-label={homeAriaLabel} className={styles.iconLink}>
               <span className={styles.homeGlyph}>⌂</span>
             </a>
-            <a href="#" aria-label="GitHub link" className={styles.iconLink}>
+            <a href="#" aria-label={githubAriaLabel} className={styles.iconLink}>
               <img src={githubIcon} alt="" />
             </a>
           </div>
 
           <div className={styles.mockSelectWrap}>
-            <label className={styles.mockSelectLabel}>학교 선택</label>
+            <label className={styles.mockSelectLabel}>{schoolLabel}</label>
             <button type="button" className={styles.mockSelectButton}>
-              학교를 선택하세요
+              {schoolPlaceholder}
             </button>
           </div>
         </div>
@@ -73,6 +84,27 @@ const ProjectCard = memo(function ProjectCard({
 })
 
 export const ProjectsPage = memo(function ProjectsPage() {
+  const sectionAriaLabel = text('projects', 'hero.sectionAria', 'Projects hero')
+  const brandLabel = text('projects', 'hero.brandLabel', 'Projects')
+  const platformChip = text(
+    'projects',
+    'common.platformChip',
+    'AI-Powered Analysis Platform',
+  )
+  const previousProjectAriaLabel = text(
+    'projects',
+    'hero.previousProjectAria',
+    'Previous project',
+  )
+  const nextProjectAriaLabel = text('projects', 'hero.nextProjectAria', 'Next project')
+  const scrollToAllAriaLabel = text(
+    'projects',
+    'hero.scrollToAllAria',
+    'Scroll to all projects',
+  )
+  const allProjectsTitle = text('projects', 'section.allProjectsTitle', 'ALL PROJECTS')
+  const yearFilterAriaLabel = text('projects', 'section.yearFilterAria', 'Year filter')
+
   const gridRef = useRef<HTMLElement | null>(null)
   const [selectedYear, setSelectedYear] = useState<number>(
     ProjectsRepository.getDefaultYear(),
@@ -143,21 +175,21 @@ export const ProjectsPage = memo(function ProjectsPage() {
 
   return (
     <article className={styles.page}>
-      <section className={styles.heroSection} aria-label="Projects hero">
+      <section className={styles.heroSection} aria-label={sectionAriaLabel}>
         <div className={styles.heroBackground} aria-hidden="true" />
 
         <div className={styles.heroBrand}>
           <MonadLogo variant="footerMark" />
-          <span>Projects</span>
+          <span>{brandLabel}</span>
         </div>
 
-        <p className={styles.platformChip}>AI-Powered Analysis Platform</p>
+        <p className={styles.platformChip}>{platformChip}</p>
 
         <button
           type="button"
           className={`${styles.arrowButton} ${styles.arrowLeft}`}
           onClick={handlePreviousFeatured}
-          aria-label="Previous project"
+          aria-label={previousProjectAriaLabel}
         >
           ‹
         </button>
@@ -165,7 +197,7 @@ export const ProjectsPage = memo(function ProjectsPage() {
           type="button"
           className={`${styles.arrowButton} ${styles.arrowRight}`}
           onClick={handleNextFeatured}
-          aria-label="Next project"
+          aria-label={nextProjectAriaLabel}
         >
           ›
         </button>
@@ -206,7 +238,7 @@ export const ProjectsPage = memo(function ProjectsPage() {
           type="button"
           className={styles.scrollButton}
           onClick={handleScrollToGrid}
-          aria-label="Scroll to all projects"
+          aria-label={scrollToAllAriaLabel}
         >
           ˅
         </button>
@@ -214,9 +246,9 @@ export const ProjectsPage = memo(function ProjectsPage() {
 
       <section className={styles.allProjectsSection} ref={gridRef}>
         <div className={styles.sectionHeader}>
-          <h2 className={styles.sectionTitle}>ALL PROJECTS</h2>
+          <h2 className={styles.sectionTitle}>{allProjectsTitle}</h2>
 
-          <div className={styles.yearFilter} role="tablist" aria-label="Year filter">
+          <div className={styles.yearFilter} role="tablist" aria-label={yearFilterAriaLabel}>
             {years.map((year) => {
               const isActive = year === selectedYear
 

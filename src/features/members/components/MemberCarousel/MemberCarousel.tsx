@@ -1,4 +1,5 @@
 import { memo, useMemo } from 'react'
+import { text } from '../../../../content/text/textService'
 import type { MemberProfile } from '../../data/members'
 import styles from './MemberCarousel.module.css'
 
@@ -9,6 +10,8 @@ interface MemberCarouselProps {
   onSelectMember: (memberId: string) => void
   onPrevMember: () => void
   onNextMember: () => void
+  onPrevYear: () => void
+  onNextYear: () => void
 }
 
 function getThumbRoleClassName(roleKey: MemberProfile['roles'][number]['key']): string {
@@ -42,7 +45,15 @@ export const MemberCarousel = memo(function MemberCarousel({
   onSelectMember,
   onPrevMember,
   onNextMember,
+  onPrevYear,
+  onNextYear,
 }: MemberCarouselProps) {
+  const sectionAriaLabel = text('members', 'carousel.sectionAria', 'Member carousel')
+  const previousAriaLabel = text('members', 'carousel.previousAria', 'Previous member')
+  const nextAriaLabel = text('members', 'carousel.nextAria', 'Next member')
+  const previousYearAriaLabel = text('members', 'carousel.previousYearAria', 'Previous year')
+  const nextYearAriaLabel = text('members', 'carousel.nextYearAria', 'Next year')
+  const viewSuffix = text('members', 'carousel.viewSuffix', '보기')
   const selectedIndex = members.findIndex((member) => member.id === selectedMemberId)
 
   const visibleMembers = useMemo(() => {
@@ -57,12 +68,12 @@ export const MemberCarousel = memo(function MemberCarousel({
   }, [members, selectedIndex])
 
   return (
-    <section className={styles.section} aria-label="Member carousel">
+    <section className={styles.section} aria-label={sectionAriaLabel}>
       <button
         type="button"
         className={`${styles.navButton} ${styles.leftButton}`}
         onClick={onPrevMember}
-        aria-label="Previous member"
+        aria-label={previousAriaLabel}
       >
         ←
       </button>
@@ -76,7 +87,7 @@ export const MemberCarousel = memo(function MemberCarousel({
               type="button"
               className={`${styles.thumbCard} ${isSelected ? styles.thumbCardSelected : ''}`}
               onClick={() => onSelectMember(member.id)}
-              aria-label={`${member.name} 보기`}
+              aria-label={`${member.name} ${viewSuffix}`}
             >
               <img src={member.image} alt="" />
               <div className={styles.thumbOverlay} />
@@ -106,12 +117,32 @@ export const MemberCarousel = memo(function MemberCarousel({
         type="button"
         className={`${styles.navButton} ${styles.rightButton}`}
         onClick={onNextMember}
-        aria-label="Next member"
+        aria-label={nextAriaLabel}
       >
         →
       </button>
 
-      <p className={styles.yearLabel}>{`< ${yearLabel} >`}</p>
+      <div className={styles.yearLabelNavigator}>
+        <button
+          type="button"
+          className={styles.yearArrowButton}
+          onClick={onPrevYear}
+          aria-label={previousYearAriaLabel}
+        >
+          {'<'}
+        </button>
+
+        <p className={styles.yearLabel}>{yearLabel}</p>
+
+        <button
+          type="button"
+          className={styles.yearArrowButton}
+          onClick={onNextYear}
+          aria-label={nextYearAriaLabel}
+        >
+          {'>'}
+        </button>
+      </div>
 
       <div className={styles.leftFade} aria-hidden="true" />
       <div className={styles.rightFade} aria-hidden="true" />

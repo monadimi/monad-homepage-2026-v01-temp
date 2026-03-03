@@ -1,4 +1,5 @@
 import { memo, useMemo } from 'react'
+import { text } from '../../../../content/text/textService'
 import { MonadLogo } from '../../../home/components/MonadLogo/MonadLogo'
 import type { MemberYearGroup } from '../../data/members'
 import styles from './HeroMemberStrip.module.css'
@@ -10,6 +11,7 @@ interface HeroMemberStripProps {
 export const HeroMemberStrip = memo(function HeroMemberStrip({
   yearGroup,
 }: HeroMemberStripProps) {
+  const sectionAriaLabel = text('members', 'hero.sectionAria', 'Members hero strip')
   const marqueeMembers = useMemo(() => {
     if (yearGroup.members.length === 0) {
       return []
@@ -19,7 +21,7 @@ export const HeroMemberStrip = memo(function HeroMemberStrip({
   }, [yearGroup.members])
 
   return (
-    <section className={styles.section} aria-label="Members hero strip">
+    <section className={styles.section} aria-label={sectionAriaLabel}>
       <div className={styles.marqueeTrack}>
         {marqueeMembers.map((member, index) => (
           <article className={styles.heroCard} key={`${member.id}-${index}`} aria-hidden="true">

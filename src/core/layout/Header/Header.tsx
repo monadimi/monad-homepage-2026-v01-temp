@@ -3,6 +3,7 @@
 import { memo, useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import monadLogoWithText from '../../../assets/monad-logo-wtxt.png'
+import { text } from '../../../content/text/textService'
 import { Container } from '../Container/Container'
 import { NavigationService } from '../../navigation/NavigationService'
 import styles from './Header.module.css'
@@ -22,6 +23,14 @@ function getMobileNavLinkClassName(isActive: boolean): string {
 export const Header = memo(function Header() {
   // 모바일 메뉴 열림 상태
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const homeAriaLabel = text('global', 'header.homeAria', 'Go to MONAD home')
+  const menuToggleAriaLabel = text(
+    'global',
+    'header.menuToggleAria',
+    'Toggle navigation menu',
+  )
+  const desktopNavAriaLabel = text('global', 'header.desktopNavAria', 'Global navigation')
+  const mobileNavAriaLabel = text('global', 'header.mobileNavAria', 'Mobile navigation')
 
   return (
     <header className={styles.header}>
@@ -32,7 +41,7 @@ export const Header = memo(function Header() {
             to="/"
             end
             className={styles.mobileBrandLink}
-            aria-label="Go to MONAD home"
+            aria-label={homeAriaLabel}
             onClick={() => setIsMenuOpen(false)}
           >
             <img src={monadLogoWithText} alt="MONAD" className={styles.mobileBrandImage} />
@@ -41,7 +50,7 @@ export const Header = memo(function Header() {
           <button
             type="button"
             className={styles.hamburgerButton}
-            aria-label="Toggle navigation menu"
+            aria-label={menuToggleAriaLabel}
             aria-controls="mobile-global-navigation"
             aria-expanded={isMenuOpen}
             onClick={() => setIsMenuOpen((current) => !current)}
@@ -63,7 +72,7 @@ export const Header = memo(function Header() {
             />
           </button>
 
-          <nav className={styles.desktopNavigation} aria-label="Global navigation">
+          <nav className={styles.desktopNavigation} aria-label={desktopNavAriaLabel}>
             <ul className={styles.navList}>
               {navItems.map((item) => (
                 <li key={item.key} className={styles.navItem}>
@@ -88,7 +97,7 @@ export const Header = memo(function Header() {
           <nav
             id="mobile-global-navigation"
             className={styles.mobileNavigation}
-            aria-label="Mobile navigation"
+            aria-label={mobileNavAriaLabel}
           >
             <ul className={styles.mobileNavList}>
               {navItems.map((item) => (

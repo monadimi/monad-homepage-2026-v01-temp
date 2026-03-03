@@ -1,0 +1,66 @@
+{
+  "id": "projects",
+  "locale": "ko",
+  "entries": [
+    {
+      "id": "common.platformChip",
+      "value": "AI-Powered Analysis Platform",
+      "description": "Projects 공통 플랫폼 칩 문구"
+    },
+    {
+      "id": "card.homeAria",
+      "value": "Go home",
+      "description": "프로젝트 카드 홈 아이콘 aria-label"
+    },
+    {
+      "id": "card.githubAria",
+      "value": "GitHub link",
+      "description": "프로젝트 카드 GitHub 아이콘 aria-label"
+    },
+    {
+      "id": "card.schoolLabel",
+      "value": "학교 선택",
+      "description": "프로젝트 카드 학교 선택 라벨"
+    },
+    {
+      "id": "card.schoolPlaceholder",
+      "value": "학교를 선택하세요",
+      "description": "프로젝트 카드 학교 선택 플레이스홀더"
+    },
+    {
+      "id": "hero.sectionAria",
+      "value": "Projects hero",
+      "description": "Projects 히어로 섹션 aria-label"
+    },
+    {
+      "id": "hero.brandLabel",
+      "value": "Projects",
+      "description": "Projects 히어로 로고 우측 텍스트"
+    },
+    {
+      "id": "hero.previousProjectAria",
+      "value": "Previous project",
+      "description": "히어로 이전 프로젝트 버튼 aria-label"
+    },
+    {
+      "id": "hero.nextProjectAria",
+      "value": "Next project",
+      "description": "히어로 다음 프로젝트 버튼 aria-label"
+    },
+    {
+      "id": "hero.scrollToAllAria",
+      "value": "Scroll to all projects",
+      "description": "히어로 하단 스크롤 버튼 aria-label"
+    },
+    {
+      "id": "section.allProjectsTitle",
+      "value": "ALL PROJECTS",
+      "description": "하단 전체 프로젝트 섹션 제목"
+    },
+    {
+      "id": "section.yearFilterAria",
+      "value": "Year filter",
+      "description": "연도 필터 영역 aria-label"
+    }
+  ]
+}

@@ -164,6 +164,30 @@
   letter-spacing: 0.03em;
 }
 
+.yearLabelNavigator {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.yearArrowButton {
+  width: 26px;
+  height: 26px;
+  border: none;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 22px;
+  line-height: 1;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  padding: 0;
+}
+
+.yearArrowButton:hover {
+  color: #4de6b3;
+}
+
 .leftFade,
 .rightFade {
   position: absolute;
@@ -266,5 +290,15 @@
   .leftFade,
   .rightFade {
     width: 44px;
+  }
+
+  .yearLabelNavigator {
+    gap: 8px;
+  }
+
+  .yearArrowButton {
+    width: 24px;
+    height: 24px;
+    font-size: 20px;
   }
 }

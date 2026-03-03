@@ -27,9 +27,24 @@
   line-height: 1;
 }
 
-.yearSelectorSection {
+.emptyState {
   width: 100%;
-  margin-top: -22px;
+  min-height: 220px;
+  display: grid;
+  place-items: center;
+  color: rgba(255, 255, 255, 0.74);
+  font-size: 18px;
+  text-align: center;
+  padding: 0 16px;
+  border-top: 0.75px solid rgba(255, 255, 255, 0.22);
+  border-bottom: 0.75px solid rgba(255, 255, 255, 0.22);
+}
+
+.yearSelectorSection {
+  position: relative;
+  z-index: 4;
+  width: 100%;
+  margin-top: 0;
   padding: 0 16px 24px;
   display: flex;
   justify-content: center;
@@ -69,7 +84,7 @@
   }
 
   .yearSelectorSection {
-    margin-top: -6px;
+    margin-top: 0;
     padding-bottom: 14px;
   }
 }
