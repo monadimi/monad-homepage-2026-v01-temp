@@ -77,20 +77,33 @@
 
 @media (max-width: 768px) {
   .section {
-    min-height: 250px;
-    padding: 24px 20px;
+    min-height: 0;
+    padding: 26px 16px;
   }
 
   .content {
-    gap: 8px;
+    width: min(100%, 520px);
+    gap: 12px;
   }
 
   .patternLayer {
-    transform: translateY(-6px);
+    opacity: 0.02;
+    transform: translateY(-4px);
   }
 
   .patternWord {
-    font-size: clamp(18px, 6.8vw, 28px);
+    font-size: clamp(16px, 6.2vw, 24px);
     animation-duration: 18s;
+  }
+
+  .title {
+    font-size: clamp(28px, 9vw, 36px);
+    line-height: 1.22;
+  }
+
+  .description {
+    font-size: 13px;
+    line-height: 1.62;
+    letter-spacing: 0.02em;
   }
 }

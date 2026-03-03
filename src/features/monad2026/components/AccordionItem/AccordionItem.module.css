@@ -71,7 +71,7 @@
 
 @media (max-width: 768px) {
   .trigger {
-    min-height: 32px;
+    min-height: 40px;
   }
 
   .icon {
@@ -81,6 +81,12 @@
   }
 
   .question {
+    font-size: 13px;
+    line-height: 1.5;
+  }
+
+  .answer {
+    font-size: 12px;
     line-height: 1.6;
   }
 }

@@ -1,0 +1,571 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 220;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  pointer-events: auto;
+}
+
+.backdrop {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at center, rgba(112, 187, 255, 0.1) 0%, rgba(7, 10, 16, 0.94) 55%),
+    #03060b;
+  animation: backdropIn 260ms ease-out both;
+}
+
+.ticketScene {
+  position: relative;
+  z-index: 3;
+  width: min(92vw, 460px);
+  transition:
+    opacity 220ms ease,
+    transform 220ms ease;
+}
+
+.ticketSceneHidden {
+  opacity: 0;
+  transform: scale(0.94);
+}
+
+.ticket {
+  --ticket-top-offset: 0px;
+  --ticket-bottom-offset: 0px;
+  --ticket-bottom-rotate: 0deg;
+  --hint-opacity: 1;
+  position: relative;
+  min-height: 244px;
+  border-radius: 14px;
+  border: 1px solid rgba(20, 28, 40, 0.3);
+  background: linear-gradient(180deg, #fff 0%, #f5f7fb 100%);
+  box-shadow:
+    0 24px 52px rgba(0, 0, 0, 0.42),
+    0 0 0 1px rgba(255, 255, 255, 0.72) inset;
+  overflow: hidden;
+  user-select: none;
+}
+
+.ticketDragging {
+  box-shadow:
+    0 28px 56px rgba(0, 0, 0, 0.5),
+    0 0 0 1px rgba(255, 255, 255, 0.86) inset;
+}
+
+.ticketNotchLeft,
+.ticketNotchRight {
+  position: absolute;
+  top: 50%;
+  width: 18px;
+  height: 18px;
+  border-radius: 999px;
+  background: #04070d;
+  transform: translateY(-50%);
+  z-index: 4;
+}
+
+.ticketNotchLeft {
+  left: -9px;
+}
+
+.ticketNotchRight {
+  right: -9px;
+}
+
+.ticketTopHalf {
+  position: relative;
+  z-index: 2;
+  min-height: calc(50% + 1px);
+  padding: 18px 22px 12px;
+  display: grid;
+  gap: 8px;
+  background:
+    linear-gradient(180deg, #ffffff 0%, #f8fbff 74%, #eef5ff 100%),
+    linear-gradient(90deg, rgba(61, 121, 201, 0.08) 0%, rgba(61, 121, 201, 0) 44%);
+  transform: translateY(var(--ticket-top-offset));
+  transition: transform 220ms ease;
+}
+
+.ticketHeaderRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.airlineName {
+  margin: 0;
+  color: #114087;
+  font-family: 'NEXON Lv2 Gothic', var(--typography-font-family-primary);
+  font-size: clamp(14px, 2.9vw, 17px);
+  letter-spacing: 0.08em;
+  font-weight: 700;
+}
+
+.boardingPassText {
+  margin: 0;
+  color: #6d7581;
+  font-family: 'NEXON Lv2 Gothic', var(--typography-font-family-primary);
+  font-size: clamp(10px, 2.2vw, 12px);
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.routeRow {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: center;
+  gap: 12px;
+}
+
+.routeCol {
+  display: grid;
+  gap: 2px;
+}
+
+.routeCode {
+  margin: 0;
+  color: #1d2430;
+  font-family: 'NEXON Lv2 Gothic', var(--typography-font-family-primary);
+  font-size: clamp(24px, 6vw, 34px);
+  line-height: 1.1;
+  letter-spacing: 0.03em;
+  font-weight: 700;
+}
+
+.routeCity {
+  margin: 0;
+  color: #5f6876;
+  font-family: 'NEXON Lv2 Gothic', var(--typography-font-family-primary);
+  font-size: clamp(10px, 2.2vw, 12px);
+  letter-spacing: 0.06em;
+}
+
+.routeArrow {
+  color: #2663bf;
+  font-size: clamp(18px, 4vw, 24px);
+  transform: translateY(-2px);
+}
+
+.infoGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 6px 10px;
+}
+
+.infoItem {
+  display: inline-flex;
+  gap: 5px;
+  color: #4c5564;
+  font-family: 'NEXON Lv2 Gothic', var(--typography-font-family-primary);
+  font-size: clamp(10px, 2.1vw, 12px);
+  letter-spacing: 0.03em;
+}
+
+.infoItem b {
+  color: #1c283d;
+  font-weight: 700;
+}
+
+.perforationLine {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 1px;
+  border-top: 2px dashed rgba(100, 112, 130, 0.48);
+  z-index: 3;
+}
+
+.ticketBottomHalf {
+  position: relative;
+  z-index: 2;
+  min-height: calc(50% - 1px);
+  padding: 14px 22px 16px;
+  display: grid;
+  align-content: center;
+  justify-items: stretch;
+  gap: 8px;
+  cursor: grab;
+  touch-action: none;
+  background: linear-gradient(180deg, #ffffff 0%, #f4f7fc 100%);
+  transform: translateY(var(--ticket-bottom-offset)) rotate(var(--ticket-bottom-rotate));
+  transform-origin: center top;
+  transition: transform 240ms cubic-bezier(0.2, 0.75, 0.2, 1);
+}
+
+.ticketBottomHalf:active {
+  cursor: grabbing;
+}
+
+.ticketBottomHalf:focus-visible {
+  outline: 2px solid rgba(37, 86, 173, 0.7);
+  outline-offset: -2px;
+}
+
+.dragHint {
+  margin: 0;
+  color: #2f3b50;
+  font-family: 'NEXON Lv2 Gothic', var(--typography-font-family-primary);
+  font-size: clamp(11px, 2.4vw, 13px);
+  letter-spacing: 0.03em;
+  text-align: center;
+  opacity: var(--hint-opacity);
+}
+
+.bottomTopRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.stamp {
+  color: #2a3448;
+  font-family: 'D2Coding', var(--typography-font-family-primary);
+  font-size: clamp(10px, 2.1vw, 12px);
+  letter-spacing: 0.07em;
+}
+
+.seatBadge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 52px;
+  min-height: 26px;
+  padding: 2px 8px;
+  border-radius: 7px;
+  background: #143f82;
+  color: #ffffff;
+  font-family: 'NEXON Lv2 Gothic', var(--typography-font-family-primary);
+  font-size: clamp(12px, 2.5vw, 14px);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+}
+
+.barcode {
+  width: 100%;
+  height: 20px;
+  border-radius: 4px;
+  background: repeating-linear-gradient(
+    90deg,
+    #1b2230 0,
+    #1b2230 2px,
+    #ffffff 2px,
+    #ffffff 4px,
+    #1b2230 4px,
+    #1b2230 5px,
+    #ffffff 5px,
+    #ffffff 8px
+  );
+  border: 1px solid rgba(29, 41, 63, 0.26);
+}
+
+.ticketCode {
+  margin: 0;
+  color: #667186;
+  font-family: 'D2Coding', var(--typography-font-family-primary);
+  font-size: clamp(9px, 1.95vw, 11px);
+  letter-spacing: 0.08em;
+  text-align: center;
+}
+
+.tornParts {
+  position: absolute;
+  z-index: 4;
+  width: min(92vw, 460px);
+  height: 244px;
+  pointer-events: none;
+  transition: opacity 220ms ease;
+}
+
+.tornPartsHidden {
+  opacity: 0;
+}
+
+.ticketPart {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  background: linear-gradient(180deg, #ffffff 0%, #f0f4fa 100%);
+  border: 1px solid rgba(20, 28, 40, 0.24);
+  overflow: hidden;
+  transition:
+    transform 640ms cubic-bezier(0.19, 0.8, 0.24, 1),
+    opacity 320ms ease;
+}
+
+.partShadow {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(14, 25, 36, 0.08) 0%, rgba(14, 25, 36, 0) 100%);
+}
+
+.ticketPartTop {
+  top: 0;
+  height: calc(50% - 2px);
+  border-bottom: 2px dashed rgba(100, 112, 130, 0.5);
+  border-radius: 14px 14px 2px 2px;
+  transform: translateY(-46px) rotate(-4deg);
+}
+
+.ticketPartBottom {
+  bottom: 0;
+  height: calc(50% - 2px);
+  border-top: 2px dashed rgba(100, 112, 130, 0.5);
+  border-radius: 2px 2px 14px 14px;
+  transform: translateY(46px) rotate(4deg);
+}
+
+.ticketPartLeaveTop {
+  transform: translate(-94px, -128px) rotate(-14deg);
+  opacity: 0;
+}
+
+.ticketPartLeaveBottom {
+  transform: translate(94px, 128px) rotate(14deg);
+  opacity: 0;
+}
+
+.warpLayer {
+  --speed-multiplier: 1;
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  opacity: 0;
+  perspective: 960px;
+  transition: opacity 280ms ease;
+}
+
+.warpLayerVisible {
+  opacity: 1;
+  animation: warpCamera 1200ms ease-out both;
+}
+
+.warpVignette {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at center, rgba(162, 215, 255, 0.14) 0%, rgba(162, 215, 255, 0) 38%),
+    radial-gradient(circle at center, rgba(0, 0, 0, 0) 36%, rgba(0, 0, 0, 0.78) 100%);
+  mix-blend-mode: screen;
+}
+
+.warpCoreGlow {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: min(84vw, 620px);
+  aspect-ratio: 1 / 1;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle, rgba(211, 237, 255, 0.35) 0%, rgba(204, 230, 255, 0) 70%);
+  filter: blur(1px);
+}
+
+.warpRingTrack {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+}
+
+.warpRing {
+  position: absolute;
+  width: min(70vw, 520px);
+  aspect-ratio: 1 / 1;
+  border-radius: 999px;
+  border: 1px solid rgba(194, 229, 255, 0.34);
+  box-shadow: 0 0 24px rgba(144, 214, 255, 0.2);
+  opacity: 0;
+  animation: warpRing 1.2s linear infinite;
+}
+
+.warpRing:nth-child(2) {
+  animation-delay: 0.3s;
+}
+
+.warpRing:nth-child(3) {
+  animation-delay: 0.6s;
+}
+
+.warpRing:nth-child(4) {
+  animation-delay: 0.9s;
+}
+
+.warpSlow {
+  --speed-multiplier: 1.1;
+}
+
+.warpMedium {
+  --speed-multiplier: 0.64;
+}
+
+.warpFast {
+  --speed-multiplier: 0.3;
+}
+
+.streak {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: var(--streak-width);
+  height: var(--streak-length);
+  border-radius: 999px;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.86) 45%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  opacity: 0;
+  filter: blur(0.3px);
+  transform: translate(-50%, -50%) rotate(var(--angle));
+  transform-origin: center center;
+  animation-name: streakWarp;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-duration: calc(var(--dur) * var(--speed-multiplier));
+  animation-delay: var(--delay);
+  mix-blend-mode: screen;
+}
+
+.star {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: var(--size);
+  height: var(--size);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.55);
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  animation-name: starWarp;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-duration: calc(var(--dur) * var(--speed-multiplier));
+  animation-delay: var(--delay);
+  mix-blend-mode: screen;
+}
+
+@keyframes backdropIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes starWarp {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) translate(0, 0) scale(0.18);
+  }
+
+  8% {
+    opacity: var(--particle-opacity);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) translate(var(--tx), var(--ty)) scale(2.6);
+  }
+}
+
+@keyframes streakWarp {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) translate(0, 0) rotate(var(--angle)) scaleY(0.5);
+  }
+
+  14% {
+    opacity: var(--particle-opacity);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) translate(var(--tx), var(--ty)) rotate(var(--angle))
+      scaleY(1.45);
+  }
+}
+
+@keyframes warpRing {
+  0% {
+    opacity: 0;
+    transform: scale(0.25);
+  }
+
+  24% {
+    opacity: 0.45;
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(1.65);
+  }
+}
+
+@keyframes warpCamera {
+  0% {
+    transform: scale(0.96);
+    filter: blur(0.4px);
+  }
+
+  30% {
+    transform: scale(1.02);
+    filter: blur(0);
+  }
+
+  100% {
+    transform: scale(1);
+    filter: blur(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .ticket,
+  .tornParts {
+    min-height: 210px;
+    height: 210px;
+  }
+
+  .ticket {
+    border-radius: 10px;
+  }
+
+  .ticketTopHalf {
+    padding: 14px 16px 10px;
+    gap: 8px;
+  }
+
+  .ticketBottomHalf {
+    padding: 10px 16px 12px;
+    gap: 8px;
+  }
+
+  .infoGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 6px;
+  }
+
+  .seatBadge {
+    min-width: 46px;
+    min-height: 22px;
+  }
+
+  .barcode {
+    height: 16px;
+  }
+
+  .ticketPartTop {
+    border-radius: 10px 10px 2px 2px;
+  }
+
+  .ticketPartBottom {
+    border-radius: 2px 2px 10px 10px;
+  }
+}

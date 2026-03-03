@@ -1,7 +1,8 @@
 .section {
   position: relative;
   overflow: hidden;
-  height: clamp(360px, 55.6vw, 800px);
+  height: 100%;
+  min-height: clamp(360px, 55.6vw, 800px);
   isolation: isolate;
 }
 
@@ -47,12 +48,17 @@
 }
 
 @media (max-width: 768px) {
+  .section {
+    min-height: clamp(360px, 64svh, 520px);
+  }
+
   .content {
     gap: 8px;
-    padding: 20px 14px 44px;
+    padding: 26px 16px 48px;
   }
 
   .title {
+    font-size: clamp(38px, 11.6vw, 64px);
     line-height: 1.4;
   }
 }

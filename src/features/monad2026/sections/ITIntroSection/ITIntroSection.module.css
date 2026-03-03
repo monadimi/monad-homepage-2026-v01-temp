@@ -4,11 +4,27 @@
 }
 
 .grid {
-  width: 100%;
+  width: min(100%, 980px);
   display: grid;
   grid-template-columns: minmax(0, 1fr) clamp(160px, 26vw, 400px);
   align-items: center;
   gap: clamp(20px, 3vw, 40px);
+  margin: 0 auto;
+}
+
+.dockLeft .grid {
+  margin-left: 0;
+  margin-right: auto;
+}
+
+.dockRight .grid {
+  margin-left: auto;
+  margin-right: 0;
+}
+
+.dockCenter .grid {
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .copy {
@@ -36,20 +52,49 @@
 @media (max-width: 980px) {
   .grid {
     grid-template-columns: 1fr;
+    gap: 16px;
   }
 
   .mediaBox {
-    width: min(100%, 260px);
-    justify-self: end;
+    width: min(100%, 320px);
+    justify-self: start;
   }
 }
 
 @media (max-width: 768px) {
   .section {
-    padding: 26px 20px 22px;
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    padding: 16px;
+    background:
+      linear-gradient(
+        102deg,
+        rgba(6, 10, 13, 0.9) 0%,
+        rgba(6, 10, 13, 0.82) 52%,
+        rgba(6, 10, 13, 0.66) 100%
+      ),
+      url('../../../../assets/monad-2026-intro-it.svg') center center / cover no-repeat;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 10px;
+  }
+
+  .grid {
+    gap: 0;
+  }
+
+  .copy {
+    gap: 8px;
+    width: min(100%, 340px);
+  }
+
+  .description {
+    font-size: 13px;
+    line-height: 1.62;
+    letter-spacing: 0.02em;
   }
 
   .mediaBox {
-    width: min(100%, 120px);
+    display: none;
   }
 }

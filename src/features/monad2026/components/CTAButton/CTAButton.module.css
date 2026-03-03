@@ -60,9 +60,9 @@
 @media (max-width: 768px) {
   .button {
     min-width: 94px;
-    min-height: 34px;
-    padding: 3px 16px;
-    font-size: 12px;
-    line-height: 1.9;
+    min-height: 38px;
+    padding: 4px 16px;
+    font-size: 13px;
+    line-height: 1.7;
   }
 }

@@ -2,6 +2,7 @@
   position: relative;
   overflow: hidden;
   background: #0d0d0d;
+  --hijack-pane-height: calc(100svh - var(--layout-header-height));
 }
 
 .page::before {
@@ -41,4 +42,147 @@
   width: 100%;
   margin: 0 auto;
   background: transparent;
+}
+
+.hijackPane {
+  position: relative;
+  min-height: var(--hijack-pane-height);
+  display: flex;
+  align-items: center;
+  opacity: 0.38;
+  transform: translateY(32px) scale(0.988);
+  transition:
+    opacity 520ms ease,
+    transform 600ms cubic-bezier(0.2, 0.7, 0.2, 1);
+  will-change: transform, opacity;
+}
+
+.hijackPane > * {
+  width: 100%;
+}
+
+.hijackPaneActive {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.paneCenter {
+  --pane-fit-scale: 1;
+  width: 100%;
+  min-height: var(--hijack-pane-height);
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  overflow: hidden;
+}
+
+.paneCenter > * {
+  width: 100%;
+  transform-origin: center center;
+  transform: scale(var(--pane-fit-scale));
+  transition: transform 260ms ease;
+}
+
+.fullBleedPaneCenter {
+  align-content: stretch;
+}
+
+.fullBleedPaneCenter > * {
+  min-height: var(--hijack-pane-height);
+  height: var(--hijack-pane-height);
+  transform: none;
+}
+
+.introPane {
+  padding: clamp(10px, 2vh, 22px) 0;
+}
+
+.introStack {
+  width: 100%;
+  min-height: 100%;
+  display: grid;
+  grid-template-rows: repeat(2, minmax(0, 1fr));
+  align-content: center;
+}
+
+.introStack > * {
+  min-height: 0;
+}
+
+.pageNoHijack .hijackPane {
+  min-height: auto;
+  padding: 10px 0;
+  opacity: 1;
+  transform: none;
+  transition: none;
+}
+
+.pageNoHijack .paneCenter {
+  min-height: auto;
+  display: block;
+  overflow: visible;
+}
+
+.pageNoHijack .paneCenter > * {
+  transform: none;
+  transition: none;
+}
+
+.pageNoHijack .fullBleedPaneCenter > * {
+  min-height: auto;
+  height: auto;
+}
+
+.pageNoHijack .introPane {
+  padding: 0;
+}
+
+.pageNoHijack .introStack {
+  min-height: auto;
+  grid-template-rows: none;
+  gap: 12px;
+}
+
+@media (max-width: 1024px) {
+  .page {
+    --mobile-content-max-width: 560px;
+  }
+
+  .hijackPane {
+    min-height: auto;
+    padding: 10px 0;
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .paneCenter {
+    min-height: auto;
+    display: block;
+    overflow: visible;
+  }
+
+  .paneCenter > * {
+    width: 100%;
+    max-width: var(--mobile-content-max-width);
+    margin: 0 auto;
+    transform: none;
+    transition: none;
+  }
+
+  .fullBleedPaneCenter > * {
+    max-width: none;
+    min-height: auto;
+    height: auto;
+  }
+
+  .introPane {
+    padding: 0;
+  }
+
+  .introStack {
+    min-height: auto;
+    grid-template-rows: none;
+    gap: 12px;
+  }
 }

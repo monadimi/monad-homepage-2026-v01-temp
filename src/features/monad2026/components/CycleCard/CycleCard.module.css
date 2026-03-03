@@ -71,3 +71,26 @@
     font-size: 11px;
   }
 }
+
+@media (max-width: 768px) {
+  .card {
+    min-height: 212px;
+  }
+
+  .copy {
+    left: 12px;
+    right: 12px;
+    bottom: 12px;
+    gap: 4px;
+  }
+
+  .title {
+    font-size: clamp(18px, 6vw, 24px);
+    line-height: 1.25;
+  }
+
+  .subtitle {
+    font-size: 12px;
+    line-height: 1.35;
+  }
+}

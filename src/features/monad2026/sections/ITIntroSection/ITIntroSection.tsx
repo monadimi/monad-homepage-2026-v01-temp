@@ -3,9 +3,18 @@ import { memo } from 'react'
 import { SectionTitle } from '../../components/SectionTitle/SectionTitle'
 import styles from './ITIntroSection.module.css'
 
-export const ITIntroSection = memo(function ITIntroSection() {
+interface ITIntroSectionProps {
+  dock?: 'left' | 'right' | 'center'
+}
+
+export const ITIntroSection = memo(function ITIntroSection({
+  dock = 'center',
+}: ITIntroSectionProps) {
+  const dockClassName =
+    dock === 'right' ? styles.dockRight : dock === 'left' ? styles.dockLeft : styles.dockCenter
+
   return (
-    <section className={styles.section} aria-label="IT 중심 동아리">
+    <section className={`${styles.section} ${dockClassName}`.trim()} aria-label="IT 중심 동아리">
       <div className={styles.grid}>
         <div className={styles.copy}>
           <SectionTitle text="IT 중심 동아리" />

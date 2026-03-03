@@ -8,6 +8,7 @@ import {
 } from 'react-router-dom'
 import { Footer } from '../core/layout/Footer/Footer'
 import { Header } from '../core/layout/Header/Header'
+import { ScrollTopButton } from '../core/layout/ScrollTopButton/ScrollTopButton'
 import {
   NavigationService,
   type NavigableRoute,
@@ -42,6 +43,8 @@ const AppLayout = memo(function AppLayout() {
       <main className={styles.mainContent}>
         <Outlet />
       </main>
+      {/* 우측 하단 고정 맨 위 버튼입니다. */}
+      <ScrollTopButton />
       <Footer />
     </div>
   )
