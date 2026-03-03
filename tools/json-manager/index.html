@@ -1,0 +1,1039 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MONAD Data Manager (Local)</title>
+    <style>
+      :root {
+        --bg: #f3f5f9;
+        --surface: #ffffff;
+        --surface-soft: #f8fafc;
+        --line: #d8dee9;
+        --text: #1d2733;
+        --muted: #607184;
+        --primary: #0ea5a3;
+        --primary-soft: #e6f8f7;
+        --danger: #e53935;
+        --shadow: 0 10px 30px rgba(17, 34, 68, 0.08);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: 'Pretendard', 'Noto Sans KR', -apple-system, BlinkMacSystemFont, 'Segoe UI',
+          sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        height: 100vh;
+        overflow: hidden;
+      }
+
+      .app {
+        height: 100vh;
+        display: grid;
+        grid-template-columns: 280px minmax(0, 1fr);
+        overflow: hidden;
+      }
+
+      .sidebar {
+        background: var(--surface);
+        border-right: 1px solid var(--line);
+        padding: 24px 16px;
+        display: grid;
+        align-content: start;
+        gap: 18px;
+        height: 100vh;
+        overflow: auto;
+      }
+
+      .brand {
+        display: grid;
+        gap: 8px;
+        padding: 0 8px;
+      }
+
+      .brand h1 {
+        margin: 0;
+        font-size: 19px;
+      }
+
+      .brand p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 1.45;
+      }
+
+      .tabs {
+        display: grid;
+        gap: 8px;
+      }
+
+      .tab {
+        width: 100%;
+        border: 1px solid transparent;
+        border-radius: 12px;
+        background: transparent;
+        color: inherit;
+        text-align: left;
+        padding: 12px;
+        cursor: pointer;
+        display: grid;
+        gap: 4px;
+      }
+
+      .tab:hover {
+        background: var(--surface-soft);
+      }
+
+      .tab.active {
+        border-color: #bde8e6;
+        background: var(--primary-soft);
+      }
+
+      .tab-title {
+        font-size: 14px;
+        font-weight: 700;
+      }
+
+      .tab-meta {
+        font-size: 12px;
+        color: var(--muted);
+      }
+
+      .content {
+        padding: 26px;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        height: 100vh;
+        overflow: auto;
+        min-height: 0;
+      }
+
+      .top-card {
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        box-shadow: var(--shadow);
+        padding: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+      }
+
+      .top-card h2 {
+        margin: 0;
+        font-size: 24px;
+      }
+
+      .top-card p {
+        margin: 6px 0 0;
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      .actions {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .btn {
+        border: 1px solid var(--line);
+        background: var(--surface);
+        color: var(--text);
+        border-radius: 10px;
+        padding: 10px 14px;
+        font-size: 14px;
+        cursor: pointer;
+      }
+
+      .btn:hover {
+        background: var(--surface-soft);
+      }
+
+      .btn.primary {
+        border-color: var(--primary);
+        color: #fff;
+        background: var(--primary);
+      }
+
+      .btn.primary:hover {
+        filter: brightness(0.95);
+      }
+
+      .btn.danger {
+        border-color: #ef9a9a;
+        color: #b71c1c;
+        background: #ffebee;
+      }
+
+      .btn.danger:hover {
+        background: #ffcdd2;
+      }
+
+      .btn.small {
+        padding: 6px 10px;
+        font-size: 12px;
+      }
+
+      .status {
+        min-height: 22px;
+        font-size: 13px;
+        color: var(--muted);
+      }
+
+      .status.success {
+        color: #1f8f4a;
+      }
+
+      .status.error {
+        color: var(--danger);
+      }
+
+      .table-card {
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        box-shadow: var(--shadow);
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        min-height: 0;
+      }
+
+      .table-wrap {
+        overflow: auto;
+        flex: 1;
+        min-height: 0;
+      }
+
+      table {
+        width: 100%;
+        min-width: 1080px;
+        border-collapse: collapse;
+      }
+
+      th,
+      td {
+        border-bottom: 1px solid #edf0f4;
+        padding: 11px 12px;
+        text-align: left;
+        vertical-align: top;
+      }
+
+      th {
+        position: sticky;
+        top: 0;
+        background: #f9fbfd;
+        font-size: 13px;
+        color: #4f6072;
+        font-weight: 700;
+      }
+
+      td {
+        font-size: 13px;
+        line-height: 1.48;
+      }
+
+      tr:nth-child(even) td {
+        background: #fcfdff;
+      }
+
+      .cell-value {
+        display: block;
+        max-width: 340px;
+        white-space: pre-wrap;
+        word-break: break-word;
+      }
+
+      .row-actions {
+        display: flex;
+        gap: 6px;
+        align-items: center;
+      }
+
+      .empty {
+        padding: 28px;
+        color: var(--muted);
+        text-align: center;
+      }
+
+      .modal-backdrop {
+        position: fixed;
+        inset: 0;
+        background: rgba(15, 23, 42, 0.34);
+        display: grid;
+        place-items: center;
+        padding: 18px;
+        z-index: 50;
+      }
+
+      .modal-backdrop.hidden {
+        display: none;
+      }
+
+      .modal {
+        width: min(780px, 100%);
+        max-height: min(84vh, 980px);
+        overflow: auto;
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        box-shadow: var(--shadow);
+      }
+
+      .modal header {
+        padding: 16px 18px;
+        border-bottom: 1px solid #edf0f4;
+        display: grid;
+        gap: 4px;
+      }
+
+      .modal header h3 {
+        margin: 0;
+        font-size: 18px;
+      }
+
+      .modal header p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      .form-grid {
+        padding: 16px 18px;
+        display: grid;
+        gap: 12px;
+      }
+
+      .field {
+        display: grid;
+        gap: 6px;
+      }
+
+      .field label {
+        font-size: 13px;
+        font-weight: 700;
+        color: #334155;
+      }
+
+      .required {
+        color: var(--danger);
+      }
+
+      .field input,
+      .field textarea {
+        width: 100%;
+        border: 1px solid var(--line);
+        border-radius: 9px;
+        padding: 10px 11px;
+        font-size: 13px;
+        line-height: 1.45;
+        font-family: inherit;
+        background: #fff;
+        color: var(--text);
+      }
+
+      .field textarea {
+        min-height: 92px;
+        resize: vertical;
+        font-family: 'D2Coding', 'SFMono-Regular', Consolas, monospace;
+      }
+
+      .field small {
+        color: var(--muted);
+        font-size: 12px;
+      }
+
+      .stack-editor {
+        border: 1px solid #e2e8f0;
+        border-radius: 10px;
+        background: #f8fafc;
+        padding: 10px;
+        display: grid;
+        gap: 8px;
+      }
+
+      .stack-list {
+        display: grid;
+        gap: 8px;
+      }
+
+      .stack-row {
+        display: grid;
+        grid-template-columns: 1.1fr 1.1fr 1fr 0.7fr auto;
+        gap: 6px;
+        align-items: center;
+        background: #fff;
+        border: 1px solid #dbe4ef;
+        border-radius: 8px;
+        padding: 6px;
+      }
+
+      .stack-row input {
+        padding: 8px 9px;
+        border-radius: 8px;
+      }
+
+      .stack-toolbar {
+        display: flex;
+        justify-content: flex-end;
+      }
+
+      .stack-empty {
+        padding: 8px;
+        border-radius: 8px;
+        border: 1px dashed #cbd5e1;
+        color: var(--muted);
+        font-size: 12px;
+        text-align: center;
+      }
+
+      .modal footer {
+        position: sticky;
+        bottom: 0;
+        background: #fff;
+        border-top: 1px solid #edf0f4;
+        padding: 12px 18px;
+        display: flex;
+        justify-content: flex-end;
+        gap: 8px;
+      }
+
+      @media (max-width: 960px) {
+        body {
+          height: auto;
+          overflow: auto;
+        }
+
+        .app {
+          height: auto;
+          grid-template-columns: 1fr;
+          overflow: visible;
+        }
+
+        .sidebar {
+          height: auto;
+          border-right: 0;
+          border-bottom: 1px solid var(--line);
+          gap: 14px;
+        }
+
+        .tabs {
+          display: flex;
+          overflow: auto;
+          padding-bottom: 4px;
+        }
+
+        .tab {
+          min-width: 220px;
+        }
+
+        .content {
+          height: auto;
+          overflow: visible;
+          padding: 14px;
+          min-height: auto;
+        }
+
+        .top-card {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+
+        .table-card {
+          flex: initial;
+          min-height: auto;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="app">
+      <aside class="sidebar">
+        <section class="brand">
+          <h1>MONAD Data Manager</h1>
+          <p>
+            로컬 전용 데이터 관리 도구입니다.<br />
+            사이드바는 고정되고, 우측 내용만 스크롤됩니다.
+          </p>
+        </section>
+        <nav id="tabs" class="tabs" aria-label="데이터 탭"></nav>
+      </aside>
+
+      <main class="content">
+        <section class="top-card">
+          <div>
+            <h2 id="datasetTitle">데이터 탭을 선택하세요</h2>
+            <p id="datasetDesc"></p>
+          </div>
+          <div class="actions">
+            <button id="refreshBtn" class="btn" type="button">새로고침</button>
+            <button id="addBtn" class="btn primary" type="button" disabled>새 데이터 추가</button>
+          </div>
+        </section>
+
+        <p id="status" class="status" aria-live="polite"></p>
+
+        <section class="table-card">
+          <div id="tableWrap" class="table-wrap"></div>
+        </section>
+      </main>
+    </div>
+
+    <div id="modalBackdrop" class="modal-backdrop hidden" role="dialog" aria-modal="true">
+      <div class="modal">
+        <header>
+          <h3 id="modalTitle">새 데이터 추가</h3>
+          <p id="modalDesc">필드를 입력하고 등록하면 JSON에 자동 반영됩니다.</p>
+        </header>
+        <form id="addForm" class="form-grid"></form>
+        <footer>
+          <button id="cancelBtn" type="button" class="btn">취소</button>
+          <button id="submitBtn" type="button" class="btn primary">등록</button>
+        </footer>
+      </div>
+    </div>
+
+    <script>
+      const tabsEl = document.getElementById('tabs')
+      const datasetTitleEl = document.getElementById('datasetTitle')
+      const datasetDescEl = document.getElementById('datasetDesc')
+      const statusEl = document.getElementById('status')
+      const tableWrapEl = document.getElementById('tableWrap')
+      const refreshBtn = document.getElementById('refreshBtn')
+      const addBtn = document.getElementById('addBtn')
+      const modalBackdrop = document.getElementById('modalBackdrop')
+      const modalTitleEl = document.getElementById('modalTitle')
+      const modalDescEl = document.getElementById('modalDesc')
+      const addFormEl = document.getElementById('addForm')
+      const cancelBtn = document.getElementById('cancelBtn')
+      const submitBtn = document.getElementById('submitBtn')
+
+      const state = {
+        datasets: [],
+        activeId: '',
+        activeDetail: null,
+        modalMode: 'add',
+        editingKey: null,
+      }
+
+      function setStatus(message, type = '') {
+        statusEl.textContent = message
+        statusEl.className = `status ${type}`.trim()
+      }
+
+      async function requestJson(url, options) {
+        const response = await fetch(url, options)
+        const payload = await response.json()
+
+        if (!response.ok) {
+          throw new Error(payload.error || '요청 처리 중 오류가 발생했습니다.')
+        }
+
+        return payload
+      }
+
+      function renderTabs() {
+        tabsEl.innerHTML = ''
+
+        state.datasets.forEach((dataset) => {
+          const btn = document.createElement('button')
+          btn.type = 'button'
+          btn.className = `tab ${dataset.id === state.activeId ? 'active' : ''}`.trim()
+          btn.dataset.id = dataset.id
+          btn.innerHTML = `
+            <span class="tab-title">${dataset.label}</span>
+            <span class="tab-meta">${dataset.rowCount} rows</span>
+          `
+          btn.addEventListener('click', () => selectDataset(dataset.id))
+          tabsEl.appendChild(btn)
+        })
+      }
+
+      function escapeHtml(text) {
+        return String(text)
+          .replaceAll('&', '&amp;')
+          .replaceAll('<', '&lt;')
+          .replaceAll('>', '&gt;')
+      }
+
+      function formatCellValue(value) {
+        if (value === null || value === undefined || value === '') return '-'
+
+        if (Array.isArray(value)) {
+          if (value.every((item) => item === null || ['string', 'number', 'boolean'].includes(typeof item))) {
+            return value.join(', ')
+          }
+          // 스택 배열처럼 객체 리스트면 핵심 정보만 읽기 좋게 축약합니다.
+          if (value.every((item) => item && typeof item === 'object' && !Array.isArray(item))) {
+            return value
+              .map((item) => {
+                const label = item.label ?? item.id ?? 'item'
+                const ratio = typeof item.value === 'number' ? `(${item.value})` : ''
+                return `${label}${ratio}`
+              })
+              .join(', ')
+          }
+          return JSON.stringify(value)
+        }
+
+        if (typeof value === 'object') return JSON.stringify(value)
+        return String(value)
+      }
+
+      function renderTable(detail) {
+        const fields = detail.fields || []
+        const rows = detail.rows || []
+
+        if (!rows.length) {
+          tableWrapEl.innerHTML = `<div class="empty">등록된 데이터가 없습니다. \"새 데이터 추가\"로 첫 row를 만들어보세요.</div>`
+          return
+        }
+
+        const thead = `
+          <thead>
+            <tr>
+              ${fields.map((field) => `<th>${field.label}</th>`).join('')}
+              <th>관리</th>
+            </tr>
+          </thead>
+        `
+
+        const tbody = `
+          <tbody>
+            ${rows
+              .map((row, rowIndex) => {
+                const cells = fields
+                  .map((field) => {
+                    const value = escapeHtml(formatCellValue(row[field.key]))
+                    return `<td><span class="cell-value" title="${value}">${value}</span></td>`
+                  })
+                  .join('')
+
+                const actions = `
+                  <td>
+                    <div class="row-actions">
+                      <button type="button" class="btn small" data-row-action="edit" data-row-index="${rowIndex}">편집</button>
+                      <button type="button" class="btn small danger" data-row-action="delete" data-row-index="${rowIndex}">삭제</button>
+                    </div>
+                  </td>
+                `
+
+                return `<tr>${cells}${actions}</tr>`
+              })
+              .join('')}
+          </tbody>
+        `
+
+        tableWrapEl.innerHTML = `<table>${thead}${tbody}</table>`
+      }
+
+      function renderTop(detail) {
+        datasetTitleEl.textContent = detail.label
+        datasetDescEl.textContent = `${detail.description} · 파일: ${detail.file} · 총 ${detail.rowCount} rows`
+        addBtn.disabled = false
+      }
+
+      function serializeFieldValueForInput(field, value) {
+        const inputType = field.input || 'text'
+
+        if (value === undefined || value === null) {
+          if (inputType === 'stack_list') return '[]'
+          return field.default !== undefined ? String(field.default) : ''
+        }
+
+        if (inputType === 'comma_list' && Array.isArray(value)) return value.join(', ')
+        if (inputType === 'line_list' && Array.isArray(value)) return value.join('\n')
+        if (inputType === 'json') return JSON.stringify(value, null, 2)
+        if (inputType === 'stack_list') return JSON.stringify(value)
+
+        return String(value)
+      }
+
+      function buildStackEditor(wrapper, field, sourceValue) {
+        const hiddenInput = document.createElement('input')
+        hiddenInput.type = 'hidden'
+        hiddenInput.id = `field-${field.key}`
+        hiddenInput.name = field.key
+        hiddenInput.dataset.inputType = 'stack_list'
+        wrapper.appendChild(hiddenInput)
+
+        const editor = document.createElement('div')
+        editor.className = 'stack-editor'
+
+        const list = document.createElement('div')
+        list.className = 'stack-list'
+
+        const empty = document.createElement('div')
+        empty.className = 'stack-empty'
+        empty.textContent = '스택이 없습니다. 아래 버튼으로 추가하세요.'
+
+        const toolbar = document.createElement('div')
+        toolbar.className = 'stack-toolbar'
+
+        const addRowBtn = document.createElement('button')
+        addRowBtn.type = 'button'
+        addRowBtn.className = 'btn small'
+        addRowBtn.textContent = '+ 스택 추가'
+        toolbar.appendChild(addRowBtn)
+
+        function normalizeStackRows() {
+          const rows = []
+          list.querySelectorAll('.stack-row').forEach((rowEl) => {
+            const idInput = rowEl.querySelector('[data-key="id"]')
+            const labelInput = rowEl.querySelector('[data-key="label"]')
+            const iconInput = rowEl.querySelector('[data-key="iconKey"]')
+            const valueInput = rowEl.querySelector('[data-key="value"]')
+
+            const stack = {
+              id: idInput.value.trim(),
+              label: labelInput.value.trim(),
+              iconKey: iconInput.value.trim(),
+              value: valueInput.value === '' ? 0 : Number(valueInput.value),
+            }
+
+            if (!stack.id && !stack.label && !stack.iconKey && Number.isNaN(stack.value)) {
+              return
+            }
+
+            if (Number.isNaN(stack.value)) {
+              stack.value = 0
+            }
+            stack.value = Math.max(0, Math.min(1, stack.value))
+            rows.push(stack)
+          })
+          return rows
+        }
+
+        function syncHiddenInput() {
+          const rows = normalizeStackRows()
+          hiddenInput.value = JSON.stringify(rows)
+
+          if (rows.length === 0) {
+            if (!list.contains(empty)) list.appendChild(empty)
+          } else if (list.contains(empty)) {
+            empty.remove()
+          }
+        }
+
+        function createStackRow(row = {}) {
+          const rowEl = document.createElement('div')
+          rowEl.className = 'stack-row'
+
+          const idInput = document.createElement('input')
+          idInput.type = 'text'
+          idInput.placeholder = 'id (예: python)'
+          idInput.value = row.id ?? ''
+          idInput.dataset.key = 'id'
+
+          const labelInput = document.createElement('input')
+          labelInput.type = 'text'
+          labelInput.placeholder = 'label (예: Python)'
+          labelInput.value = row.label ?? ''
+          labelInput.dataset.key = 'label'
+
+          const iconInput = document.createElement('input')
+          iconInput.type = 'text'
+          iconInput.placeholder = 'iconKey'
+          iconInput.value = row.iconKey ?? ''
+          iconInput.dataset.key = 'iconKey'
+
+          const valueInput = document.createElement('input')
+          valueInput.type = 'number'
+          valueInput.placeholder = '0~1'
+          valueInput.step = '0.01'
+          valueInput.min = '0'
+          valueInput.max = '1'
+          valueInput.value = row.value ?? 0
+          valueInput.dataset.key = 'value'
+
+          const removeBtn = document.createElement('button')
+          removeBtn.type = 'button'
+          removeBtn.className = 'btn small danger'
+          removeBtn.textContent = '삭제'
+          removeBtn.addEventListener('click', () => {
+            rowEl.remove()
+            syncHiddenInput()
+          })
+
+          ;[idInput, labelInput, iconInput, valueInput].forEach((inputEl) => {
+            inputEl.addEventListener('input', syncHiddenInput)
+          })
+
+          rowEl.append(idInput, labelInput, iconInput, valueInput, removeBtn)
+          return rowEl
+        }
+
+        addRowBtn.addEventListener('click', () => {
+          if (list.contains(empty)) empty.remove()
+          list.appendChild(createStackRow())
+          syncHiddenInput()
+        })
+
+        const initialRows = Array.isArray(sourceValue) ? sourceValue : []
+        if (initialRows.length === 0) {
+          list.appendChild(empty)
+        } else {
+          initialRows.forEach((row) => {
+            list.appendChild(createStackRow(row))
+          })
+        }
+
+        editor.append(list, toolbar)
+        wrapper.appendChild(editor)
+        syncHiddenInput()
+      }
+
+      function buildFieldInput(field, rowValues = null) {
+        const wrapper = document.createElement('div')
+        wrapper.className = 'field'
+
+        const label = document.createElement('label')
+        label.htmlFor = `field-${field.key}`
+        label.innerHTML = `${field.label}${field.required ? ' <span class="required">*</span>' : ''}`
+        wrapper.appendChild(label)
+
+        const inputType = field.input || 'text'
+        const sourceValue = rowValues ? rowValues[field.key] : undefined
+        if (inputType === 'stack_list') {
+          buildStackEditor(wrapper, field, sourceValue ?? field.default ?? [])
+        } else {
+          let input
+
+          if (['multiline', 'line_list', 'json'].includes(inputType)) {
+            input = document.createElement('textarea')
+          } else {
+            input = document.createElement('input')
+            input.type = inputType === 'number' ? 'number' : 'text'
+          }
+
+          input.id = `field-${field.key}`
+          input.name = field.key
+          input.dataset.inputType = inputType
+          input.placeholder = field.placeholder || ''
+          input.value = serializeFieldValueForInput(field, sourceValue)
+
+          wrapper.appendChild(input)
+        }
+
+        if (field.help) {
+          const help = document.createElement('small')
+          help.textContent = field.help
+          wrapper.appendChild(help)
+        }
+
+        return wrapper
+      }
+
+      function readFormValues(fields) {
+        const values = {}
+
+        fields.forEach((field) => {
+          const input = addFormEl.querySelector(`[name="${field.key}"]`)
+          if (!input) return
+          values[field.key] = input.value
+        })
+
+        return values
+      }
+
+      function getRowKey(row) {
+        return {
+          id: row.id,
+          year: row.year,
+        }
+      }
+
+      function openModal(mode, row = null) {
+        const detail = state.activeDetail
+        if (!detail) return
+
+        state.modalMode = mode
+        state.editingKey = row ? getRowKey(row) : null
+
+        if (mode === 'edit') {
+          modalTitleEl.textContent = `${detail.label} · 데이터 편집`
+          modalDescEl.textContent = '필드를 수정하고 저장하면 JSON 파일이 즉시 갱신됩니다.'
+          submitBtn.textContent = '저장'
+        } else {
+          modalTitleEl.textContent = `${detail.label} · 새 데이터 추가`
+          modalDescEl.textContent = '필드별 값을 입력하고 등록하면 JSON 파일에 즉시 반영됩니다.'
+          submitBtn.textContent = '등록'
+        }
+
+        addFormEl.innerHTML = ''
+        detail.fields.forEach((field) => {
+          addFormEl.appendChild(buildFieldInput(field, row))
+        })
+
+        modalBackdrop.classList.remove('hidden')
+      }
+
+      function closeModal() {
+        modalBackdrop.classList.add('hidden')
+      }
+
+      async function loadDatasets() {
+        const payload = await requestJson('/api/datasets')
+        state.datasets = payload.datasets || []
+
+        if (!state.datasets.length) {
+          throw new Error('표시할 데이터셋이 없습니다.')
+        }
+
+        if (!state.activeId || !state.datasets.find((dataset) => dataset.id === state.activeId)) {
+          state.activeId = state.datasets[0].id
+        }
+      }
+
+      async function selectDataset(datasetId) {
+        state.activeId = datasetId
+        renderTabs()
+
+        try {
+          setStatus('데이터를 불러오는 중...')
+          const payload = await requestJson(`/api/dataset?datasetId=${encodeURIComponent(datasetId)}`)
+          state.activeDetail = payload.dataset
+          renderTop(payload.dataset)
+          renderTable(payload.dataset)
+          setStatus(`${payload.dataset.label} 데이터를 불러왔습니다.`)
+        } catch (error) {
+          setStatus(error.message, 'error')
+        }
+      }
+
+      async function refreshActiveDataset() {
+        try {
+          await loadDatasets()
+          renderTabs()
+          await selectDataset(state.activeId)
+        } catch (error) {
+          setStatus(error.message, 'error')
+        }
+      }
+
+      async function handleSubmitModal() {
+        if (!state.activeDetail) return
+
+        const values = readFormValues(state.activeDetail.fields)
+
+        if (state.modalMode === 'edit' && !state.editingKey) {
+          setStatus('수정 대상 row 키를 찾지 못했습니다.', 'error')
+          return
+        }
+
+        try {
+          const endpoint = state.modalMode === 'edit' ? '/api/dataset/update' : '/api/dataset/add'
+          setStatus(state.modalMode === 'edit' ? '데이터 수정 중...' : '새 데이터 등록 중...')
+
+          await requestJson(endpoint, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              datasetId: state.activeDetail.id,
+              key: state.editingKey,
+              values,
+            }),
+          })
+
+          closeModal()
+          await refreshActiveDataset()
+          setStatus(state.modalMode === 'edit' ? '데이터가 수정되었습니다.' : '새 데이터가 등록되었습니다.', 'success')
+        } catch (error) {
+          setStatus(error.message || '처리에 실패했습니다.', 'error')
+        }
+      }
+
+      async function handleDeleteRow(rowIndex) {
+        if (!state.activeDetail) return
+
+        const row = state.activeDetail.rows[rowIndex]
+        if (!row) return
+
+        const name = row.title || row.name || row.id || '선택된 데이터'
+        const confirmed = window.confirm(`정말 삭제할까요?\n\n- ${name}`)
+        if (!confirmed) return
+
+        try {
+          setStatus('데이터 삭제 중...')
+          await requestJson('/api/dataset/delete', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              datasetId: state.activeDetail.id,
+              key: getRowKey(row),
+            }),
+          })
+
+          await refreshActiveDataset()
+          setStatus('데이터가 삭제되었습니다.', 'success')
+        } catch (error) {
+          setStatus(error.message || '삭제에 실패했습니다.', 'error')
+        }
+      }
+
+      refreshBtn.addEventListener('click', async () => {
+        await refreshActiveDataset()
+      })
+
+      addBtn.addEventListener('click', () => {
+        openModal('add')
+      })
+
+      cancelBtn.addEventListener('click', () => {
+        closeModal()
+      })
+
+      submitBtn.addEventListener('click', async () => {
+        await handleSubmitModal()
+      })
+
+      modalBackdrop.addEventListener('click', (event) => {
+        if (event.target === modalBackdrop) {
+          closeModal()
+        }
+      })
+
+      tableWrapEl.addEventListener('click', async (event) => {
+        const target = event.target.closest('button[data-row-action]')
+        if (!target || !state.activeDetail) return
+
+        const rowIndex = Number(target.dataset.rowIndex)
+        const row = state.activeDetail.rows[rowIndex]
+        if (!row) return
+
+        const action = target.dataset.rowAction
+        if (action === 'edit') {
+          openModal('edit', row)
+          return
+        }
+
+        if (action === 'delete') {
+          await handleDeleteRow(rowIndex)
+        }
+      })
+
+      async function init() {
+        try {
+          setStatus('데이터셋 정보를 준비하는 중...')
+          await loadDatasets()
+          renderTabs()
+          await selectDataset(state.activeId)
+        } catch (error) {
+          setStatus(error.message, 'error')
+        }
+      }
+
+      init()
+    </script>
+  </body>
+</html>
