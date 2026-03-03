@@ -22,6 +22,9 @@ export const ActivitySection = memo(function ActivitySection() {
     <section className={styles.section} aria-label="창업 및 일반 동아리 활동">
       <div className={styles.row}>
         <div className={styles.rowInner}>
+          {/* 모바일에서는 창업동아리 활동 타이틀을 설명 목록 위로 올립니다. */}
+          <h2 className={`${styles.sectionTitle} ${styles.startupSectionTitle}`}>창업동아리 활동</h2>
+
           <div className={styles.startupList}>
             {startupItems.map((item) => (
               <article key={item.title} className={styles.startupItem}>
@@ -30,7 +33,6 @@ export const ActivitySection = memo(function ActivitySection() {
               </article>
             ))}
           </div>
-          <h2 className={styles.sectionTitle}>창업동아리 활동</h2>
         </div>
       </div>
 
