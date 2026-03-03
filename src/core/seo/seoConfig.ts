@@ -25,7 +25,7 @@ const sharedKeywords = [
 ].join(', ')
 
 export const defaultSeoConfig: RouteSeoConfig = {
-  title: 'MONAD | 학생 주도 AI·SW 커뮤니티',
+  title: 'MONAD',
   description:
     'MONAD는 학생 주도의 AI·SW 활동을 통해 프로젝트, 수상, 연구를 이어가는 커뮤니티입니다.',
   keywords: sharedKeywords,

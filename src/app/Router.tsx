@@ -1,6 +1,11 @@
 // 앱 공통 레이아웃과 라우팅을 연결하는 파일입니다.
-import { memo } from 'react'
-import { createBrowserRouter, Outlet, RouterProvider } from 'react-router-dom'
+import { memo, useEffect } from 'react'
+import {
+  createBrowserRouter,
+  Outlet,
+  RouterProvider,
+  useLocation,
+} from 'react-router-dom'
 import { Footer } from '../core/layout/Footer/Footer'
 import { Header } from '../core/layout/Header/Header'
 import {
@@ -16,11 +21,23 @@ import { Monad2026Page } from '../features/monad2026/pages/Monad2026Page'
 import { ProjectsPage } from '../features/projects/pages/ProjectsPage'
 import styles from './Router.module.css'
 
+// 페이지 전환 시 이전 스크롤 위치를 유지하지 않고 항상 최상단으로 이동시킵니다.
+const ScrollTopOnRouteChange = memo(function ScrollTopOnRouteChange() {
+  const { pathname, search } = useLocation()
+
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [pathname, search])
+
+  return null
+})
+
 // 모든 페이지에서 재사용되는 공통 셸입니다.
 const AppLayout = memo(function AppLayout() {
   return (
     <div className={styles.appShell}>
       <SeoHeadManager />
+      <ScrollTopOnRouteChange />
       <Header />
       <main className={styles.mainContent}>
         <Outlet />

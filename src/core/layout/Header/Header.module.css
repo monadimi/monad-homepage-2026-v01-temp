@@ -67,6 +67,15 @@
   background: transparent;
 }
 
+.mobileBrandLink {
+  display: none;
+}
+
+.mobileBrandImage {
+  display: block;
+  height: auto;
+}
+
 .menuLine {
   position: absolute;
   left: 50%;
@@ -152,11 +161,21 @@
 @media (max-width: 768px) {
   .headerInner {
     height: 48px;
-    justify-content: flex-end;
+    justify-content: space-between;
   }
 
   .desktopNavigation {
     display: none;
+  }
+
+  .mobileBrandLink {
+    display: inline-flex;
+    align-items: center;
+    height: 48px;
+  }
+
+  .mobileBrandImage {
+    width: 120px;
   }
 
   .hamburgerButton {
