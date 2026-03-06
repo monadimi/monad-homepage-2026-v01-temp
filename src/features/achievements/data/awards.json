@@ -8,267 +8,61 @@
   ],
   "awards": [
     {
+      "year": 2025,
+      "id": "2025-award-1",
+      "title": "SW미래채움 고등창의과학톤",
+      "subtitle": "부총리 겸 과학기술정보통신부 장관상",
+      "highlight": "대상",
+      "imageKey": "placeholder",
+      "description": "혐오를 알아야 혐오를 무너뜨린다. 장관상을 수상하였습니다.",
+      "teamMembers": []
+    },
+    {
+      "year": 2025,
+      "id": "2025-award-2",
+      "title": "제7회 한국코드페어 해커톤",
+      "subtitle": "한국정보과학회장상",
+      "highlight": "동상",
+      "imageKey": "placeholder"
+    },
+    {
+      "year": 2025,
+      "id": "2025-award-3",
+      "title": "2025 대한민국 고등학생 소프트웨어 개발 공모전",
+      "subtitle": "한국인공지능소프트웨어산업협회장상",
+      "highlight": "동상",
+      "imageKey": "placeholder"
+    },
+    {
+      "year": 2025,
+      "id": "2025-award-4",
+      "title": "2025 AI·디지털 네이티브 토론대회",
+      "subtitle": "한국지능정보사회진흥원장상",
+      "highlight": "전국 2등",
+      "imageKey": "placeholder"
+    },
+    {
+      "year": 2025,
+      "id": "2025-award-5",
+      "title": "2025 SW·AI 고교 챌린지",
+      "subtitle": "럭스로보사장상",
+      "highlight": "창의상",
+      "imageKey": "placeholder"
+    },
+    {
+      "year": 2025,
+      "id": "2025-award-6",
+      "title": "2025 ICT 해커톤 AI Software Play 용인",
+      "subtitle": "경희대학교",
+      "highlight": "우수상",
+      "imageKey": "placeholder"
+    },
+    {
       "year": 2026,
       "id": "2026-award-1",
-      "title": "2026 아주 대단하고 멋진 대회",
-      "subtitle": "국무총리대통령총서기상",
-      "highlight": "대상",
-      "imageKey": "placeholder"
-    },
-    {
-      "id": "2026-award-2",
-      "year": 2026,
-      "title": "2026 아주 대단하고 멋진 대회",
-      "subtitle": "국무총리대통령상기상",
-      "highlight": "대상",
-      "imageKey": "placeholder"
-    },
-    {
-      "id": "2026-award-3",
-      "year": 2026,
-      "title": "2026 아주 대단하고 멋진 대회",
-      "subtitle": "국무총리대통령상기상",
-      "highlight": "대상",
-      "imageKey": "placeholder"
-    },
-    {
-      "id": "2026-award-4",
-      "year": 2026,
-      "title": "2026 아주 대단하고 멋진 대회",
-      "subtitle": "국무총리대통령상기상",
-      "highlight": "대상",
-      "imageKey": "placeholder"
-    },
-    {
-      "id": "2026-award-5",
-      "year": 2026,
-      "title": "2026 아주 대단하고 멋진 대회",
-      "subtitle": "국무총리대통령상기상",
-      "highlight": "대상",
-      "imageKey": "placeholder"
-    },
-    {
-      "id": "2026-award-6",
-      "year": 2026,
-      "title": "2026 아주 대단하고 멋진 대회",
-      "subtitle": "국무총리대통령상기상",
-      "highlight": "대상",
-      "imageKey": "placeholder"
-    },
-    {
-      "id": "2025-award-1",
-      "year": 2025,
-      "title": "2025 아주 대단하고 멋진 대회",
-      "subtitle": "국무총리대통령상기상",
-      "highlight": "대상",
-      "imageKey": "placeholder"
-    },
-    {
-      "id": "2025-award-2",
-      "year": 2025,
-      "title": "2025 아주 대단하고 멋진 대회",
-      "subtitle": "국무총리대통령상기상",
-      "highlight": "대상",
-      "imageKey": "placeholder"
-    },
-    {
-      "id": "2025-award-3",
-      "year": 2025,
-      "title": "2025 아주 대단하고 멋진 대회",
-      "subtitle": "국무총리대통령상기상",
-      "highlight": "대상",
-      "imageKey": "placeholder"
-    },
-    {
-      "id": "2025-award-4",
-      "year": 2025,
-      "title": "2025 아주 대단하고 멋진 대회",
-      "subtitle": "국무총리대통령상기상",
-      "highlight": "대상",
-      "imageKey": "placeholder"
-    },
-    {
-      "id": "2025-award-5",
-      "year": 2025,
-      "title": "2025 아주 대단하고 멋진 대회",
-      "subtitle": "국무총리대통령상기상",
-      "highlight": "대상",
-      "imageKey": "placeholder"
-    },
-    {
-      "id": "2025-award-6",
-      "year": 2025,
-      "title": "2025 아주 대단하고 멋진 대회",
-      "subtitle": "국무총리대통령상기상",
-      "highlight": "대상",
-      "imageKey": "placeholder"
-    },
-    {
-      "id": "2025-award-7",
-      "year": 2025,
-      "title": "2025 아주 대단하고 멋진 대회",
-      "subtitle": "국무총리대통령상기상",
-      "highlight": "대상",
-      "imageKey": "placeholder"
-    },
-    {
-      "id": "2025-award-8",
-      "year": 2025,
-      "title": "2025 아주 대단하고 멋진 대회",
-      "subtitle": "국무총리대통령상기상",
-      "highlight": "대상",
-      "imageKey": "placeholder"
-    },
-    {
-      "id": "2025-award-9",
-      "year": 2025,
-      "title": "2025 아주 대단하고 멋진 대회",
-      "subtitle": "국무총리대통령상기상",
-      "highlight": "대상",
-      "imageKey": "placeholder"
-    },
-    {
-      "id": "2025-award-10",
-      "year": 2025,
-      "title": "2025 아주 대단하고 멋진 대회",
-      "subtitle": "국무총리대통령상기상",
-      "highlight": "대상",
-      "imageKey": "placeholder"
-    },
-    {
-      "id": "2025-award-11",
-      "year": 2025,
-      "title": "2025 아주 대단하고 멋진 대회",
-      "subtitle": "국무총리대통령상기상",
-      "highlight": "대상",
-      "imageKey": "placeholder"
-    },
-    {
-      "id": "2024-award-1",
-      "year": 2024,
-      "title": "2024 아주 대단하고 멋진 대회",
-      "subtitle": "국무총리대통령상기상",
-      "highlight": "대상",
-      "imageKey": "placeholder"
-    },
-    {
-      "id": "2024-award-2",
-      "year": 2024,
-      "title": "2024 아주 대단하고 멋진 대회",
-      "subtitle": "국무총리대통령상기상",
-      "highlight": "대상",
-      "imageKey": "placeholder"
-    },
-    {
-      "id": "2024-award-3",
-      "year": 2024,
-      "title": "2024 아주 대단하고 멋진 대회",
-      "subtitle": "국무총리대통령상기상",
-      "highlight": "대상",
-      "imageKey": "placeholder"
-    },
-    {
-      "id": "2024-award-4",
-      "year": 2024,
-      "title": "2024 아주 대단하고 멋진 대회",
-      "subtitle": "국무총리대통령상기상",
-      "highlight": "대상",
-      "imageKey": "placeholder"
-    },
-    {
-      "id": "2024-award-5",
-      "year": 2024,
-      "title": "2024 아주 대단하고 멋진 대회",
-      "subtitle": "국무총리대통령상기상",
-      "highlight": "대상",
-      "imageKey": "placeholder"
-    },
-    {
-      "id": "2024-award-6",
-      "year": 2024,
-      "title": "2024 아주 대단하고 멋진 대회",
-      "subtitle": "국무총리대통령상기상",
-      "highlight": "대상",
-      "imageKey": "placeholder"
-    },
-    {
-      "id": "2024-award-7",
-      "year": 2024,
-      "title": "2024 아주 대단하고 멋진 대회",
-      "subtitle": "국무총리대통령상기상",
-      "highlight": "대상",
-      "imageKey": "placeholder"
-    },
-    {
-      "id": "2024-award-8",
-      "year": 2024,
-      "title": "2024 아주 대단하고 멋진 대회",
-      "subtitle": "국무총리대통령상기상",
-      "highlight": "대상",
-      "imageKey": "placeholder"
-    },
-    {
-      "id": "2023-award-1",
-      "year": 2023,
-      "title": "2023 아주 대단하고 멋진 대회",
-      "subtitle": "국무총리대통령상기상",
-      "highlight": "대상",
-      "imageKey": "placeholder"
-    },
-    {
-      "id": "2023-award-2",
-      "year": 2023,
-      "title": "2023 아주 대단하고 멋진 대회",
-      "subtitle": "국무총리대통령상기상",
-      "highlight": "대상",
-      "imageKey": "placeholder"
-    },
-    {
-      "id": "2023-award-3",
-      "year": 2023,
-      "title": "2023 아주 대단하고 멋진 대회",
-      "subtitle": "국무총리대통령상기상",
-      "highlight": "대상",
-      "imageKey": "placeholder"
-    },
-    {
-      "id": "2023-award-4",
-      "year": 2023,
-      "title": "2023 아주 대단하고 멋진 대회",
-      "subtitle": "국무총리대통령상기상",
-      "highlight": "대상",
-      "imageKey": "placeholder"
-    },
-    {
-      "id": "2023-award-5",
-      "year": 2023,
-      "title": "2023 아주 대단하고 멋진 대회",
-      "subtitle": "국무총리대통령상기상",
-      "highlight": "대상",
-      "imageKey": "placeholder"
-    },
-    {
-      "id": "2023-award-6",
-      "year": 2023,
-      "title": "2023 아주 대단하고 멋진 대회",
-      "subtitle": "국무총리대통령상기상",
-      "highlight": "대상",
-      "imageKey": "placeholder"
-    },
-    {
-      "id": "2023-award-7",
-      "year": 2023,
-      "title": "2023 아주 대단하고 멋진 대회",
-      "subtitle": "국무총리대통령상기상",
-      "highlight": "대상",
-      "imageKey": "placeholder"
-    },
-    {
-      "id": "2023-award-8",
-      "year": 2023,
-      "title": "2023 아주 대단하고 멋진 대회",
-      "subtitle": "국무총리대통령상기상",
-      "highlight": "대상",
+      "title": "2026 한양대학교 ERICA 창업경진대회",
+      "subtitle": "특별상",
+      "highlight": "특별상",
       "imageKey": "placeholder"
     }
   ]

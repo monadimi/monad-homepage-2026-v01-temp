@@ -1,0 +1,24 @@
+{
+  "items": [
+    {
+      "id": "media-youtube-1",
+      "type": "youtube",
+      "title": "2025 대한민국 고등학생 AI·SW 개발 공모전 수상팀 인터뷰 영상",
+      "url": "https://www.youtube.com/watch?v=UZRe1Wkmm6s"
+    },
+    {
+      "id": "media-article-1",
+      "type": "article",
+      "title": "디미위키 · 동아리: 모나드",
+      "url": "https://wiki.dimigo.hs.kr/wiki/%EB%8F%99%EC%95%84%EB%A6%AC:%EB%AA%A8%EB%82%98%EB%93%9C",
+      "previewText": "모나드 동아리 소개와 활동 내역을 확인할 수 있는 문서입니다."
+    },
+    {
+      "id": "media-article-2",
+      "type": "article",
+      "title": "EBS, 2025 SW미래채움 SW·AI 고교 챌린지 해커톤 대회 성료 | E동아",
+      "url": "https://arc.net/l/quote/awbmqggv",
+      "previewText": "...우수상에는 ‘모나드’팀(한국디지털미디어고/경기) (럭스로보 대표상, 상금 30만원+부상)이 선정됐다."
+    }
+  ]
+}

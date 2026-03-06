@@ -1,0 +1,18 @@
+<svg width="800" height="1000" viewBox="0 0 800 1000" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="800" y2="1000" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#1A1E25"/>
+      <stop offset="1" stop-color="#0D1015"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="150" y1="170" x2="650" y2="770" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#4DE6B3" stop-opacity="0.95"/>
+      <stop offset="1" stop-color="#2A8C6D" stop-opacity="0.85"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="1000" fill="url(#bg)"/>
+  <circle cx="400" cy="340" r="150" fill="url(#accent)" fill-opacity="0.9"/>
+  <path d="M120 870C120 700 258 562 428 562H372C542 562 680 700 680 870V1000H120V870Z" fill="url(#accent)" fill-opacity="0.9"/>
+  <circle cx="400" cy="340" r="168" stroke="white" stroke-opacity="0.2" stroke-width="2"/>
+  <path d="M120 870C120 700 258 562 428 562H372C542 562 680 700 680 870" stroke="white" stroke-opacity="0.2" stroke-width="2"/>
+  <text x="400" y="955" fill="white" fill-opacity="0.5" font-size="36" text-anchor="middle" font-family="sans-serif">MONAD MEMBER</text>
+</svg>

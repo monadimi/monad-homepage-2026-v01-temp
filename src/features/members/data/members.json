@@ -18,13 +18,11 @@
           "code": "24WP",
           "intro": "본질을 꿰뚫는 통찰력으로 문제의 해법을 제시하는 사람",
           "roles": [
-            "planner",
-            "developer",
-            "designer"
+            "developer"
           ],
           "quote": "자신이 하고싶은 한마디",
           "github": "https://github.com/abcdana122",
-          "githubLabel": "abcdana122",
+          "githubLabel": "abcdana122 - Overview",
           "imageKey": "jesiwon",
           "achievements": [
             "카이스트 IP-CEO 수료",
@@ -143,8 +141,7 @@
           "intro": "본질을 꿰뚫는 통찰력으로 문제의 해법을 제시하는 사람",
           "roles": [
             "planner",
-            "developer",
-            "designer"
+            "developer"
           ],
           "quote": "자신이 하고싶은 한마디",
           "github": "https://github.com/jecool0523",
@@ -183,7 +180,7 @@
               "id": "llm",
               "label": "LLM(NLP)",
               "iconKey": "label",
-              "value": 1
+              "value": 1.0
             },
             {
               "id": "react",
@@ -205,13 +202,11 @@
           "code": "24WP",
           "intro": "본질을 꿰뚫는 통찰력으로 문제의 해법을 제시하는 사람",
           "roles": [
-            "planner",
-            "developer",
-            "designer"
+            "developer"
           ],
           "quote": "자신이 하고싶은 한마디",
-          "github": "https://github.com/",
-          "githubLabel": "조수아 - Overview",
+          "github": "https://github.com/zhaoxiuya",
+          "githubLabel": "zhaoxiuya - Overview",
           "imageKey": "jesiwon",
           "achievements": [
             "카이스트 IP-CEO 수료",
@@ -246,7 +241,7 @@
               "id": "llm",
               "label": "LLM(NLP)",
               "iconKey": "label",
-              "value": 1
+              "value": 1.0
             },
             {
               "id": "react",
@@ -265,63 +260,65 @@
         {
           "id": "member-5-최승빈",
           "name": "최승빈",
-          "code": "24WP",
-          "intro": "본질을 꿰뚫는 통찰력으로 문제의 해법을 제시하는 사람",
+          "code": "24HD",
+          "intro": "깊은 탐구 속 남다른 인사이트를 도출하는 사람",
           "roles": [
-            "planner",
             "developer",
-            "designer"
+            "planner"
           ],
-          "quote": "자신이 하고싶은 한마디",
-          "github": "https://github.com/",
-          "githubLabel": "최승빈 - Overview",
+          "quote": "-",
+          "github": "https://github.com/SbEnChOi",
+          "githubLabel": "SbEnChOi - Overview",
           "imageKey": "jesiwon",
           "achievements": [
-            "카이스트 IP-CEO 수료",
-            "2025 SW/AI 미래채움 고교 챌린지 창의상 수상",
-            "AI SoftwarePlay 용인 우수상 수상",
-            "특허 3건 출원",
-            "교내 뮤지컬 동아리 (아르떼) 티켓팅 사이트 제작",
-            "AI 학생 언어 분석 혐오표현 예방 교육 솔루션 HEAR 제작 주도",
-            "셀레니움 기반 위키 탐색 프로그램: 위키드 제작",
-            "AI 편향성 및 필터버블 토론대회 전국 2등"
+            "6회 한국코드페어 해커톤 은상",
+            "2024 서울여자대학교정보보안영재원 중등 심화 수료",
+            "제 1회 디미톤 2위",
+            "확살모델의 이미지 복원 오차를 이용한 딥페이크 탐지 방 법론 연구",
+            "Genetic + Minimax 퓨전 6목 AI 알고리즘 개발"
           ],
           "stacks": [
             {
               "id": "python",
               "label": "Python",
-              "iconKey": "python",
-              "value": 0.88
+              "iconKey": "Py",
+              "value": 0.7
             },
             {
-              "id": "typescript",
-              "label": "TypeScript",
-              "iconKey": "typescript",
-              "value": 0.52
+              "id": "cv",
+              "label": "CV",
+              "iconKey": "CV",
+              "value": 0.9
+            },
+            {
+              "id": "llm",
+              "label": "LLM",
+              "iconKey": "LLM",
+              "value": 1.0
+            },
+            {
+              "id": "web",
+              "label": "Web",
+              "iconKey": "Web",
+              "value": 0.2
+            },
+            {
+              "id": "ml",
+              "label": "ML",
+              "iconKey": "ML",
+              "value": 0.85
+            },
+            {
+              "id": "dl",
+              "label": "DeepLearning",
+              "iconKey": "DL",
+              "value": 0.85
             },
             {
               "id": "c",
               "label": "C",
-              "iconKey": "c",
-              "value": 0.74
-            },
-            {
-              "id": "llm",
-              "label": "LLM(NLP)",
-              "iconKey": "label",
-              "value": 1
-            },
-            {
-              "id": "react",
-              "label": "React",
-              "iconKey": "react",
-              "value": 0.36
-            },
-            {
-              "id": "crawling",
-              "label": "Crawling",
-              "iconKey": "label",
-              "value": 0.69
+              "iconKey": "C",
+              "value": 0.76
             }
           ]
         },
@@ -331,13 +328,12 @@
           "code": "24WP",
           "intro": "본질을 꿰뚫는 통찰력으로 문제의 해법을 제시하는 사람",
           "roles": [
-            "planner",
             "developer",
             "designer"
           ],
           "quote": "자신이 하고싶은 한마디",
-          "github": "https://github.com/",
-          "githubLabel": "최윤혁 - Overview",
+          "github": "https://github.com/snowman0919",
+          "githubLabel": "snowman0919 - Overview",
           "imageKey": "jesiwon",
           "achievements": [
             "카이스트 IP-CEO 수료",
@@ -372,7 +368,7 @@
               "id": "llm",
               "label": "LLM(NLP)",
               "iconKey": "label",
-              "value": 1
+              "value": 1.0
             },
             {
               "id": "react",
@@ -392,62 +388,53 @@
           "id": "member-7-한준혁",
           "name": "한준혁",
           "code": "24WP",
-          "intro": "본질을 꿰뚫는 통찰력으로 문제의 해법을 제시하는 사람",
+          "intro": "머리에 든 것은 일단 만들어보는 자",
           "roles": [
-            "planner",
-            "developer",
-            "designer"
+            "developer"
           ],
-          "quote": "자신이 하고싶은 한마디",
-          "github": "https://github.com/",
-          "githubLabel": "한준혁 - Overview",
-          "imageKey": "jesiwon",
+          "quote": "집에가고싶다",
+          "github": "https://github.com/hjun1052",
+          "githubLabel": "hjun1052 - Overview",
+          "imageKey": "jhhan",
           "achievements": [
-            "카이스트 IP-CEO 수료",
-            "2025 SW/AI 미래채움 고교 챌린지 창의상 수상",
-            "AI SoftwarePlay 용인 우수상 수상",
-            "특허 3건 출원",
-            "교내 뮤지컬 동아리 (아르떼) 티켓팅 사이트 제작",
-            "AI 학생 언어 분석 혐오표현 예방 교육 솔루션 HEAR 제작 주도",
-            "셀레니움 기반 위키 탐색 프로그램: 위키드 제작",
-            "AI 편향성 및 필터버블 토론대회 전국 2등"
+            "각종 창업 대회 다수 수상"
           ],
           "stacks": [
             {
               "id": "python",
               "label": "Python",
-              "iconKey": "python",
-              "value": 0.88
+              "iconKey": "Py",
+              "value": 0.58
             },
             {
               "id": "typescript",
               "label": "TypeScript",
-              "iconKey": "typescript",
-              "value": 0.52
+              "iconKey": "TS",
+              "value": 0.62
             },
             {
               "id": "c",
               "label": "C",
-              "iconKey": "c",
-              "value": 0.74
+              "iconKey": "C",
+              "value": 0.26
             },
             {
-              "id": "llm",
-              "label": "LLM(NLP)",
-              "iconKey": "label",
-              "value": 1
+              "id": "javascript",
+              "label": "JavaScript",
+              "iconKey": "JS",
+              "value": 1.0
             },
             {
               "id": "react",
               "label": "React",
-              "iconKey": "react",
-              "value": 0.36
+              "iconKey": "React",
+              "value": 0.66
             },
             {
-              "id": "crawling",
-              "label": "Crawling",
-              "iconKey": "label",
-              "value": 0.69
+              "id": "flutter",
+              "label": "Flutter",
+              "iconKey": "F",
+              "value": 0.59
             }
           ]
         },
@@ -457,13 +444,11 @@
           "code": "24WP",
           "intro": "본질을 꿰뚫는 통찰력으로 문제의 해법을 제시하는 사람",
           "roles": [
-            "planner",
-            "developer",
-            "designer"
+            "developer"
           ],
           "quote": "자신이 하고싶은 한마디",
-          "github": "https://github.com/",
-          "githubLabel": "황정빈 - Overview",
+          "github": "https://github.com/B1NYL",
+          "githubLabel": "B1NYL - Overview",
           "imageKey": "jesiwon",
           "achievements": [
             "카이스트 IP-CEO 수료",
@@ -498,7 +483,7 @@
               "id": "llm",
               "label": "LLM(NLP)",
               "iconKey": "label",
-              "value": 1
+              "value": 1.0
             },
             {
               "id": "react",

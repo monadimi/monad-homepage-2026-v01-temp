@@ -33,6 +33,8 @@
 - `subtitle` (string): 영문 부제
 - `awardTag` (string): 대표 성과/수상 태그
 - `tags` (string[]): 보조 태그 목록
+- `websiteUrl` (string, optional): 프로젝트/서비스 홈페이지 링크
+- `githubUrl` (string, optional): GitHub 저장소 링크
 
 ## 유지보수 가이드
 

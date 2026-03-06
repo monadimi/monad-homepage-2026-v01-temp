@@ -70,11 +70,18 @@ npm run preview
 - `src/features/achievements/data/awards.json`
 - `src/features/members/data/members.json`
 - `src/features/projects/data/projects.json`
+- `src/features/home/data/mediaHighlights.json`
 
 데이터 구조 설명 문서:
 - `src/features/achievements/data/AWARDS_DATA_STRUCTURE.md`
 - `src/features/members/data/MEMBERS_DATA_STRUCTURE.md`
 - `src/features/projects/data/PROJECTS_DATA_STRUCTURE.md`
+- `src/features/home/data/MEDIA_HIGHLIGHTS_DATA_STRUCTURE.md`
+
+멤버 프로필 이미지(로컬 방식):
+- 이미지 파일 위치: `src/assets/members/`
+- `members.json`의 `imageKey`에는 파일명(확장자 제외) 사용
+  - 예: `src/assets/members/dana.png` → `imageKey: "dana"`
 
 UI 텍스트 번들:
 - 레지스트리: `src/content/text/text-bundles.json`

@@ -69,17 +69,17 @@
     },
     {
       "id": "fallback.description",
-      "value": "대한민국 정부 및 미국 백악관, UN이 공동개최한 '아주 대단하고 멋진 대회'에서 AI를 이용한 점심메뉴 예측 시스템 '대단한거'로 대상을 받았습니다.",
+      "value": "설명이 없습니다.",
       "description": "수상 설명 기본값"
     },
     {
       "id": "fallback.teamMember",
-      "value": "2701김디미",
+      "value": "모나드",
       "description": "수상 팀원 기본값 단일 항목"
     },
     {
       "id": "fallback.prize",
-      "value": "1,000,000원",
+      "value": "-",
       "description": "수상 상금 기본값"
     },
     {

@@ -622,6 +622,8 @@
                 const actions = `
                   <td>
                     <div class="row-actions">
+                      <button type="button" class="btn small" data-row-action="move-up" data-row-index="${rowIndex}">↑</button>
+                      <button type="button" class="btn small" data-row-action="move-down" data-row-index="${rowIndex}">↓</button>
                       <button type="button" class="btn small" data-row-action="edit" data-row-index="${rowIndex}">편집</button>
                       <button type="button" class="btn small danger" data-row-action="delete" data-row-index="${rowIndex}">삭제</button>
                     </div>
@@ -981,6 +983,35 @@
         }
       }
 
+      async function handleMoveRow(rowIndex, direction) {
+        if (!state.activeDetail) return
+
+        const row = state.activeDetail.rows[rowIndex]
+        if (!row) return
+
+        try {
+          setStatus(direction === 'up' ? '위로 이동 중...' : '아래로 이동 중...')
+          const response = await requestJson('/api/dataset/move', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              datasetId: state.activeDetail.id,
+              key: getRowKey(row),
+              direction,
+            }),
+          })
+
+          await refreshActiveDataset()
+          if (response.moved) {
+            setStatus(direction === 'up' ? '위로 이동했습니다.' : '아래로 이동했습니다.', 'success')
+          } else {
+            setStatus('더 이상 이동할 수 없는 위치입니다.')
+          }
+        } catch (error) {
+          setStatus(error.message || '이동에 실패했습니다.', 'error')
+        }
+      }
+
       refreshBtn.addEventListener('click', async () => {
         await refreshActiveDataset()
       })
@@ -1012,6 +1043,16 @@
         if (!row) return
 
         const action = target.dataset.rowAction
+        if (action === 'move-up') {
+          await handleMoveRow(rowIndex, 'up')
+          return
+        }
+
+        if (action === 'move-down') {
+          await handleMoveRow(rowIndex, 'down')
+          return
+        }
+
         if (action === 'edit') {
           openModal('edit', row)
           return

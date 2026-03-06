@@ -40,6 +40,8 @@
 - `github` (string): GitHub URL
 - `githubLabel` (string): 링크 표시 라벨
 - `imageKey` (string): 이미지 레지스트리 키 (`members.ts`의 `imageRegistry`에서 매핑)
+  - 로컬 방식 기준: `src/assets/members` 파일명(확장자 제외)
+    - 예: `src/assets/members/dana.png` → `imageKey: "dana"`
 - `achievements` (string[]): 주요 이력 목록
 - `stacks` (MemberStackSource[]): 기술 스택 목록
 
@@ -55,6 +57,7 @@
 
 1. 멤버를 추가/삭제할 때 `id`는 중복되지 않게 관리합니다.
 2. `roles`, `imageKey`를 확장할 때는 `members.ts`의 매핑 규칙도 함께 갱신합니다.
+   - 현재는 `src/assets/members` 폴더의 파일을 자동 인식합니다.
 3. `iconKey`는 제한 없이 추가할 수 있으며, 미정의 키는 UI에서 축약 텍스트로 표시됩니다.
 4. `yearOrder`에는 `years[].year`에 존재하는 값만 넣습니다.
 5. `defaultYear`는 항상 `yearOrder`에 포함된 값으로 유지합니다.

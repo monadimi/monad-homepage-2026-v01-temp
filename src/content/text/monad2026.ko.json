@@ -24,7 +24,7 @@
     },
     {
       "id": "itIntro.description",
-      "value": "우리는 기획보다는 IT에 더 집중합니다. 우리는 기획보다는 IT에 더 집중합니다. 우리는 기획보다는 IT에 더 집중합니다. 우리는 기획보다는 IT에 더 집중합니다.",
+      "value": "우리는 단순히 아이디어를 이야기하는 동아리가 아니라, 기술로 아이디어를 현실로 구현하는 IT 중심 동아리입니다. 프로그래밍, 서비스 개발, 기술 탐구를 통해 실제로 작동하는 결과물을 만드는 것을 목표로 합니다.",
       "description": "IT 소개 섹션 설명"
     },
     {
@@ -34,7 +34,7 @@
     },
     {
       "id": "swaiIntro.description",
-      "value": "우리는 기획보다는 IT에 더 집중합니다. 우리는 기획보다는 IT에 더 집중합니다. 우리는 기획보다는 IT에 더 집중합니다. 우리는 기획보다는 IT에 더 집중합니다.",
+      "value": "우리는 소프트웨어 개발과 인공지능 기술을 함께 탐구하는 SW/AI 융합 동아리입니다. 프로그래밍과 AI 기술을 활용해 새롭게 열린 기회의 장을 빠르게 탐색하고, 독보적인 나만의 새로운 아이디어를 실제로 구현합니다.",
       "description": "SWAI 소개 섹션 설명"
     },
     {
@@ -49,7 +49,7 @@
     },
     {
       "id": "proof.description",
-      "value": "대충 우리 동아리원들 대단하다는 내용 대충 우리 동아리원들 대단하다는 내용 대충 우리 동아리원들 대단하다는 내용 대충 우리 동아리원들 대단하다는 내용",
+      "value": "모나드는 동아리가 세워지기도 전에 이미 장관상을 수상하였습니다. 국제정보올림피아드 국가대표 교육생부터 카이스트 영재 교육생까지, 디미고 최고의 인재들은 이미 모나드에 모두 모여있습니다.",
       "description": "증명 섹션 설명"
     },
     {
@@ -59,7 +59,7 @@
     },
     {
       "id": "proof.patternWord",
-      "value": "실적들이 나열될 곳입니다 ",
+      "value": "SW 고등 창의과학톤 대상 SW/AI 미래채움 고교 챌린지 창의상 AI SoftwarePlay 용인 우수상 AI 디지털 네이티브 토론대회 2등상 2025 한국코드페어 해커톤 동상 2025 대한민국 소프트웨어 공모전 동상 디미고 스타트업톤 금상 디미고 스타트업톤 은상",
       "description": "배경 반복 텍스트"
     },
     {
@@ -74,7 +74,7 @@
     },
     {
       "id": "education.first.description",
-      "value": "저희는 서로 멘토와 멘티로 어쩌고 저쩌고 저희는 서로 멘토와 멘티로 어쩌고 저쩌고 저희는 서로 멘토와 멘티로 어쩌고 저쩌고.",
+      "value": "저희는 멘토와 멘티 구조를 통해 여러분이 습득하고자 하는 기술을 빠르게 습득할 수 있도록 돕습니다. 어떠한 프로젝트든지, 멘토와 멘티는 서로 돕고 의논하며 올바른 방향성을 찾아나갑니다.",
       "description": "교육 카드1 설명"
     },
     {
@@ -89,7 +89,7 @@
     },
     {
       "id": "education.second.description",
-      "value": "저희는 해커톤을 진행해서 어쩌고 저쩌고 저희는 해커톤을 진행해서 어쩌고 저쩌고 저희는 해커톤을 진행해서 어쩌고 저쩌고.",
+      "value": "우리는 해커톤을 통해 여러분의 아이디어가 현실로 구현될 수 있도록 합니다. 아이디어의 분야나 형태는 중요하지 않습니다. 여러분의 창의력과 실력을 마음껏 펼쳐 보세요.",
       "description": "교육 카드2 설명"
     },
     {
@@ -103,123 +103,123 @@
       "description": "순환 섹션 문장 뒷부분"
     },
     {
-      "id": "cycle.webpl.label",
+      "id": "cycle.wp.label",
       "value": "웹플",
       "description": "순환 라벨 - 웹플"
     },
     {
-      "id": "cycle.webpl.description",
-      "value": "웹 개발의 기본기와 제품화 감각을 함께 키우며 아이디어를 실제 서비스로 연결합니다.",
+      "id": "cycle.wp.description",
+      "value": "기술로 세상을 연결할 자신만의 아이템을 구현합니다.",
       "description": "순환 설명 - 웹플"
     },
     {
-      "id": "cycle.webpl.cardA.title",
+      "id": "cycle.wp.cardA.title",
       "value": "웹플 프로젝트",
       "description": "웹플 카드1 제목"
     },
     {
-      "id": "cycle.webpl.cardA.subtitle",
+      "id": "cycle.wp.cardA.subtitle",
       "value": "기획부터 배포까지 전 과정 실습",
       "description": "웹플 카드1 부제"
     },
     {
-      "id": "cycle.webpl.cardB.title",
+      "id": "cycle.wp.cardB.title",
       "value": "프론트엔드 스터디",
       "description": "웹플 카드2 제목"
     },
     {
-      "id": "cycle.webpl.cardB.subtitle",
+      "id": "cycle.wp.cardB.subtitle",
       "value": "컴포넌트 구조와 상태 관리 심화",
       "description": "웹플 카드2 부제"
     },
     {
-      "id": "cycle.ebi.label",
+      "id": "cycle.eb.label",
       "value": "이비",
       "description": "순환 라벨 - 이비"
     },
     {
-      "id": "cycle.ebi.description",
-      "value": "브랜딩과 비즈니스 인사이트를 접목해 기술 프로젝트를 실제 문제 해결의 흐름으로 확장합니다.",
+      "id": "cycle.eb.description",
+      "value": "기술을 접목해 세상을 바꾸고 연결할 아이디어를 도출합니다.",
       "description": "순환 설명 - 이비"
     },
     {
-      "id": "cycle.ebi.cardA.title",
+      "id": "cycle.eb.cardA.title",
       "value": "브랜딩 워크숍",
       "description": "이비 카드1 제목"
     },
     {
-      "id": "cycle.ebi.cardA.subtitle",
+      "id": "cycle.eb.cardA.subtitle",
       "value": "제품 메시지와 사용자 관점 정리",
       "description": "이비 카드1 부제"
     },
     {
-      "id": "cycle.ebi.cardB.title",
+      "id": "cycle.eb.cardB.title",
       "value": "문제정의 세션",
       "description": "이비 카드2 제목"
     },
     {
-      "id": "cycle.ebi.cardB.subtitle",
+      "id": "cycle.eb.cardB.subtitle",
       "value": "실행 가능한 MVP 범위 설정",
       "description": "이비 카드2 부제"
     },
     {
-      "id": "cycle.liberation.label",
+      "id": "cycle.hd.label",
       "value": "해방",
       "description": "순환 라벨 - 해방"
     },
     {
-      "id": "cycle.liberation.description",
-      "value": "고정된 기술 영역에서 벗어나 새로운 도메인을 탐색하며 스스로 확장 가능한 학습 루프를 만듭니다.",
+      "id": "cycle.hd.description",
+      "value": "정보보안 분야를 뒤집을 새로운 아이디어를 직접 구현하고, 다른 프로젝트의 취약점을 분석하고 고칩니다.",
       "description": "순환 설명 - 해방"
     },
     {
-      "id": "cycle.liberation.cardA.title",
-      "value": "도메인 리서치",
+      "id": "cycle.hd.cardA.title",
+      "value": "보안과 기술의 만남",
       "description": "해방 카드1 제목"
     },
     {
-      "id": "cycle.liberation.cardA.subtitle",
-      "value": "사회 문제 기반 기술 적용 탐색",
+      "id": "cycle.hd.cardA.subtitle",
+      "value": "새로운 기술의 등장을 관찰하고 그 분야에서 어떠한 형식으로 보안적 접근이 가능할지 생각합니다.",
       "description": "해방 카드1 부제"
     },
     {
-      "id": "cycle.liberation.cardB.title",
-      "value": "실험 프로젝트",
+      "id": "cycle.hd.cardB.title",
+      "value": "보안 프로젝트",
       "description": "해방 카드2 제목"
     },
     {
-      "id": "cycle.liberation.cardB.subtitle",
-      "value": "짧은 주기 프로토타입 반복",
+      "id": "cycle.hd.cardB.subtitle",
+      "value": "보안 서비스를 직접 개발해 배포하거나, 프로젝트의 보안을 확인하고, 새로 등장한 주목받는 서비스의 버그 바운티에 발견한 취약점을 제보합니다.",
       "description": "해방 카드2 부제"
     },
     {
-      "id": "cycle.decon.label",
+      "id": "cycle.dc.label",
       "value": "디컨",
       "description": "순환 라벨 - 디컨"
     },
     {
-      "id": "cycle.decon.description",
-      "value": "복잡한 문제를 분해하고 핵심을 구조화해 협업 가능한 개발 문서와 실행 계획으로 정리합니다.",
+      "id": "cycle.dc.description",
+      "value": "실제로 출시될 앱이나 웹의 디자인부터, 영상 편집, 하드웨어 디자인까지, 다양한 종류의 디자인 협업을 통해 디자인 역량을 키웁니다.",
       "description": "순환 설명 - 디컨"
     },
     {
-      "id": "cycle.decon.cardA.title",
-      "value": "문제 분해 세션",
+      "id": "cycle.dc.cardA.title",
+      "value": "UI 디자인",
       "description": "디컨 카드1 제목"
     },
     {
-      "id": "cycle.decon.cardA.subtitle",
-      "value": "요구사항과 우선순위 구조화",
+      "id": "cycle.dc.cardA.subtitle",
+      "value": "피그마를 활용하여 프로젝트에 맞는 디자인을 제작하거나, 자신이 생각한 디자인을 제작해 구현을 요청합니다.",
       "description": "디컨 카드1 부제"
     },
     {
-      "id": "cycle.decon.cardB.title",
-      "value": "아키텍처 리뷰",
+      "id": "cycle.dc.cardB.title",
+      "value": "하드웨어 디자인",
       "description": "디컨 카드2 제목"
     },
     {
-      "id": "cycle.decon.cardB.subtitle",
-      "value": "설계 검증과 리스크 분석",
+      "id": "cycle.dc.cardB.subtitle",
+      "value": "하드웨어 상품의 마감부터 배치, 색감, 패키징까지 관여합니다.",
       "description": "디컨 카드2 부제"
     },
     {
@@ -244,7 +244,7 @@
     },
     {
       "id": "activity.startup.item2.description",
-      "value": "입학설명회를 준비합니다. 입학설명회를 준비합니다.",
+      "value": "입학설명회를 준비하여, 다수의 사람들 앞에서 우리가 직접 만들어나가는 프로젝트들을 선보입니다.",
       "description": "창업동아리 활동 아이템2 설명"
     },
     {
@@ -254,7 +254,7 @@
     },
     {
       "id": "activity.startup.item3.description",
-      "value": "코드페어, 코드페어, 코드페어, 등의 공통대회를 참가합니다",
+      "value": "코드페어, 해커톤, 창업경진대회, 학술대회, 등의 공통대회를 참가합니다",
       "description": "창업동아리 활동 아이템3 설명"
     },
     {
