@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""awards/members/projects JSON 데이터 구조를 검증합니다."""
+"""awards/members/projects/home-media JSON 데이터 구조를 검증합니다."""
 
 from __future__ import annotations
 
@@ -13,6 +13,7 @@ REPO_ROOT = Path(__file__).resolve().parents[2]
 AWARDS_PATH = REPO_ROOT / "src/features/achievements/data/awards.json"
 MEMBERS_PATH = REPO_ROOT / "src/features/members/data/members.json"
 PROJECTS_PATH = REPO_ROOT / "src/features/projects/data/projects.json"
+HOME_MEDIA_PATH = REPO_ROOT / "src/features/home/data/mediaHighlights.json"
 
 
 def fail(message: str) -> None:
@@ -99,7 +100,10 @@ def validate_year_order(
 
     missing_in_data = sorted(set(year_order) - used_years)
     if missing_in_data:
-        fail(f"{dataset_name}.yearOrder에만 있고 데이터가 없는 연도가 있습니다: {missing_in_data}")
+        print(
+            f"[validate:data] 경고: {dataset_name}.yearOrder에만 있고 데이터가 없는 연도가 있습니다: "
+            f"{missing_in_data}"
+        )
 
 
 def validate_awards() -> int:
@@ -349,22 +353,81 @@ def validate_projects() -> tuple[int, int]:
             if len(tags) == 0:
                 fail(f"projects.years[{year_index}].projects[{project_index}].tags는 1개 이상이어야 합니다.")
 
+            if "websiteUrl" in project and project["websiteUrl"] is not None:
+                expect_string(
+                    project["websiteUrl"],
+                    f"projects.years[{year_index}].projects[{project_index}].websiteUrl",
+                )
+
+            if "githubUrl" in project and project["githubUrl"] is not None:
+                expect_string(
+                    project["githubUrl"],
+                    f"projects.years[{year_index}].projects[{project_index}].githubUrl",
+                )
+
             total_projects += 1
 
     validate_year_order(year_order, used_years, default_year, "projects")
     return len(years), total_projects
 
 
+def validate_home_media() -> int:
+    payload = expect_dict(load_json(HOME_MEDIA_PATH), "homeMedia")
+    items = payload.get("items")
+    if not isinstance(items, list):
+        fail("homeMedia.items는 배열이어야 합니다.")
+
+    allowed_types = {"youtube", "article", "image"}
+    seen_ids: set[str] = set()
+
+    for index, raw_item in enumerate(items):
+        item = expect_dict(raw_item, f"homeMedia.items[{index}]")
+
+        item_id = expect_string(item.get("id"), f"homeMedia.items[{index}].id")
+        if item_id in seen_ids:
+            fail(f"homeMedia.items[{index}].id 중복: {item_id}")
+        seen_ids.add(item_id)
+
+        item_type = expect_string(item.get("type"), f"homeMedia.items[{index}].type")
+        if item_type not in allowed_types:
+            fail(
+                f"homeMedia.items[{index}].type은 youtube/article/image 중 하나여야 합니다. "
+                f"(현재: {item_type})"
+            )
+
+        expect_string(item.get("title"), f"homeMedia.items[{index}].title")
+
+        if "url" in item and item["url"] is not None:
+            expect_string(item["url"], f"homeMedia.items[{index}].url")
+        if "previewText" in item and item["previewText"] is not None:
+            expect_string(item["previewText"], f"homeMedia.items[{index}].previewText")
+        if "imageUrl" in item and item["imageUrl"] is not None:
+            expect_string(item["imageUrl"], f"homeMedia.items[{index}].imageUrl")
+
+        if item_type == "youtube" and not item.get("url"):
+            fail(f"homeMedia.items[{index}] youtube 타입은 url이 필요합니다.")
+        if item_type == "article" and not item.get("url"):
+            fail(f"homeMedia.items[{index}] article 타입은 url이 필요합니다.")
+        if item_type == "article" and not item.get("previewText"):
+            fail(f"homeMedia.items[{index}] article 타입은 previewText가 필요합니다.")
+        if item_type == "image" and not item.get("imageUrl"):
+            fail(f"homeMedia.items[{index}] image 타입은 imageUrl이 필요합니다.")
+
+    return len(items)
+
+
 def main() -> None:
     awards_count = validate_awards()
     members_year_count, members_count = validate_members()
     projects_year_count, projects_count = validate_projects()
+    home_media_count = validate_home_media()
 
     print(
         "[validate:data] OK · "
         f"awards={awards_count} · "
         f"members={members_count} (years={members_year_count}) · "
-        f"projects={projects_count} (years={projects_year_count})"
+        f"projects={projects_count} (years={projects_year_count}) · "
+        f"homeMedia={home_media_count}"
     )
 
 

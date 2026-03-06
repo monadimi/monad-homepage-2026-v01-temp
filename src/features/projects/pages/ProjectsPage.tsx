@@ -63,10 +63,10 @@ const ProjectCard = memo(function ProjectCard({
       {large ? (
         <div className={styles.cardLinksAndSelect}>
           <div className={styles.cardLinks}>
-            <a href="/" aria-label={homeAriaLabel} className={styles.iconLink}>
+            <a href={project.websiteUrl} aria-label={homeAriaLabel} className={styles.iconLink}>
               <span className={styles.homeGlyph}>⌂</span>
             </a>
-            <a href="#" aria-label={githubAriaLabel} className={styles.iconLink}>
+            <a href={project.githubUrl} aria-label={githubAriaLabel} className={styles.iconLink}>
               <img src={githubIcon} alt="" />
             </a>
           </div>
@@ -220,10 +220,10 @@ export const ProjectsPage = memo(function ProjectsPage() {
           </div>
 
           <div className={styles.heroLinks}>
-            <a href="/" aria-label="Go home" className={styles.iconLink}>
+            <a href={featuredProject.websiteUrl} aria-label="Go home" className={styles.iconLink}>
               <span className={styles.homeGlyph}>⌂</span>
             </a>
-            <a href="#" aria-label="GitHub link" className={styles.iconLink}>
+            <a href={featuredProject.githubUrl} aria-label="GitHub link" className={styles.iconLink}>
               <img src={githubIcon} alt="" />
             </a>
           </div>

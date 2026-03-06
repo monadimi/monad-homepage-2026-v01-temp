@@ -1,6 +1,9 @@
 {
   "defaultYear": 2025,
-  "yearOrder": [2025, 2026],
+  "yearOrder": [
+    2025,
+    2026
+  ],
   "rotationIntervalMs": 5500,
   "years": [
     {
@@ -9,89 +12,30 @@
         {
           "id": "2025-hear",
           "title": "HEAR",
-          "summary": "혐오를 알아야 혐오를 무너뜨린다. 장관상 수상작 입니다.",
-          "subtitle": "Hatred Expression Academic Reducer",
-          "awardTag": "어디어디 대회 장관상",
-          "tags": ["AI", "Minister", "Jirinda"]
+          "subtitle": "혐오를 알아야 혐오를 무너뜨린다.",
+          "summary": "장관상 수상작 입니다.",
+          "awardTag": "SW미래채움 고등창의과학톤 장관상",
+          "tags": [
+            "AI"
+          ]
         },
         {
-          "id": "2025-nova",
-          "title": "NOVA",
-          "summary": "학생 주도 데이터 분석으로 실질적인 인사이트를 도출한 프로젝트입니다.",
-          "subtitle": "Neural Observation and Visual Analytics",
-          "awardTag": "어디어디 대회 우수상",
-          "tags": ["Data", "Research", "Model"]
-        },
-        {
-          "id": "2025-pulse",
-          "title": "PULSE",
-          "summary": "학교 환경 데이터와 행동 로그를 연결해 예측 모델을 구축했습니다.",
-          "subtitle": "Predictive Unified Learning Signal Engine",
-          "awardTag": "어디어디 대회 은상",
-          "tags": ["ML", "Forecast", "Deploy"]
-        },
-        {
-          "id": "2025-aura",
-          "title": "AURA",
-          "summary": "AI 기반 사용자 피드백 루프로 학습 효율을 높이는 플랫폼입니다.",
-          "subtitle": "Adaptive User Response Assistant",
-          "awardTag": "어디어디 대회 장려상",
-          "tags": ["Product", "UX", "AI"]
-        },
-        {
-          "id": "2025-mirror",
-          "title": "MIRROR",
-          "summary": "소셜 이슈 데이터 시각화를 통해 문제 구조를 쉽게 파악할 수 있습니다.",
-          "subtitle": "Media Insight Relationship Reporting",
-          "awardTag": "어디어디 대회 본선",
-          "tags": ["Viz", "Social", "Insight"]
+          "id": "2025-prompte",
+          "title": "프롬피",
+          "subtitle": "프롬프트 교육의 시작",
+          "summary": "AI의 발전으로 AI를 잘 다룰 줄 아는 능력이 무엇보다 중요해지고 있습니다. 프롬피는 초등학교 때부터 프롬프트 작성 능력을 키워줍니다. 한양대학교 에리카 겨울학기 창업경진대회 특별상 수상 프로젝트로, 투자 논의가 진행 중인 프로젝트입니다.",
+          "awardTag": "한양대학교 에리카 겨울학기 창업경진대회 특별상",
+          "tags": [
+            "AI",
+            "Prompt",
+            "Education"
+          ]
         }
       ]
     },
     {
       "year": 2026,
-      "projects": [
-        {
-          "id": "2026-hear",
-          "title": "HEAR",
-          "summary": "혐오 표현 분석 모델을 고도화해 실제 교육 현장 적용성을 확장했습니다.",
-          "subtitle": "Hatred Expression Academic Reducer",
-          "awardTag": "어디어디 대회 장관상",
-          "tags": ["AI", "NLP", "Education"]
-        },
-        {
-          "id": "2026-nova",
-          "title": "NOVA",
-          "summary": "학교 내 데이터 파이프라인 자동화로 분석 사이클을 크게 단축했습니다.",
-          "subtitle": "Neural Observation and Visual Analytics",
-          "awardTag": "어디어디 대회 우수상",
-          "tags": ["Data", "Pipeline", "Automation"]
-        },
-        {
-          "id": "2026-pulse",
-          "title": "PULSE",
-          "summary": "행동 패턴 기반 조기 경보 지표를 설계해 운영 실험을 진행했습니다.",
-          "subtitle": "Predictive Unified Learning Signal Engine",
-          "awardTag": "어디어디 대회 은상",
-          "tags": ["ML", "TimeSeries", "Ops"]
-        },
-        {
-          "id": "2026-aura",
-          "title": "AURA",
-          "summary": "학습 피드백 UX를 개선해 참여율과 재방문율을 동시에 끌어올렸습니다.",
-          "subtitle": "Adaptive User Response Assistant",
-          "awardTag": "어디어디 대회 장려상",
-          "tags": ["Product", "UX", "Loop"]
-        },
-        {
-          "id": "2026-mirror",
-          "title": "MIRROR",
-          "summary": "사회 이슈 토픽 변화량을 시계열로 시각화해 인사이트 전달력을 강화했습니다.",
-          "subtitle": "Media Insight Relationship Reporting",
-          "awardTag": "어디어디 대회 본선",
-          "tags": ["Viz", "Social", "Trend"]
-        }
-      ]
+      "projects": []
     }
   ]
 }

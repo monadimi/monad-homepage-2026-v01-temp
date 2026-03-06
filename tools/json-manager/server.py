@@ -68,6 +68,35 @@ BASE_DATASET_SPECS: dict[str, dict[str, Any]] = {
                 "required": True,
                 "placeholder": "placeholder",
             },
+            {
+                "key": "description",
+                "label": "상세 설명",
+                "input": "multiline",
+                "required": False,
+                "placeholder": "카드 확장(모달) 시 노출할 상세 설명",
+            },
+            {
+                "key": "teamMembers",
+                "label": "팀원 목록",
+                "input": "line_list",
+                "required": False,
+                "placeholder": "한 줄에 한 명씩 입력",
+                "help": "줄바꿈 기준으로 배열(string[])이 생성됩니다.",
+            },
+            {
+                "key": "prize",
+                "label": "상금",
+                "input": "text",
+                "required": False,
+                "placeholder": "예: 1,000,000원",
+            },
+            {
+                "key": "serviceUrl",
+                "label": "서비스 링크",
+                "input": "url",
+                "required": False,
+                "placeholder": "https://...",
+            },
         ],
     },
     "members": {
@@ -142,6 +171,7 @@ BASE_DATASET_SPECS: dict[str, dict[str, Any]] = {
                 "input": "text",
                 "required": True,
                 "placeholder": "jesiwon",
+                "help": "src/assets/members 폴더의 파일명(확장자 제외)을 입력하세요. 예: dana.png -> dana",
             },
             {
                 "key": "achievements",
@@ -215,6 +245,76 @@ BASE_DATASET_SPECS: dict[str, dict[str, Any]] = {
                 "required": False,
                 "placeholder": "AI, NLP, Education",
                 "help": "쉼표(,)로 구분해 입력합니다.",
+            },
+            {
+                "key": "websiteUrl",
+                "label": "홈페이지 링크",
+                "input": "url",
+                "required": False,
+                "placeholder": "https://example.com",
+            },
+            {
+                "key": "githubUrl",
+                "label": "GitHub 링크",
+                "input": "url",
+                "required": False,
+                "placeholder": "https://github.com/org/repo",
+            },
+        ],
+    },
+    "homeMedia": {
+        "id": "homeMedia",
+        "label": "Home · Media Highlights",
+        "description": "홈 하단 미디어 노출(유튜브/기사/이미지) 흐르는 카드 데이터를 관리합니다.",
+        "file": "src/features/home/data/mediaHighlights.json",
+        "mode": "root_array",
+        "array_key": "items",
+        "fields": [
+            {
+                "key": "id",
+                "label": "ID",
+                "input": "text",
+                "required": True,
+                "placeholder": "media-youtube-1",
+            },
+            {
+                "key": "type",
+                "label": "타입",
+                "input": "text",
+                "required": True,
+                "placeholder": "youtube | article | image",
+                "help": "반드시 youtube/article/image 중 하나를 입력합니다.",
+            },
+            {
+                "key": "title",
+                "label": "제목",
+                "input": "text",
+                "required": True,
+                "placeholder": "노출 제목",
+            },
+            {
+                "key": "url",
+                "label": "링크 URL",
+                "input": "url",
+                "required": False,
+                "placeholder": "https://...",
+                "help": "youtube/article에서는 사실상 필수입니다.",
+            },
+            {
+                "key": "previewText",
+                "label": "프리뷰 텍스트",
+                "input": "multiline",
+                "required": False,
+                "placeholder": "기사 요약/설명 텍스트",
+                "help": "article 타입에서 사용됩니다.",
+            },
+            {
+                "key": "imageUrl",
+                "label": "이미지 URL",
+                "input": "url",
+                "required": False,
+                "placeholder": "https://.../image.jpg",
+                "help": "image 타입에서 사용됩니다.",
             },
         ],
     },
@@ -887,6 +987,32 @@ def delete_row(spec: dict[str, Any], key: dict[str, Any]) -> int:
     return count_rows(spec, data)
 
 
+def move_row(spec: dict[str, Any], key: dict[str, Any], direction: str) -> dict[str, Any]:
+    if direction not in {"up", "down"}:
+        raise ValueError("direction은 up 또는 down 이어야 합니다.")
+
+    data = read_dataset_file(spec)
+    target = locate_single_match(spec, data, key)
+    container = target["container"]
+    source_index = target["index"]
+
+    if not isinstance(container, list) or len(container) <= 1:
+        return {"moved": False, "rowCount": count_rows(spec, data)}
+
+    if direction == "up":
+        destination_index = source_index - 1
+    else:
+        destination_index = source_index + 1
+
+    if destination_index < 0 or destination_index >= len(container):
+        return {"moved": False, "rowCount": count_rows(spec, data)}
+
+    row = container.pop(source_index)
+    container.insert(destination_index, row)
+    write_dataset_file(spec, data)
+    return {"moved": True, "rowCount": count_rows(spec, data)}
+
+
 def dataset_summary(spec: dict[str, Any]) -> dict[str, Any]:
     data = read_dataset_file(spec)
     return {
@@ -1032,6 +1158,22 @@ class JsonManagerHandler(BaseHTTPRequestHandler):
                         "action": "delete",
                         "datasetId": dataset_id,
                         "totalRowCount": total_row_count,
+                    },
+                )
+                return
+
+            if parsed.path == "/api/dataset/move":
+                key = parse_row_key(raw_key)
+                direction = str(payload.get("direction", "")).strip().lower()
+                result = move_row(spec, key, direction)
+                self._write_json(
+                    HTTPStatus.OK,
+                    {
+                        "ok": True,
+                        "action": "move",
+                        "datasetId": dataset_id,
+                        "moved": result["moved"],
+                        "totalRowCount": result["rowCount"],
                     },
                 )
                 return

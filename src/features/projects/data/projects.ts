@@ -9,6 +9,8 @@ export interface ProjectItem {
   subtitle: string
   awardTag: string
   tags: readonly string[]
+  websiteUrl: string
+  githubUrl: string
 }
 
 interface ProjectSourceRecord {
@@ -18,6 +20,8 @@ interface ProjectSourceRecord {
   subtitle: string
   awardTag: string
   tags: string[]
+  websiteUrl?: string
+  githubUrl?: string
 }
 
 interface ProjectYearSource {
@@ -62,6 +66,8 @@ export class ProjectsRepository {
         subtitle: project.subtitle,
         awardTag: project.awardTag,
         tags: Array.isArray(project.tags) ? project.tags : [],
+        websiteUrl: typeof project.websiteUrl === 'string' ? project.websiteUrl : '/',
+        githubUrl: typeof project.githubUrl === 'string' ? project.githubUrl : '#',
       })),
   )
 

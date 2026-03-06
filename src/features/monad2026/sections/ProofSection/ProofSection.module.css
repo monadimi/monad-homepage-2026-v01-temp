@@ -18,6 +18,22 @@
   transform: translateY(-18px);
 }
 
+.patternRow {
+  overflow: hidden;
+}
+
+.patternTrack {
+  display: inline-flex;
+  width: max-content;
+  animation: patternShift var(--pattern-duration, 26s) linear infinite;
+  animation-delay: var(--pattern-delay, 0s);
+  will-change: transform;
+}
+
+.patternRow:nth-child(even) .patternTrack {
+  animation-direction: reverse;
+}
+
 .patternWord {
   color: rgba(255, 255, 255, 0.5);
   font-family: 'NEXON Lv2 Gothic', var(--typography-font-family-primary);
@@ -25,12 +41,7 @@
   line-height: 1;
   letter-spacing: 0.04em;
   white-space: nowrap;
-  animation: patternShift 26s linear infinite;
-}
-
-.patternWord:nth-child(even) {
-  animation-direction: reverse;
-  animation-duration: 24s;
+  padding-right: 4ch;
 }
 
 .content {
@@ -67,11 +78,11 @@
 
 @keyframes patternShift {
   from {
-    transform: translateX(0);
+    transform: translateX(var(--pattern-start-shift, 0ch));
   }
 
   to {
-    transform: translateX(-120px);
+    transform: translateX(calc(var(--pattern-start-shift, 0ch) - 50%));
   }
 }
 
@@ -93,7 +104,7 @@
 
   .patternWord {
     font-size: clamp(16px, 6.2vw, 24px);
-    animation-duration: 18s;
+    padding-right: 3ch;
   }
 
   .title {

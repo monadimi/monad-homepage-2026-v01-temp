@@ -83,6 +83,35 @@ const sourceYearOrder = Array.isArray(typedMembersSource.yearOrder)
   ? typedMembersSource.yearOrder.filter((year): year is number => typeof year === 'number')
   : []
 
+// 로컬 에셋 폴더(src/assets/members) 내 이미지를 자동 로드합니다.
+// 파일명(확장자 제외)을 imageKey로 사용합니다. 예: dana.png -> "dana"
+const localMemberImageModules = import.meta.glob<string>(
+  '../../../assets/members/*.{png,jpg,jpeg,webp,avif,gif,svg}',
+  {
+    eager: true,
+    import: 'default',
+  },
+)
+
+function toImageKeyFromPath(path: string): string {
+  const fileName = path.split('/').pop() ?? ''
+  return fileName.replace(/\.[^/.]+$/, '').toLowerCase()
+}
+
+const localMemberImageRegistry: Readonly<Record<string, string>> = Object.fromEntries(
+  Object.entries(localMemberImageModules).map(([path, imageUrl]) => [toImageKeyFromPath(path), imageUrl]),
+)
+
+// 기존 데이터 호환용 별칭입니다. 점진적으로 JSON의 imageKey를 파일명 기준으로 맞추면 됩니다.
+const imageKeyAliasRegistry: Readonly<Record<string, string>> = {
+  jesiwon: 'member-placeholder',
+}
+
+const defaultMemberImage =
+  localMemberImageRegistry['member-placeholder'] ??
+  Object.values(localMemberImageRegistry)[0] ??
+  ''
+
 // 역할 키를 화면 표기 라벨/아이콘으로 변환하는 사전입니다.
 const roleRegistry: Readonly<Record<MemberRoleKey, MemberRole>> = {
   planner: {
@@ -102,11 +131,10 @@ const roleRegistry: Readonly<Record<MemberRoleKey, MemberRole>> = {
   },
 }
 
-// JSON의 imageKey를 실제 이미지 URL로 매핑합니다.
-// 디자인 시안과 동일하게 동일 인물 컷을 반복 노출할 수 있도록 기본 키를 제공합니다.
-const imageRegistry: Readonly<Record<string, string>> = {
-  jesiwon:
-    'https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?auto=format&fit=crop&w=1200&q=80',
+function resolveMemberImage(imageKey: string): string {
+  const normalizedKey = imageKey.trim().toLowerCase()
+  const aliasedKey = imageKeyAliasRegistry[normalizedKey] ?? normalizedKey
+  return localMemberImageRegistry[aliasedKey] ?? defaultMemberImage
 }
 
 function normalizeRole(roleKey: string): MemberRole {
@@ -157,7 +185,7 @@ export class MembersRepository {
         github: member.github,
         githubLabel: member.githubLabel,
         // imageKey가 없거나 잘못된 경우에도 UI가 깨지지 않도록 기본 이미지를 사용합니다.
-        image: imageRegistry[member.imageKey] ?? imageRegistry.jesiwon,
+        image: resolveMemberImage(member.imageKey),
         achievements: Array.isArray(member.achievements) ? member.achievements : [],
         stacks: (Array.isArray(member.stacks) ? member.stacks : []).map((stack) => ({
           id: stack.id,

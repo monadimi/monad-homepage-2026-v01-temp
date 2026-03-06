@@ -9,11 +9,13 @@
   - Achievements · Awards
   - Members
   - Projects
+  - Home · Media Highlights
   - Text · *(레지스트리 기반 동적 생성)*
     - 현재: Global UI / Home / MONAD 2026 / Achievements / Members / Projects
 - 사이드바는 고정, 우측 데이터 영역만 스크롤
 - 각 탭에서 데이터 표(Table) 조회
 - **새 데이터 추가 / 편집 / 삭제** 지원
+- 행 **상/하 이동(순서 변경)** 지원
 - Members의 `stacks`는 전용 행 편집 UI로 관리 (`id/label/iconKey/value`)
 - 텍스트 번들은 레지스트리(`src/content/text/text-bundles.json`) 기반으로 자동 탭 생성
 - 저장은 Python 서버가 처리(유효성 검사 + pretty JSON 포맷)
