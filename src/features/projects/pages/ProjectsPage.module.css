@@ -16,9 +16,14 @@
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(circle at 63% 67%, rgba(242, 121, 132, 0.38), transparent 24%),
-    radial-gradient(circle at 12% 14%, rgba(106, 76, 234, 0.24), transparent 26%),
-    linear-gradient(102deg, rgba(4, 4, 9, 0.98) 20%, rgba(13, 34, 71, 0.95) 100%);
+    radial-gradient(circle at 63% 67%, var(--hero-radial-right, rgba(242, 121, 132, 0.38)), transparent 24%),
+    radial-gradient(circle at 12% 14%, var(--hero-radial-left, rgba(106, 76, 234, 0.24)), transparent 26%),
+    linear-gradient(
+      102deg,
+      var(--hero-gradient-start, rgba(4, 4, 9, 0.98)) 20%,
+      var(--hero-gradient-end, rgba(13, 34, 71, 0.95)) 100%
+    );
+  transition: background 420ms ease;
 }
 
 .heroBackground::after {
@@ -49,24 +54,6 @@
 .heroBrand img {
   width: clamp(18px, 2.15vw, 31px);
   height: auto;
-}
-
-.platformChip {
-  position: absolute;
-  left: 50%;
-  top: 20px;
-  transform: translateX(-50%);
-  z-index: 2;
-  margin: 0;
-  padding: 10px 24px;
-  border: 1px solid rgba(87, 71, 188, 0.6);
-  border-radius: 999px;
-  color: rgba(133, 116, 239, 0.92);
-  font-size: clamp(10px, 0.84vw, 12px);
-  line-height: 1;
-  letter-spacing: 0.02em;
-  background: rgba(18, 11, 59, 0.5);
-  backdrop-filter: blur(2px);
 }
 
 .heroFeature {
@@ -247,7 +234,7 @@
   min-height: 430px;
   border-radius: 3px;
   padding: 26px 18px 22px;
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--card-border, rgba(255, 255, 255, 0.05));
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -262,27 +249,17 @@
 
 .projectCard:hover {
   transform: translateY(-4px);
-  border-color: rgba(77, 230, 179, 0.5);
+  border-color: var(--card-border-hover, rgba(77, 230, 179, 0.5));
   box-shadow: 0 16px 24px rgba(0, 0, 0, 0.4);
-}
-
-.projectCardLarge {
-  min-height: 430px;
-  grid-column: span 3;
-  align-items: flex-start;
-  justify-content: center;
-  gap: 16px;
-  padding: 30px 26px 24px;
-  border: 2px solid #4de6b3;
 }
 
 .cardGlow {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(circle at 20% 12%, rgba(121, 75, 255, 0.3), transparent 28%),
-    radial-gradient(circle at 70% 75%, rgba(237, 128, 133, 0.45), transparent 25%),
-    linear-gradient(108deg, #10142d 0%, #080b12 45%, #13365f 100%);
+    radial-gradient(circle at 20% 12%, var(--card-glow-accent, rgba(121, 75, 255, 0.3)), transparent 28%),
+    radial-gradient(circle at 70% 75%, var(--card-glow-mid, rgba(237, 128, 133, 0.45)), transparent 25%),
+    linear-gradient(108deg, var(--card-glow-start, #10142d) 0%, #080b12 45%, var(--card-glow-end, #13365f) 100%);
 }
 
 .cardGlow::after {
@@ -297,26 +274,9 @@
 .cardTitleRow,
 .cardSummary,
 .cardTags,
-.cardLinksAndSelect {
+.cardLinks {
   position: relative;
   z-index: 1;
-}
-
-.cardPlatformChip {
-  margin-top: 0;
-  align-self: center;
-  padding: 7px 14px;
-  border-radius: 99px;
-  border: 1px solid rgba(87, 71, 188, 0.5);
-  color: rgba(133, 116, 239, 0.88);
-  font-size: 9px;
-  line-height: 1;
-  background: rgba(18, 11, 59, 0.45);
-}
-
-.projectCardLarge .cardPlatformChip {
-  align-self: center;
-  margin-bottom: 8px;
 }
 
 .cardMiniBrand {
@@ -337,20 +297,12 @@
   gap: 6px;
 }
 
-.projectCardLarge .cardTitleRow {
-  justify-items: start;
-}
-
 .cardTitle {
   margin: 0;
   color: rgba(246, 248, 251, 0.92);
-  font-size: clamp(42px, 3.4vw, 58px);
+  font-size: clamp(26px, 2.5vw, 42px);
   line-height: 1;
   letter-spacing: 0.01em;
-}
-
-.projectCard:not(.projectCardLarge) .cardTitle {
-  font-size: clamp(26px, 2.5vw, 42px);
 }
 
 .cardSubTitle {
@@ -390,23 +342,17 @@
   color: #4de6b3;
 }
 
-.projectCard:not(.projectCardLarge) .tag {
+.projectCard .tag {
   height: 24px;
   padding: 0 10px;
   font-size: 10px;
-}
-
-.cardLinksAndSelect {
-  width: 100%;
-  display: grid;
-  gap: 12px;
-  margin-top: auto;
 }
 
 .cardLinks {
   display: inline-flex;
   align-items: center;
   gap: 8px;
+  margin-top: auto;
 }
 
 .iconLink {
@@ -429,30 +375,6 @@
   line-height: 1;
 }
 
-.mockSelectWrap {
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  border-radius: 16px;
-  padding: 10px 12px;
-  background: rgba(255, 255, 255, 0.02);
-}
-
-.mockSelectLabel {
-  display: block;
-  margin-bottom: 10px;
-  color: rgba(150, 135, 255, 0.82);
-  font-size: 11px;
-}
-
-.mockSelectButton {
-  width: 100%;
-  height: 38px;
-  border: none;
-  border-radius: 10px;
-  color: rgba(234, 221, 255, 0.9);
-  font-size: 14px;
-  background: linear-gradient(90deg, #4e32b8 0%, #7356f7 100%);
-}
-
 @keyframes floatDown {
   0%,
   100% {
@@ -467,10 +389,6 @@
 @media (max-width: 1280px) {
   .gridWrap {
     grid-template-columns: repeat(4, minmax(0, 1fr));
-  }
-
-  .projectCardLarge {
-    grid-column: span 2;
   }
 }
 
@@ -490,15 +408,6 @@
 }
 
 @media (max-width: 900px) {
-  .platformChip {
-    position: relative;
-    left: auto;
-    top: auto;
-    transform: none;
-    margin: 12px auto 0;
-    display: table;
-  }
-
   .heroFeature {
     width: 100%;
     margin-top: 50px;
@@ -519,10 +428,6 @@
 
   .gridWrap {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .projectCardLarge {
-    grid-column: span 2;
   }
 }
 
@@ -578,12 +483,6 @@
     min-height: 360px;
   }
 
-  .projectCardLarge {
-    grid-column: span 1;
-    min-height: 360px;
-    padding: 20px 16px;
-  }
-
   .cardTitle {
     font-size: 44px;
   }
@@ -597,7 +496,7 @@
     height: 28px;
   }
 
-  .projectCard:not(.projectCardLarge) .tag {
+  .projectCard .tag {
     height: 24px;
     font-size: 10px;
   }

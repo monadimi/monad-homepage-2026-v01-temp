@@ -16,23 +16,61 @@
           "id": "member-1-김단아",
           "name": "김단아",
           "code": "24WP",
-          "intro": "본질을 꿰뚫는 통찰력으로 문제의 해법을 제시하는 사람",
+          "intro": "개발자라는 틀에 머무르지 않고, 아이디어를 가치로 만들어내는 사람",
           "roles": [
-            "developer"
+            "developer",
+            "planner"
           ],
-          "quote": "자신이 하고싶은 한마디",
+          "quote": "방방다망함",
           "github": "https://github.com/abcdana122",
           "githubLabel": "abcdana122 - Overview",
+          "imageKey": "kda",
+          "achievements": [
+            "국제정보올림피아드 국가대표 교육생",
+            "한국코드페어 4년 연속 수상"
+          ],
+          "stacks": [
+            {
+              "id": "python",
+              "label": "Python",
+              "iconKey": "python",
+              "value": 1.0
+            },
+            {
+              "id": "c",
+              "label": "C",
+              "iconKey": "c",
+              "value": 0.7
+            },
+            {
+              "id": "react",
+              "label": "React",
+              "iconKey": "react",
+              "value": 0.4
+            },
+            {
+              "id": "ahui",
+              "label": "아희",
+              "iconKey": "아희",
+              "value": 1.0
+            }
+          ]
+        },
+        {
+          "id": "member-2-김호태",
+          "name": "김호태",
+          "code": "24DC",
+          "intro": "디자인 1황",
+          "roles": [
+            "designer"
+          ],
+          "quote": "자신이 하고싶은 한마디",
+          "github": "https://github.com/",
+          "githubLabel": "김호태 - Overview",
           "imageKey": "jesiwon",
           "achievements": [
-            "카이스트 IP-CEO 수료",
-            "2025 SW/AI 미래채움 고교 챌린지 창의상 수상",
-            "AI SoftwarePlay 용인 우수상 수상",
-            "특허 3건 출원",
-            "교내 뮤지컬 동아리 (아르떼) 티켓팅 사이트 제작",
-            "AI 학생 언어 분석 혐오표현 예방 교육 솔루션 HEAR 제작 주도",
-            "셀레니움 기반 위키 탐색 프로그램: 위키드 제작",
-            "AI 편향성 및 필터버블 토론대회 전국 2등"
+            "[작성 중]",
+            "디자인 goat"
           ],
           "stacks": [
             {
@@ -58,67 +96,6 @@
               "label": "LLM(NLP)",
               "iconKey": "label",
               "value": 1.0
-            },
-            {
-              "id": "react",
-              "label": "React",
-              "iconKey": "react",
-              "value": 0.36
-            },
-            {
-              "id": "crawling",
-              "label": "Crawling",
-              "iconKey": "label",
-              "value": 0.69
-            }
-          ]
-        },
-        {
-          "id": "member-2-김호태",
-          "name": "김호태",
-          "code": "24DC",
-          "intro": "본질을 꿰뚫는 통찰력으로 문제의 해법을 제시하는 사람",
-          "roles": [
-            "designer"
-          ],
-          "quote": "자신이 하고싶은 한마디",
-          "github": "https://github.com/",
-          "githubLabel": "김호태 - Overview",
-          "imageKey": "jesiwon",
-          "achievements": [
-            "카이스트 IP-CEO 수료",
-            "2025 SW/AI 미래채움 고교 챌린지 창의상 수상",
-            "AI SoftwarePlay 용인 우수상 수상",
-            "특허 3건 출원",
-            "교내 뮤지컬 동아리 (아르떼) 티켓팅 사이트 제작",
-            "AI 학생 언어 분석 혐오표현 예방 교육 솔루션 HEAR 제작 주도",
-            "셀레니움 기반 위키 탐색 프로그램: 위키드 제작",
-            "AI 편향성 및 필터버블 토론대회 전국 2등"
-          ],
-          "stacks": [
-            {
-              "id": "python",
-              "label": "Python",
-              "iconKey": "python",
-              "value": 0.88
-            },
-            {
-              "id": "typescript",
-              "label": "TypeScript",
-              "iconKey": "typescript",
-              "value": 0.52
-            },
-            {
-              "id": "c",
-              "label": "C",
-              "iconKey": "c",
-              "value": 0.74
-            },
-            {
-              "id": "llm",
-              "label": "LLM(NLP)",
-              "iconKey": "label",
-              "value": 1
             },
             {
               "id": "react",
@@ -200,7 +177,7 @@
           "id": "member-4-조수아",
           "name": "조수아",
           "code": "24WP",
-          "intro": "본질을 꿰뚫는 통찰력으로 문제의 해법을 제시하는 사람",
+          "intro": "압둘이에요",
           "roles": [
             "developer"
           ],
@@ -209,14 +186,9 @@
           "githubLabel": "zhaoxiuya - Overview",
           "imageKey": "jesiwon",
           "achievements": [
-            "카이스트 IP-CEO 수료",
-            "2025 SW/AI 미래채움 고교 챌린지 창의상 수상",
-            "AI SoftwarePlay 용인 우수상 수상",
-            "특허 3건 출원",
-            "교내 뮤지컬 동아리 (아르떼) 티켓팅 사이트 제작",
-            "AI 학생 언어 분석 혐오표현 예방 교육 솔루션 HEAR 제작 주도",
-            "셀레니움 기반 위키 탐색 프로그램: 위키드 제작",
-            "AI 편향성 및 필터버블 토론대회 전국 2등"
+            "[작성 중]",
+            "컴파일러 및 인터프리터 개발",
+            "로켓 발사 경험"
           ],
           "stacks": [
             {
@@ -326,7 +298,7 @@
           "id": "member-6-최윤혁",
           "name": "최윤혁",
           "code": "24WP",
-          "intro": "본질을 꿰뚫는 통찰력으로 문제의 해법을 제시하는 사람",
+          "intro": "해방 올라운더",
           "roles": [
             "developer",
             "designer"
@@ -336,14 +308,9 @@
           "githubLabel": "snowman0919 - Overview",
           "imageKey": "jesiwon",
           "achievements": [
-            "카이스트 IP-CEO 수료",
-            "2025 SW/AI 미래채움 고교 챌린지 창의상 수상",
-            "AI SoftwarePlay 용인 우수상 수상",
-            "특허 3건 출원",
-            "교내 뮤지컬 동아리 (아르떼) 티켓팅 사이트 제작",
-            "AI 학생 언어 분석 혐오표현 예방 교육 솔루션 HEAR 제작 주도",
-            "셀레니움 기반 위키 탐색 프로그램: 위키드 제작",
-            "AI 편향성 및 필터버블 토론대회 전국 2등"
+            "[작성 중]",
+            "해킹 잘하기",
+            "모나드 서버 운용"
           ],
           "stacks": [
             {
@@ -397,7 +364,11 @@
           "githubLabel": "hjun1052 - Overview",
           "imageKey": "jhhan",
           "achievements": [
-            "각종 창업 대회 다수 수상"
+            "각종 창업 대회 다수 수상",
+            "디미고 스타트업톤 유일 금상 개발자",
+            "대전교육정보원 정보영재 고급 수료",
+            "VSCode 확장프로그램 1.3k 설치 보유",
+            "디미체크 개발"
           ],
           "stacks": [
             {
@@ -442,7 +413,7 @@
           "id": "member-8-황정빈",
           "name": "황정빈",
           "code": "24WP",
-          "intro": "본질을 꿰뚫는 통찰력으로 문제의 해법을 제시하는 사람",
+          "intro": "모나드 비주얼 담당",
           "roles": [
             "developer"
           ],
@@ -451,14 +422,8 @@
           "githubLabel": "B1NYL - Overview",
           "imageKey": "jesiwon",
           "achievements": [
-            "카이스트 IP-CEO 수료",
-            "2025 SW/AI 미래채움 고교 챌린지 창의상 수상",
-            "AI SoftwarePlay 용인 우수상 수상",
-            "특허 3건 출원",
-            "교내 뮤지컬 동아리 (아르떼) 티켓팅 사이트 제작",
-            "AI 학생 언어 분석 혐오표현 예방 교육 솔루션 HEAR 제작 주도",
-            "셀레니움 기반 위키 탐색 프로그램: 위키드 제작",
-            "AI 편향성 및 필터버블 토론대회 전국 2등"
+            "[작성 중]",
+            "프롬피 투자 유치"
           ],
           "stacks": [
             {

@@ -3,11 +3,6 @@
   "locale": "ko",
   "entries": [
     {
-      "id": "common.platformChip",
-      "value": "AI-Powered Analysis Platform",
-      "description": "Projects 공통 플랫폼 칩 문구"
-    },
-    {
       "id": "card.homeAria",
       "value": "Go home",
       "description": "프로젝트 카드 홈 아이콘 aria-label"
@@ -16,16 +11,6 @@
       "id": "card.githubAria",
       "value": "GitHub link",
       "description": "프로젝트 카드 GitHub 아이콘 aria-label"
-    },
-    {
-      "id": "card.schoolLabel",
-      "value": "학교 선택",
-      "description": "프로젝트 카드 학교 선택 라벨"
-    },
-    {
-      "id": "card.schoolPlaceholder",
-      "value": "학교를 선택하세요",
-      "description": "프로젝트 카드 학교 선택 플레이스홀더"
     },
     {
       "id": "hero.sectionAria",
