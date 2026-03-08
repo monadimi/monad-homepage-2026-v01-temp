@@ -7,6 +7,8 @@ type CTAButtonVariant = 'outline' | 'solid'
 interface CTAButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   label: string
   variant?: CTAButtonVariant
+  analyticsEvent?: string
+  analyticsContext?: string
 }
 
 const variantClassNameMap: Record<CTAButtonVariant, string> = {
@@ -18,12 +20,16 @@ export const CTAButton = memo(function CTAButton({
   label,
   variant = 'outline',
   type = 'button',
+  analyticsEvent,
+  analyticsContext,
   ...rest
 }: CTAButtonProps) {
   return (
     <button
       type={type}
       className={`${styles.button} ${variantClassNameMap[variant]}`}
+      data-analytics-event={analyticsEvent}
+      data-analytics-context={analyticsContext}
       {...rest}
     >
       {label}

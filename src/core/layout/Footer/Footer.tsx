@@ -1,6 +1,7 @@
 // 공통 푸터입니다.
 // 홈/업적 페이지 모두 동일한 컴포넌트를 재사용합니다.
 import { memo } from 'react'
+import { Link } from 'react-router-dom'
 import dimigoLogo from '../../../assets/dimigo-logo.png'
 import { MonadLogo } from '../../../features/home/components/MonadLogo/MonadLogo'
 import {
@@ -30,9 +31,9 @@ export const Footer = memo(function Footer() {
           </div>
 
           <div className={styles.rightColumn}>
-            <a href="#" className={styles.cookieLink}>
+            <Link to="/cookie-policy" className={styles.cookieLink}>
               {HomeContentModel.footerCookieLabel}
-            </a>
+            </Link>
             <SocialIconBar items={footerIcons} variant="compact" />
           </div>
         </div>

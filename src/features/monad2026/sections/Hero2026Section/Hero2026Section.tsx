@@ -27,7 +27,13 @@ export const Hero2026Section = memo(function Hero2026Section({
       <div className={styles.content}>
         <h1 className={styles.title}>{title}</h1>
         <p className={styles.subtitle}>{subtitle}</p>
-        <CTAButton label={ctaLabel} variant="outline" onClick={onApplyClick} />
+        <CTAButton
+          label={ctaLabel}
+          variant="outline"
+          analyticsEvent="apply_click"
+          analyticsContext="monad2026_hero"
+          onClick={onApplyClick}
+        />
       </div>
     </section>
   )

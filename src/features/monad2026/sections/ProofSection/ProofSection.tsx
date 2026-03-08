@@ -74,6 +74,8 @@ export const ProofSection = memo(function ProofSection() {
         <CTAButton
           label={ctaLabel}
           variant="outline"
+          analyticsEvent="cta_click"
+          analyticsContext="monad2026_proof_members"
           onClick={() => navigate('/members')}
         />
       </div>

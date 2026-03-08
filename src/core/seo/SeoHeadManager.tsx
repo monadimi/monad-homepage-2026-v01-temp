@@ -2,6 +2,7 @@
 // 화면에는 아무것도 렌더링하지 않으며, head 태그만 업데이트합니다.
 import { memo, useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
+import { trackPageView } from '../analytics/googleAnalytics'
 import {
   DEFAULT_LOCALE,
   SITE_NAME,
@@ -108,6 +109,13 @@ export const SeoHeadManager = memo(function SeoHeadManager() {
         name: SITE_NAME,
         url: origin,
       },
+    })
+
+    // SPA 라우팅에서도 페이지뷰가 누락되지 않도록 경로 변경 시 수동 전송합니다.
+    trackPageView({
+      title: seo.title,
+      location: canonicalUrl,
+      path: location.pathname,
     })
   }, [location.pathname])
 

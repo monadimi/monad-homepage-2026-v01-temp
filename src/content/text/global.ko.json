@@ -53,6 +53,11 @@
       "description": "MONAD 2026 페이지 타이틀"
     },
     {
+      "id": "page.cookiePolicy",
+      "value": "Cookie Policy",
+      "description": "Cookie Policy 페이지 타이틀"
+    },
+    {
       "id": "footer.cookiePolicy",
       "value": "Cookie Policy",
       "description": "푸터 쿠키 정책 링크 라벨"
@@ -96,6 +101,71 @@
       "id": "comingSoon.subtitle",
       "value": "Coming Soon",
       "description": "ComingSoon 페이지 부제"
+    },
+    {
+      "id": "cookie.title",
+      "value": "Cookie Policy",
+      "description": "쿠키 정책 페이지 제목"
+    },
+    {
+      "id": "cookie.lastUpdated",
+      "value": "Last Updated: March 8, 2026",
+      "description": "쿠키 정책 최종 업데이트 일자"
+    },
+    {
+      "id": "cookie.intro",
+      "value": "MONAD 웹사이트는 서비스 품질 향상과 트래픽 분석을 위해 쿠키를 사용합니다.",
+      "description": "쿠키 정책 소개 문구"
+    },
+    {
+      "id": "cookie.section.collection.title",
+      "value": "1. 수집하는 정보",
+      "description": "쿠키 정책 섹션 1 제목"
+    },
+    {
+      "id": "cookie.section.collection.body",
+      "value": "쿠키를 통해 방문 경로, 페이지 조회, 버튼 클릭 등의 익명 이벤트 데이터를 수집할 수 있습니다.",
+      "description": "쿠키 정책 섹션 1 본문"
+    },
+    {
+      "id": "cookie.section.purpose.title",
+      "value": "2. 사용 목적",
+      "description": "쿠키 정책 섹션 2 제목"
+    },
+    {
+      "id": "cookie.section.purpose.body",
+      "value": "수집된 정보는 콘텐츠 개선, UI 최적화, 운영 안정성 점검을 위해 사용됩니다.",
+      "description": "쿠키 정책 섹션 2 본문"
+    },
+    {
+      "id": "cookie.section.analytics.title",
+      "value": "3. 분석 도구",
+      "description": "쿠키 정책 섹션 3 제목"
+    },
+    {
+      "id": "cookie.section.analytics.body",
+      "value": "본 사이트는 Google Analytics 4 (G-X2SGEVJEDP)를 사용합니다. Google의 데이터 처리 방식은 Google 개인정보처리방침을 따릅니다.",
+      "description": "쿠키 정책 섹션 3 본문"
+    },
+    {
+      "id": "cookie.section.control.title",
+      "value": "4. 쿠키 제어",
+      "description": "쿠키 정책 섹션 4 제목"
+    },
+    {
+      "id": "cookie.section.control.body",
+      "value": "사용자는 브라우저 설정에서 쿠키 저장을 차단하거나 삭제할 수 있습니다. 단, 일부 기능이 제한될 수 있습니다.",
+      "description": "쿠키 정책 섹션 4 본문"
+    },
+    {
+      "id": "cookie.section.contact.title",
+      "value": "5. 문의",
+      "description": "쿠키 정책 섹션 5 제목"
+    },
+    {
+      "id": "cookie.section.contact.body",
+      "value": "정책 관련 문의는 MONAD 운영진 채널(Instagram 또는 GitHub)을 통해 전달해 주세요.",
+      "description": "쿠키 정책 섹션 5 본문"
     }
   ]
 }
