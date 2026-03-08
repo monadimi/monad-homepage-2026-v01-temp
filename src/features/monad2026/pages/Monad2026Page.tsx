@@ -27,6 +27,7 @@ const PANE_SCALE_MAX = 1
 const INTRO_SPLIT_MIN_WIDTH = 1500
 const INTRO_SPLIT_MIN_HEIGHT = 920
 const CYCLE_LAST_INDEX = cycleItems.length - 1
+const APPLY_REDIRECT_URL = 'https://mnad.im/apply'
 // const APPLY_REDIRECT_URL = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ'
 
 function clamp(value: number, min: number, max: number): number {
@@ -472,10 +473,10 @@ export const Monad2026Page = memo(function Monad2026Page() {
     [activePaneIndex, isDesktopHijackEnabled],
   )
 
-  // 지원하기 연출 연결은 잠시 비활성화합니다.
-  // const handleApplyClick = useCallback(() => {
-  //   setIsApplyTransitionOpen(true)
-  // }, [])
+  // 현재는 티켓 연출 대신 외부 지원 링크로 바로 이동합니다.
+  const handleApplyClick = useCallback(() => {
+    window.location.assign(APPLY_REDIRECT_URL)
+  }, [])
 
   // const handleApplyTransitionComplete = useCallback(() => {
   //   setIsApplyTransitionOpen(false)
@@ -497,7 +498,7 @@ export const Monad2026Page = memo(function Monad2026Page() {
             data-pane-center
             data-no-fit-scale
           >
-            <Hero2026Section />
+            <Hero2026Section onApplyClick={handleApplyClick} />
           </div>
         </div>
 
@@ -570,7 +571,7 @@ export const Monad2026Page = memo(function Monad2026Page() {
             data-pane-center
             data-no-fit-scale
           >
-            <JoinEndSection />
+            <JoinEndSection onApplyClick={handleApplyClick} />
           </div>
         </div>
 

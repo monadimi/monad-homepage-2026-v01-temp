@@ -7,10 +7,14 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
+    "lint:strict": "eslint . --max-warnings=0",
+    "test": "npm run validate:texts && npm run validate:data",
     "preview": "vite preview",
     "json-manager": "python3 tools/json-manager/server.py",
+    "validate:json": "node tools/ci/validate-json.mjs",
     "validate:texts": "python3 tools/json-manager/validate_text_bundles.py",
-    "validate:data": "python3 tools/json-manager/validate_feature_data.py"
+    "validate:data": "python3 tools/json-manager/validate_feature_data.py",
+    "ci:check": "npm run validate:json && npm run lint && npm run test && npm run build"
   },
   "dependencies": {
     "react": "^19.2.0",
