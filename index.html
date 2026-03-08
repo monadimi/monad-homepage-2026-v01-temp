@@ -41,6 +41,18 @@
     />
     <meta name="twitter:image" content="/monad-favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Google Analytics (GA4) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-X2SGEVJEDP"></script>
+    <script>
+      window.dataLayer = window.dataLayer || []
+      function gtag() {
+        dataLayer.push(arguments)
+      }
+      window.gtag = gtag
+      gtag('js', new Date())
+      // SPA 라우팅 기반 페이지뷰는 앱 코드에서 수동 전송합니다.
+      gtag('config', 'G-X2SGEVJEDP', { send_page_view: false })
+    </script>
     <title>MONAD</title>
   </head>
   <body>

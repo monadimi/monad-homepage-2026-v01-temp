@@ -21,7 +21,13 @@ export const JoinEndSection = memo(function JoinEndSection({
       <div className={styles.overlay} />
       <div className={styles.content}>
         <h2 className={styles.title}>{title}</h2>
-        <CTAButton label={ctaLabel} variant="outline" onClick={onApplyClick} />
+        <CTAButton
+          label={ctaLabel}
+          variant="outline"
+          analyticsEvent="apply_click"
+          analyticsContext="monad2026_join"
+          onClick={onApplyClick}
+        />
       </div>
     </section>
   )

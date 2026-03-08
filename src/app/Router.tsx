@@ -13,9 +13,11 @@ import {
   NavigationService,
   type NavigableRoute,
 } from '../core/navigation/NavigationService'
+import { trackEvent } from '../core/analytics/googleAnalytics'
 import { SeoHeadManager } from '../core/seo/SeoHeadManager'
 import { AchievementsPage } from '../features/achievements/pages/AchievementsPage'
 import { ComingSoonPage } from '../features/common/pages/ComingSoonPage'
+import { CookiePolicyPage } from '../features/common/pages/CookiePolicyPage'
 import { HomePage } from '../features/home/pages/HomePage'
 import { MembersPage } from '../features/members/pages/MembersPage'
 import { Monad2026Page } from '../features/monad2026/pages/Monad2026Page'
@@ -33,12 +35,76 @@ const ScrollTopOnRouteChange = memo(function ScrollTopOnRouteChange() {
   return null
 })
 
+function normalizeButtonLabel(rawLabel: string): string {
+  return rawLabel.replace(/\s+/g, ' ').trim().slice(0, 120)
+}
+
+function getButtonEventName(button: HTMLButtonElement, normalizedLabel: string): string {
+  const explicitEvent = button.dataset.analyticsEvent?.trim()
+  if (explicitEvent) {
+    return explicitEvent
+  }
+
+  if (button.closest('header')) {
+    return 'nav_click'
+  }
+
+  if (/지원|apply/i.test(normalizedLabel)) {
+    return 'apply_click'
+  }
+
+  if (/더 알아보기|more/i.test(normalizedLabel)) {
+    return 'cta_click'
+  }
+
+  if (/이전|다음|previous|next|year|연도/i.test(normalizedLabel)) {
+    return 'nav_click'
+  }
+
+  return 'button_click'
+}
+
+// 전역 버튼 클릭 이벤트를 GA4 custom event로 전송합니다.
+const ButtonAnalyticsTracker = memo(function ButtonAnalyticsTracker() {
+  useEffect(() => {
+    const handleButtonClick = (event: MouseEvent) => {
+      const target = event.target as HTMLElement | null
+      const button = target?.closest('button')
+      if (!button || button.disabled) {
+        return
+      }
+
+      const label =
+        normalizeButtonLabel(button.getAttribute('aria-label') ?? '') ||
+        normalizeButtonLabel(button.textContent ?? '') ||
+        'unlabeled_button'
+
+      const eventName = getButtonEventName(button, label)
+
+      trackEvent(eventName, {
+        button_label: label,
+        button_id: button.id || undefined,
+        button_context: button.dataset.analyticsContext || undefined,
+        page_path: window.location.pathname,
+      })
+    }
+
+    document.addEventListener('click', handleButtonClick, true)
+    return () => {
+      document.removeEventListener('click', handleButtonClick, true)
+    }
+  }, [])
+
+  return null
+})
+
 // 모든 페이지에서 재사용되는 공통 셸입니다.
 const AppLayout = memo(function AppLayout() {
   return (
     <div className={styles.appShell}>
       <SeoHeadManager />
       <ScrollTopOnRouteChange />
+      <ButtonAnalyticsTracker />
       <Header />
       <main className={styles.mainContent}>
         <Outlet />
@@ -93,6 +159,10 @@ const routeChildren = [
       element: <ComingSoonPage title={route.pageTitle} />,
     }
   }),
+  {
+    path: 'cookie-policy',
+    element: <CookiePolicyPage />,
+  },
 ]
 
 const browserRouter = createBrowserRouter([

@@ -66,6 +66,13 @@ const routeSeoConfigMap: Readonly<Record<string, RouteSeoConfig>> = {
     imagePath: monad2026HeroImage,
     imageAlt: 'MONAD 2026 페이지 비주얼',
   },
+  '/cookie-policy': {
+    title: 'Cookie Policy | MONAD',
+    description: 'MONAD 웹사이트의 쿠키 사용, 분석 도구, 제어 방법에 대한 정책 페이지입니다.',
+    keywords: `${sharedKeywords}, cookie policy, analytics, 개인정보`,
+    imagePath: monadLogoImage,
+    imageAlt: 'MONAD Cookie Policy 페이지 비주얼',
+  },
 }
 
 function normalizePathname(pathname: string): string {
