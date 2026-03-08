@@ -2,9 +2,7 @@
   "defaultYear": 2025,
   "yearOrder": [
     2026,
-    2025,
-    2024,
-    2023
+    2025
   ],
   "awards": [
     {
@@ -47,7 +45,9 @@
       "title": "2025 SW·AI 고교 챌린지",
       "subtitle": "럭스로보사장상",
       "highlight": "창의상",
-      "imageKey": "placeholder"
+      "imageKey": "placeholder",
+      "teamMembers": [],
+      "prize": "₩300,000"
     },
     {
       "year": 2025,
@@ -55,7 +55,9 @@
       "title": "2025 ICT 해커톤 AI Software Play 용인",
       "subtitle": "경희대학교",
       "highlight": "우수상",
-      "imageKey": "placeholder"
+      "imageKey": "placeholder",
+      "teamMembers": [],
+      "prize": "₩500,000"
     },
     {
       "year": 2026,

@@ -28,6 +28,8 @@ export const AchievementsPage = memo(function AchievementsPage() {
     () => AwardsRepository.getTrackedYearCount(),
     [],
   )
+  // "OVER N YEARS" 문구는 요청에 맞춰 표시값을 1 감소시켜 계산합니다.
+  const coverageYearCount = Math.max(trackedYearCount - 1, 0)
   // 카드 데이터에 포함된 상금 전체 자동 합계
   const totalEarnAmount = useMemo(
     () => AwardsRepository.getTotalPrizeAmount(),
@@ -67,8 +69,8 @@ export const AchievementsPage = memo(function AchievementsPage() {
   const formattedYearCoverage = textFormat(
     'achievements',
     'hero.coverageTemplate',
-    { count: trackedYearCount, suffix: trackedYearCount > 1 ? 'S' : '' },
-    `OVER ${trackedYearCount} YEAR${trackedYearCount > 1 ? 'S' : ''}`,
+    { count: coverageYearCount, suffix: coverageYearCount > 1 ? 'S' : '' },
+    `OVER ${coverageYearCount} YEAR${coverageYearCount > 1 ? 'S' : ''}`,
   )
   const totalEarnLabel = text('achievements', 'hero.totalEarnLabel', 'TOTAL EARN')
 

@@ -1,4 +1,12 @@
-import { memo, useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import {
+  memo,
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+  type CSSProperties,
+} from 'react'
 import githubIcon from '../../../assets/github.svg'
 import { text } from '../../../content/text/textService'
 import { MonadLogo } from '../../home/components/MonadLogo/MonadLogo'
@@ -11,33 +19,71 @@ const autoRotateIntervalMs = ProjectsRepository.getRotationIntervalMs()
 
 interface ProjectCardProps {
   project: ProjectItem
-  large?: boolean
   onMouseEnter?: () => void
+}
+
+type ProjectCardToneStyle = CSSProperties & {
+  '--card-glow-start': string
+  '--card-glow-mid': string
+  '--card-glow-end': string
+  '--card-glow-accent': string
+  '--card-border': string
+  '--card-border-hover': string
+}
+
+type HeroToneStyle = CSSProperties & {
+  '--hero-radial-left': string
+  '--hero-radial-right': string
+  '--hero-gradient-start': string
+  '--hero-gradient-end': string
+}
+
+function createProjectSeed(projectId: string): number {
+  return projectId.split('').reduce((accumulator, char, index) => {
+    return accumulator + char.charCodeAt(0) * (index + 17)
+  }, 0)
+}
+
+function createProjectCardToneStyle(projectId: string): ProjectCardToneStyle {
+  const seed = createProjectSeed(projectId)
+  const baseHue = (seed % 80) + 205
+  const secondaryHue = (baseHue + 26 + (seed % 28)) % 360
+  const accentHue = (baseHue + 144 + (seed % 36)) % 360
+
+  return {
+    '--card-glow-start': `hsl(${baseHue} 47% 14%)`,
+    '--card-glow-mid': `hsla(${secondaryHue} 78% 64% / 0.28)`,
+    '--card-glow-end': `hsl(${(baseHue + 18) % 360} 56% 22%)`,
+    '--card-glow-accent': `hsla(${accentHue} 82% 66% / 0.33)`,
+    '--card-border': `hsla(${baseHue} 36% 72% / 0.2)`,
+    '--card-border-hover': `hsla(${accentHue} 88% 70% / 0.58)`,
+  }
+}
+
+function createHeroToneStyle(projectId: string): HeroToneStyle {
+  const seed = createProjectSeed(projectId)
+  const baseHue = (seed % 70) + 206
+  const secondaryHue = (baseHue + 128 + (seed % 24)) % 360
+
+  return {
+    '--hero-radial-left': `hsla(${baseHue} 78% 66% / 0.28)`,
+    '--hero-radial-right': `hsla(${secondaryHue} 74% 66% / 0.24)`,
+    '--hero-gradient-start': `hsl(${(baseHue + 6) % 360} 44% 14%)`,
+    '--hero-gradient-end': `hsl(${(secondaryHue + 14) % 360} 62% 22%)`,
+  }
 }
 
 const ProjectCard = memo(function ProjectCard({
   project,
-  large = false,
   onMouseEnter,
 }: ProjectCardProps) {
-  const platformChip = text(
-    'projects',
-    'common.platformChip',
-    'AI-Powered Analysis Platform',
-  )
   const homeAriaLabel = text('projects', 'card.homeAria', 'Go home')
   const githubAriaLabel = text('projects', 'card.githubAria', 'GitHub link')
-  const schoolLabel = text('projects', 'card.schoolLabel', '학교 선택')
-  const schoolPlaceholder = text('projects', 'card.schoolPlaceholder', '학교를 선택하세요')
+  const cardToneStyle = useMemo(() => createProjectCardToneStyle(project.id), [project.id])
 
   return (
-    <article
-      className={`${styles.projectCard} ${large ? styles.projectCardLarge : ''}`}
-      onMouseEnter={onMouseEnter}
-    >
+    <article className={styles.projectCard} style={cardToneStyle} onMouseEnter={onMouseEnter}>
       <div className={styles.cardGlow} aria-hidden="true" />
-
-      <div className={styles.cardPlatformChip}>{platformChip}</div>
 
       <div className={styles.cardMiniBrand}>
         <MonadLogo variant="footerMark" />
@@ -49,8 +95,6 @@ const ProjectCard = memo(function ProjectCard({
         <span className={styles.cardSubTitle}>{project.subtitle}</span>
       </div>
 
-      {large ? <p className={styles.cardSummary}>{project.summary}</p> : null}
-
       <div className={styles.cardTags}>
         <span className={`${styles.tag} ${styles.tagPrimary}`}>{project.awardTag}</span>
         {project.tags.map((tag) => (
@@ -60,25 +104,14 @@ const ProjectCard = memo(function ProjectCard({
         ))}
       </div>
 
-      {large ? (
-        <div className={styles.cardLinksAndSelect}>
-          <div className={styles.cardLinks}>
-            <a href={project.websiteUrl} aria-label={homeAriaLabel} className={styles.iconLink}>
-              <span className={styles.homeGlyph}>⌂</span>
-            </a>
-            <a href={project.githubUrl} aria-label={githubAriaLabel} className={styles.iconLink}>
-              <img src={githubIcon} alt="" />
-            </a>
-          </div>
-
-          <div className={styles.mockSelectWrap}>
-            <label className={styles.mockSelectLabel}>{schoolLabel}</label>
-            <button type="button" className={styles.mockSelectButton}>
-              {schoolPlaceholder}
-            </button>
-          </div>
-        </div>
-      ) : null}
+      <div className={styles.cardLinks}>
+        <a href={project.websiteUrl} aria-label={homeAriaLabel} className={styles.iconLink}>
+          <span className={styles.homeGlyph}>⌂</span>
+        </a>
+        <a href={project.githubUrl} aria-label={githubAriaLabel} className={styles.iconLink}>
+          <img src={githubIcon} alt="" />
+        </a>
+      </div>
     </article>
   )
 })
@@ -86,11 +119,6 @@ const ProjectCard = memo(function ProjectCard({
 export const ProjectsPage = memo(function ProjectsPage() {
   const sectionAriaLabel = text('projects', 'hero.sectionAria', 'Projects hero')
   const brandLabel = text('projects', 'hero.brandLabel', 'Projects')
-  const platformChip = text(
-    'projects',
-    'common.platformChip',
-    'AI-Powered Analysis Platform',
-  )
   const previousProjectAriaLabel = text(
     'projects',
     'hero.previousProjectAria',
@@ -110,6 +138,7 @@ export const ProjectsPage = memo(function ProjectsPage() {
     ProjectsRepository.getDefaultYear(),
   )
   const [featuredIndex, setFeaturedIndex] = useState(0)
+  const [isHoverPreviewActive, setIsHoverPreviewActive] = useState(false)
 
   const filteredProjects = useMemo(
     () => ProjectsRepository.getProjectsByYear(selectedYear),
@@ -117,7 +146,7 @@ export const ProjectsPage = memo(function ProjectsPage() {
   )
 
   useEffect(() => {
-    if (filteredProjects.length <= 1) {
+    if (filteredProjects.length <= 1 || isHoverPreviewActive) {
       return
     }
 
@@ -128,20 +157,18 @@ export const ProjectsPage = memo(function ProjectsPage() {
     return () => {
       window.clearInterval(intervalId)
     }
-  }, [filteredProjects])
+  }, [filteredProjects, isHoverPreviewActive])
 
   const featuredProject =
     filteredProjects[featuredIndex] ?? filteredProjects[0] ?? allProjects[0] ?? null
 
-  const compactProjects = useMemo(() => {
-    if (filteredProjects.length === 0) {
-      return []
-    }
+  // 선택된 프로젝트 id 기준으로 히어로 배경 톤을 동적으로 변경합니다.
+  const heroToneStyle = useMemo(
+    () => createHeroToneStyle(featuredProject?.id ?? 'hero-default'),
+    [featuredProject?.id],
+  )
 
-    return Array.from({ length: 10 }, (_, index) =>
-      filteredProjects[index % filteredProjects.length],
-    )
-  }, [filteredProjects])
+  const compactProjects = useMemo(() => filteredProjects, [filteredProjects])
 
   const handleNextFeatured = useCallback(() => {
     if (filteredProjects.length === 0) {
@@ -176,14 +203,12 @@ export const ProjectsPage = memo(function ProjectsPage() {
   return (
     <article className={styles.page}>
       <section className={styles.heroSection} aria-label={sectionAriaLabel}>
-        <div className={styles.heroBackground} aria-hidden="true" />
+        <div className={styles.heroBackground} style={heroToneStyle} aria-hidden="true" />
 
         <div className={styles.heroBrand}>
           <MonadLogo variant="footerMark" />
           <span>{brandLabel}</span>
         </div>
-
-        <p className={styles.platformChip}>{platformChip}</p>
 
         <button
           type="button"
@@ -271,22 +296,27 @@ export const ProjectsPage = memo(function ProjectsPage() {
           </div>
         </div>
 
-        <div className={styles.gridWrap}>
-          {compactProjects.map((project, index) => (
+        <div
+          className={styles.gridWrap}
+          onMouseLeave={() => {
+            setIsHoverPreviewActive(false)
+          }}
+        >
+          {compactProjects.map((project) => (
             <ProjectCard
-              key={`${project.id}-${index}`}
+              key={project.id}
               project={project}
               onMouseEnter={() => {
                 const sourceIndex = filteredProjects.indexOf(project)
-
-                if (sourceIndex >= 0) {
-                  setFeaturedIndex(sourceIndex)
+                if (sourceIndex < 0) {
+                  return
                 }
+
+                setIsHoverPreviewActive(true)
+                setFeaturedIndex(sourceIndex)
               }}
             />
           ))}
-
-          <ProjectCard project={featuredProject} large />
         </div>
       </section>
     </article>

@@ -1,6 +1,7 @@
 // 교육 파트 소개 섹션입니다.
 import { memo } from 'react'
-import educationVisual from '../../../../assets/monad-2026-activity-general.svg'
+import hackathonVisual from '../../../../assets/hackathon.png'
+import mentorVisual from '../../../../assets/mentor.png'
 import { text } from '../../../../content/text/textService'
 import { GraySvgLogo } from '../../components/GraySvgLogo/GraySvgLogo'
 import styles from './EducationSection.module.css'
@@ -26,7 +27,7 @@ export const EducationSection = memo(function EducationSection() {
       <div className={styles.layout}>
         <article className={styles.card}>
           <div className={styles.mediaWrap}>
-            <img src={educationVisual} alt="멘토 멘티 교육" loading="lazy" />
+            <img src={mentorVisual} alt="멘토 멘티 교육" loading="lazy" />
           </div>
           <div className={styles.copy}>
             <h3 className={styles.headline}>
@@ -46,7 +47,7 @@ export const EducationSection = memo(function EducationSection() {
 
         <article className={styles.card}>
           <div className={styles.mediaWrap}>
-            <img src={educationVisual} alt="해커톤 활동" loading="lazy" />
+            <img src={hackathonVisual} alt="해커톤 활동" loading="lazy" />
           </div>
           <div className={styles.copy}>
             <h3 className={styles.headline}>
