@@ -188,39 +188,41 @@
           "id": "member-4-조수아",
           "name": "조수아",
           "code": "24WP",
-          "intro": "압둘이에요",
+          "intro": "조수아 24WP",
           "roles": [
             "developer"
           ],
-          "quote": "자신이 하고싶은 한마디",
+          "quote": "압둘압둘",
           "github": "https://github.com/zhaoxiuya",
           "githubLabel": "zhaoxiuya - Overview",
-          "imageKey": "jesiwon",
+          "imageKey": "abdul",
           "achievements": [
-            "[작성 중]",
-            "컴파일러 및 인터프리터 개발",
-            "엔닷 하드웨어 개발",
-            "순수 함수형 프로그래밍 언어 찐방(TSO) 설계",
-            "성균관대 초전도양자정보연구실에서 R&E 진행 예정"
+            "SW미래채움 고등창의과학톤 부총리 겸 과학기술정보통신부 장관상,",
+            "제7회 한국코드페어 해커톤 동상,",
+            "2025 SW·AI 고교 챌린지 창의상,",
+            "2025 ICT 해커톤 AI Software Play 용인 우수상,",
+            "순수 함수형 언어 찐빵 개발,",
+            "할로젠 라이브러리 책임설계자,",
+            "CNN, 어텐션 기반 세그멘테이션 모델 개발"
           ],
           "stacks": [
             {
-              "id": "python",
-              "label": "Python",
-              "iconKey": "python",
-              "value": 0.7
+              "id": "cpp",
+              "label": "C/C++",
+              "iconKey": "C/C++",
+              "value": 0.9
             },
             {
               "id": "haskell",
               "label": "Haskell",
               "iconKey": "haskell",
-              "value": 0.8
+              "value": 0.9
             },
             {
-              "id": "c",
-              "label": "C",
-              "iconKey": "c",
-              "value": 1.0
+              "id": "rust",
+              "label": "Rust",
+              "iconKey": "Rust",
+              "value": 0.8
             },
             {
               "id": "fortran",
@@ -229,16 +231,22 @@
               "value": 0.6
             },
             {
-              "id": "nix",
-              "label": "nix",
-              "iconKey": "nix",
-              "value": 0.5
+              "id": "cv",
+              "label": "CV",
+              "iconKey": "CV",
+              "value": 0.7
             },
             {
-              "id": "cpp",
-              "label": "C++",
-              "iconKey": "cpp",
-              "value": 0.6
+              "id": "컴파일러 이론",
+              "label": "컴파일러 이론",
+              "iconKey": "컴파일러 이론",
+              "value": 0.7
+            },
+            {
+              "id": "python",
+              "label": "Python",
+              "iconKey": "Python",
+              "value": 0.4
             }
           ]
         },
@@ -431,7 +439,7 @@
             "developer",
             "planner"
           ],
-          "quote": "console.log(Hello, Monad!)",
+          "quote": "console.log('Hello, Monad!')",
           "github": "https://github.com/B1NYL",
           "githubLabel": "B1NYL - Overview",
           "imageKey": "b1nyl",
