@@ -59,7 +59,7 @@
         {
           "id": "member-2-김호태",
           "name": "김호태",
-          "code": "24DC",
+          "code": "24EB",
           "intro": "디자인 1황",
           "roles": [
             "designer"
@@ -297,7 +297,7 @@
         {
           "id": "member-6-최윤혁",
           "name": "최윤혁",
-          "code": "24WP",
+          "code": "24HD",
           "intro": "해방 올라운더",
           "roles": [
             "developer",
@@ -413,14 +413,15 @@
           "id": "member-8-황정빈",
           "name": "황정빈",
           "code": "24WP",
-          "intro": "모나드 비주얼 담당",
+          "intro": "Undefined",
           "roles": [
-            "developer"
+            "developer",
+            "planner"
           ],
-          "quote": "자신이 하고싶은 한마디",
+          "quote": "console.log(Hello, Monad!)",
           "github": "https://github.com/B1NYL",
           "githubLabel": "B1NYL - Overview",
-          "imageKey": "jesiwon",
+          "imageKey": "b1nyl",
           "achievements": [
             "[작성 중]",
             "프롬피 투자 유치"
@@ -429,38 +430,38 @@
             {
               "id": "python",
               "label": "Python",
-              "iconKey": "python",
-              "value": 0.88
+              "iconKey": "Py",
+              "value": 0.69
             },
             {
-              "id": "typescript",
-              "label": "TypeScript",
-              "iconKey": "typescript",
+              "id": "javascript",
+              "label": "JavaScript",
+              "iconKey": "JS",
               "value": 0.52
-            },
-            {
-              "id": "c",
-              "label": "C",
-              "iconKey": "c",
-              "value": 0.74
-            },
-            {
-              "id": "llm",
-              "label": "LLM(NLP)",
-              "iconKey": "label",
-              "value": 1.0
             },
             {
               "id": "react",
               "label": "React",
-              "iconKey": "react",
+              "iconKey": "React",
+              "value": 0.74
+            },
+            {
+              "id": "c",
+              "label": "C",
+              "iconKey": "C",
               "value": 0.36
             },
             {
-              "id": "crawling",
-              "label": "Crawling",
-              "iconKey": "label",
-              "value": 0.69
+              "id": "typescript",
+              "label": "Typescipt",
+              "iconKey": "TS",
+              "value": 0.45
+            },
+            {
+              "id": "bs",
+              "label": "BS",
+              "iconKey": "BS",
+              "value": 1.0
             }
           ]
         }
