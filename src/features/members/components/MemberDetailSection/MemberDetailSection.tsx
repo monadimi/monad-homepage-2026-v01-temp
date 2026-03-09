@@ -8,6 +8,31 @@ interface MemberDetailSectionProps {
   member: MemberProfile
 }
 
+const stackIconImageModules = import.meta.glob<string>(
+  '../../../../assets/**/*.{png,jpg,jpeg,webp,avif,gif,svg}',
+  {
+    eager: true,
+    import: 'default',
+  },
+)
+
+function toImageKeyFromPath(path: string): string {
+  const fileName = path.split('/').pop() ?? ''
+  return fileName.replace(/\.[^/.]+$/, '').toLowerCase()
+}
+
+const stackIconImageRegistry: Readonly<Record<string, string>> = Object.entries(
+  stackIconImageModules,
+).reduce<Record<string, string>>((accumulator, [path, imageUrl]) => {
+  const key = toImageKeyFromPath(path)
+  if (!key || key in accumulator) {
+    return accumulator
+  }
+
+  accumulator[key] = imageUrl
+  return accumulator
+}, {})
+
 function getRoleChipClassName(roleKey: MemberProfile['roles'][number]['key']): string {
   if (roleKey === 'planner') {
     return styles.roleChipPlanner
@@ -39,6 +64,15 @@ function getStackIcon(iconKey: MemberProfile['stacks'][number]['iconKey']): stri
 
   // 정의되지 않은 키도 표시할 수 있도록 앞 글자를 축약 아이콘으로 사용합니다.
   return iconKey.trim().slice(0, 2).toUpperCase() || '•'
+}
+
+function getStackIconImage(stackId: MemberProfile['stacks'][number]['id']): string | null {
+  const normalizedId = stackId.trim().toLowerCase()
+  if (!normalizedId) {
+    return null
+  }
+
+  return stackIconImageRegistry[normalizedId] ?? null
 }
 
 export const MemberDetailSection = memo(function MemberDetailSection({
@@ -84,31 +118,59 @@ export const MemberDetailSection = memo(function MemberDetailSection({
           <h3>{stackTitle}</h3>
           <div className={styles.stackGrid}>
             <div className={styles.stackColumn}>
-              {leftStacks.map((stack) => (
-                <div key={`${member.id}-${stack.id}`} className={styles.stackRow}>
-                  <span className={styles.stackIcon}>{getStackIcon(stack.iconKey)}</span>
-                  <div className={styles.progressTrack}>
-                    <div
-                      className={styles.progressFill}
-                      style={{ '--stack-progress': String(stack.value) } as CSSProperties}
-                    />
+              {leftStacks.map((stack) => {
+                const stackIconImage = getStackIconImage(stack.id)
+                return (
+                  <div key={`${member.id}-${stack.id}`} className={styles.stackRow}>
+                    <span className={styles.stackIcon}>
+                      {stackIconImage ? (
+                        <img
+                          src={stackIconImage}
+                          alt=""
+                          aria-hidden="true"
+                          className={styles.stackIconImage}
+                        />
+                      ) : (
+                        getStackIcon(stack.iconKey)
+                      )}
+                    </span>
+                    <div className={styles.progressTrack}>
+                      <div
+                        className={styles.progressFill}
+                        style={{ '--stack-progress': String(stack.value) } as CSSProperties}
+                      />
+                    </div>
                   </div>
-                </div>
-              ))}
+                )
+              })}
             </div>
 
             <div className={styles.stackColumn}>
-              {rightStacks.map((stack) => (
-                <div key={`${member.id}-${stack.id}`} className={styles.stackRow}>
-                  <span className={styles.stackLabel}>{stack.label}</span>
-                  <div className={styles.progressTrack}>
-                    <div
-                      className={styles.progressFill}
-                      style={{ '--stack-progress': String(stack.value) } as CSSProperties}
-                    />
+              {rightStacks.map((stack) => {
+                const stackIconImage = getStackIconImage(stack.id)
+                return (
+                  <div key={`${member.id}-${stack.id}`} className={styles.stackRow}>
+                    {stackIconImage ? (
+                      <span className={styles.stackIcon}>
+                        <img
+                          src={stackIconImage}
+                          alt=""
+                          aria-hidden="true"
+                          className={styles.stackIconImage}
+                        />
+                      </span>
+                    ) : (
+                      <span className={styles.stackLabel}>{stack.label}</span>
+                    )}
+                    <div className={styles.progressTrack}>
+                      <div
+                        className={styles.progressFill}
+                        style={{ '--stack-progress': String(stack.value) } as CSSProperties}
+                      />
+                    </div>
                   </div>
-                </div>
-              ))}
+                )
+              })}
             </div>
           </div>
         </div>

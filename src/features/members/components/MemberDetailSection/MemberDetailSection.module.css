@@ -3,14 +3,14 @@
   width: 100%;
   min-height: 500px;
   display: grid;
-  /* 마름모 프로필 사진 영역을 요청에 맞춰 소폭 확장합니다. */
-  grid-template-columns: 340px minmax(360px, 549px) minmax(280px, 1fr);
-  gap: 30px;
+  /* 프로필 확장 폭 기준으로 텍스트 컬럼 비율도 균형 있게 재조정합니다. */
+  grid-template-columns: 480px minmax(320px, 1fr) minmax(250px, 0.92fr);
+  gap: 34px;
   align-items: stretch;
   background: linear-gradient(96deg, #0d0d0d 30%, #121317 100%);
   border-top: 0.75px solid rgba(255, 255, 255, 0.55);
   border-bottom: 0.75px solid rgba(255, 255, 255, 0.55);
-  padding-right: 30px;
+  padding-right: 36px;
   overflow: hidden;
 }
 
@@ -36,7 +36,7 @@
   display: grid;
   align-content: center;
   gap: 26px;
-  padding: 20px 0;
+  padding: 24px 0;
   animation: fadeSlideIn 360ms ease;
 }
 
@@ -163,6 +163,13 @@
   min-width: 72px;
 }
 
+.stackIconImage {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+  display: block;
+}
+
 .progressTrack {
   position: relative;
   height: 0;
@@ -191,8 +198,9 @@
 .achievementPanel {
   display: grid;
   align-content: center;
+  justify-items: start;
   gap: 10px;
-  padding: 20px 0;
+  padding: 24px 0;
 }
 
 .achievementPanel ul {
@@ -268,7 +276,7 @@
 
 @media (max-width: 1200px) {
   .section {
-    grid-template-columns: 260px minmax(0, 1fr);
+    grid-template-columns: 360px minmax(0, 1fr);
     gap: 20px;
     padding: 20px;
   }
