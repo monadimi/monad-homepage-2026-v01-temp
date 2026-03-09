@@ -69,6 +69,14 @@ BASE_DATASET_SPECS: dict[str, dict[str, Any]] = {
                 "placeholder": "placeholder",
             },
             {
+                "key": "additionalImageIds",
+                "label": "추가 이미지 ID 목록",
+                "input": "line_list",
+                "required": False,
+                "placeholder": "한 줄에 하나의 이미지 ID",
+                "help": "상세 모달 캐러셀에만 노출됩니다. src/assets 내 파일명(확장자 제외) 기준입니다.",
+            },
+            {
                 "key": "description",
                 "label": "상세 설명",
                 "input": "multiline",

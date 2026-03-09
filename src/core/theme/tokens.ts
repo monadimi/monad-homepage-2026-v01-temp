@@ -229,7 +229,7 @@ export const tokens: ThemeTokens = {
     whatIsHeight: 'clamp(220px, 26vw, 300px)',
     whatIsHeightMobile: 'clamp(260px, 56vw, 320px)',
     achievementsHeroHeight: 'clamp(460px, 52vw, 720px)',
-    achievementsCardHeight: '174px',
+    achievementsCardHeight: '220px',
     monad2026PageWidth: '378px',
     monad2026SectionMaxWidth: '760px',
     monad2026ProofMaxWidth: '720px',

@@ -12,8 +12,10 @@
       "subtitle": "부총리 겸 과학기술정보통신부 장관상",
       "highlight": "대상",
       "imageKey": "placeholder",
+      "additionalImageIds": [],
       "description": "혐오를 알아야 혐오를 무너뜨린다. 장관상을 수상하였습니다.",
-      "teamMembers": []
+      "teamMembers": [],
+      "prize": "블루투스 헤드셋"
     },
     {
       "year": 2025,
@@ -21,7 +23,11 @@
       "title": "제7회 한국코드페어 해커톤",
       "subtitle": "한국정보과학회장상",
       "highlight": "동상",
-      "imageKey": "placeholder"
+      "imageKey": "placeholder",
+      "additionalImageIds": [
+        "2025-award-2-add"
+      ],
+      "teamMembers": []
     },
     {
       "year": 2025,
@@ -29,7 +35,10 @@
       "title": "2025 대한민국 고등학생 소프트웨어 개발 공모전",
       "subtitle": "한국인공지능소프트웨어산업협회장상",
       "highlight": "동상",
-      "imageKey": "placeholder"
+      "imageKey": "placeholder",
+      "additionalImageIds": [],
+      "teamMembers": [],
+      "prize": "₩500,000"
     },
     {
       "year": 2025,
@@ -37,7 +46,13 @@
       "title": "2025 AI·디지털 네이티브 토론대회",
       "subtitle": "한국지능정보사회진흥원장상",
       "highlight": "전국 2등",
-      "imageKey": "placeholder"
+      "imageKey": "placeholder",
+      "additionalImageIds": [
+        "2025-award-4-add1",
+        "2025-award-4-add2"
+      ],
+      "teamMembers": [],
+      "prize": "₩500,000"
     },
     {
       "year": 2025,

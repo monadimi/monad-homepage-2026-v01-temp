@@ -143,6 +143,10 @@ def validate_awards() -> int:
             expect_string(award["serviceUrl"], f"awards.awards[{index}].serviceUrl")
         if "teamMembers" in award and award["teamMembers"] is not None:
             expect_string_list(award["teamMembers"], f"awards.awards[{index}].teamMembers")
+        if "additionalImageIds" in award and award["additionalImageIds"] is not None:
+            expect_string_list(
+                award["additionalImageIds"], f"awards.awards[{index}].additionalImageIds"
+            )
 
     validate_year_order(year_order, used_years, default_year, "awards")
     return len(awards)

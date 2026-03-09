@@ -16,6 +16,7 @@ export const AwardsGridSection = memo(function AwardsGridSection({
 }: AwardsGridSectionProps) {
   // 현재 상세 팝업으로 연 카드 상태입니다.
   const [selectedAwardId, setSelectedAwardId] = useState<string | null>(null)
+  const [selectedAdditionalImageIndex, setSelectedAdditionalImageIndex] = useState(0)
 
   const selectedAward = useMemo(
     () => awards.find((award) => award.id === selectedAwardId) ?? null,
@@ -32,9 +33,21 @@ export const AwardsGridSection = memo(function AwardsGridSection({
     'modal.serviceTitle',
     '서비스 이용해보기',
   )
+  const additionalAriaLabel = text('achievements', 'modal.additionalAria', '추가 이미지')
+  const additionalPreviousAriaLabel = text(
+    'achievements',
+    'modal.additionalPreviousAria',
+    '이전 추가 이미지',
+  )
+  const additionalNextAriaLabel = text(
+    'achievements',
+    'modal.additionalNextAria',
+    '다음 추가 이미지',
+  )
 
   const closeModal = () => {
     setSelectedAwardId(null)
+    setSelectedAdditionalImageIndex(0)
   }
 
   useEffect(() => {
@@ -57,6 +70,32 @@ export const AwardsGridSection = memo(function AwardsGridSection({
     }
   }, [selectedAward])
 
+  const modalCarouselImages = selectedAward
+    ? [selectedAward.image, ...selectedAward.additionalImages]
+    : []
+  const hasCarouselImages = modalCarouselImages.length > 0
+  const hasMultipleCarouselImages = modalCarouselImages.length > 1
+  const normalizedAdditionalImageIndex = hasCarouselImages
+    ? ((selectedAdditionalImageIndex % modalCarouselImages.length) + modalCarouselImages.length) %
+      modalCarouselImages.length
+    : 0
+
+  const handlePreviousAdditionalImage = () => {
+    if (!hasMultipleCarouselImages) {
+      return
+    }
+
+    setSelectedAdditionalImageIndex((previous) => previous - 1)
+  }
+
+  const handleNextAdditionalImage = () => {
+    if (!hasMultipleCarouselImages) {
+      return
+    }
+
+    setSelectedAdditionalImageIndex((previous) => previous + 1)
+  }
+
   return (
     <section className={styles.section} aria-label="Awards grid">
       <Container>
@@ -65,7 +104,10 @@ export const AwardsGridSection = memo(function AwardsGridSection({
             <AwardCard
               key={award.id}
               award={award}
-              onOpenDetails={(targetAward) => setSelectedAwardId(targetAward.id)}
+              onOpenDetails={(targetAward) => {
+                setSelectedAwardId(targetAward.id)
+                setSelectedAdditionalImageIndex(0)
+              }}
             />
           ))}
         </div>
@@ -93,12 +135,36 @@ export const AwardsGridSection = memo(function AwardsGridSection({
               ×
             </button>
 
-            <div className={styles.modalHero}>
+            <div className={styles.modalHero} aria-label={additionalAriaLabel}>
               <img
-                src={selectedAward.image}
-                alt={selectedAward.title}
+                src={modalCarouselImages[normalizedAdditionalImageIndex] ?? selectedAward.image}
+                alt={
+                  hasMultipleCarouselImages
+                    ? `${selectedAward.title} 이미지 ${normalizedAdditionalImageIndex + 1}`
+                    : selectedAward.title
+                }
                 className={styles.modalImage}
               />
+              {hasMultipleCarouselImages ? (
+                <>
+                  <button
+                    type="button"
+                    className={`${styles.modalHeroNavButton} ${styles.modalHeroNavButtonPrev}`}
+                    onClick={handlePreviousAdditionalImage}
+                    aria-label={additionalPreviousAriaLabel}
+                  >
+                    ‹
+                  </button>
+                  <button
+                    type="button"
+                    className={`${styles.modalHeroNavButton} ${styles.modalHeroNavButtonNext}`}
+                    onClick={handleNextAdditionalImage}
+                    aria-label={additionalNextAriaLabel}
+                  >
+                    ›
+                  </button>
+                </>
+              ) : null}
               <div className={styles.modalHeroGradient} />
               <div className={styles.modalHeroText}>
                 <p className={styles.modalTitle}>{selectedAward.title}</p>
@@ -107,6 +173,11 @@ export const AwardsGridSection = memo(function AwardsGridSection({
                 </h3>
                 <p className={styles.modalSubtitle}>{selectedAward.subtitle}</p>
               </div>
+              {hasMultipleCarouselImages ? (
+                <div className={styles.modalHeroCounter}>
+                  {normalizedAdditionalImageIndex + 1} / {modalCarouselImages.length}
+                </div>
+              ) : null}
             </div>
 
             <div className={styles.modalBody}>
