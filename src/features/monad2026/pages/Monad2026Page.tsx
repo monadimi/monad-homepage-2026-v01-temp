@@ -498,7 +498,9 @@ export const Monad2026Page = memo(function Monad2026Page() {
             data-pane-center
             data-no-fit-scale
           >
-            <Hero2026Section onApplyClick={handleApplyClick} />
+            <div className={`${styles.paneFxLayer} ${styles.paneFxLayerHero} ${styles.paneFxLayerFullBleed}`}>
+              <Hero2026Section onApplyClick={handleApplyClick} />
+            </div>
           </div>
         </div>
 
@@ -509,7 +511,9 @@ export const Monad2026Page = memo(function Monad2026Page() {
               data-hijack-pane
             >
               <div className={styles.paneCenter} data-pane-center>
-                <ITIntroSection dock="right" />
+                <div className={`${styles.paneFxLayer} ${styles.paneFxLayerDockRight}`}>
+                  <ITIntroSection dock="right" />
+                </div>
               </div>
             </div>
 
@@ -518,7 +522,9 @@ export const Monad2026Page = memo(function Monad2026Page() {
               data-hijack-pane
             >
               <div className={styles.paneCenter} data-pane-center>
-                <SwAiIntroSection dock="left" />
+                <div className={`${styles.paneFxLayer} ${styles.paneFxLayerDockLeft}`}>
+                  <SwAiIntroSection dock="left" />
+                </div>
               </div>
             </div>
           </>
@@ -526,8 +532,12 @@ export const Monad2026Page = memo(function Monad2026Page() {
           <div className={`${getPaneClassName(1)} ${styles.introPane}`} data-hijack-pane>
             <div className={styles.paneCenter} data-pane-center>
               <div className={styles.introStack}>
-                <ITIntroSection dock="right" />
-                <SwAiIntroSection dock="left" />
+                <div className={`${styles.paneFxLayer} ${styles.paneFxLayerDockRight}`}>
+                  <ITIntroSection dock="right" />
+                </div>
+                <div className={`${styles.paneFxLayer} ${styles.paneFxLayerDockLeft}`}>
+                  <SwAiIntroSection dock="left" />
+                </div>
               </div>
             </div>
           </div>
@@ -535,33 +545,43 @@ export const Monad2026Page = memo(function Monad2026Page() {
 
         <div className={getPaneClassName(desktopPaneIndexes.proof)} data-hijack-pane>
           <div className={styles.paneCenter} data-pane-center>
-            <ProofSection />
+            <div className={styles.paneFxLayer}>
+              <ProofSection />
+            </div>
           </div>
         </div>
 
         <div className={getPaneClassName(desktopPaneIndexes.education)} data-hijack-pane>
           <div className={styles.paneCenter} data-pane-center>
-            <EducationSection />
+            <div className={styles.paneFxLayer}>
+              <EducationSection />
+            </div>
           </div>
         </div>
 
         {isDesktopHijackEnabled ? (
           <div className={getPaneClassName(desktopPaneIndexes.cycle)} data-hijack-pane>
             <div className={styles.paneCenter} data-pane-center>
-              <CycleDynamicSection activeIndex={activeCycleIndex} />
+              <div className={`${styles.paneFxLayer} ${styles.paneFxLayerCycle}`}>
+                <CycleDynamicSection activeIndex={activeCycleIndex} />
+              </div>
             </div>
           </div>
         ) : (
           <div className={getPaneClassName(4)} data-hijack-pane>
             <div className={styles.paneCenter} data-pane-center>
-              <CycleDynamicSection activeIndex={activeCycleIndex} />
+              <div className={`${styles.paneFxLayer} ${styles.paneFxLayerCycle}`}>
+                <CycleDynamicSection activeIndex={activeCycleIndex} />
+              </div>
             </div>
           </div>
         )}
 
         <div className={getPaneClassName(activityPaneIndex)} data-hijack-pane>
           <div className={styles.paneCenter} data-pane-center>
-            <ActivitySection />
+            <div className={styles.paneFxLayer}>
+              <ActivitySection />
+            </div>
           </div>
         </div>
 
@@ -571,7 +591,9 @@ export const Monad2026Page = memo(function Monad2026Page() {
             data-pane-center
             data-no-fit-scale
           >
-            <JoinEndSection onApplyClick={handleApplyClick} />
+            <div className={`${styles.paneFxLayer} ${styles.paneFxLayerFullBleed}`}>
+              <JoinEndSection onApplyClick={handleApplyClick} />
+            </div>
           </div>
         </div>
 

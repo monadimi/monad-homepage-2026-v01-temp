@@ -2,6 +2,7 @@
 // 연도 상태를 기준으로 Hero/연도 선택기/그리드를 연결합니다.
 import { memo, useEffect, useMemo, useState } from 'react'
 import { text, textFormat } from '../../../content/text/textService'
+import { Container } from '../../../core/layout/Container/Container'
 import { AwardsRepository } from '../data/awards'
 import { AwardsGridSection } from '../sections/AwardsGridSection/AwardsGridSection'
 import { AchievementsHeroSection } from '../sections/AchievementsHeroSection/AchievementsHeroSection'
@@ -98,6 +99,10 @@ export const AchievementsPage = memo(function AchievementsPage() {
         rightPrimary={formattedTotalEarn}
         rightSecondary={totalEarnLabel}
       />
+
+      <Container>
+        <p className={styles.disclaimer}>* 팀원 개인 수상 실적 제외</p>
+      </Container>
 
       <YearSelectorSection
         year={year}

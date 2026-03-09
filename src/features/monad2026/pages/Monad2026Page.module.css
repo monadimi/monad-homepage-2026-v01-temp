@@ -31,7 +31,7 @@
       transparent 1px,
       transparent 34px
     );
-  opacity: 0.5;
+  opacity: 0.46;
   pointer-events: none;
   z-index: 0;
 }
@@ -49,11 +49,11 @@
   min-height: var(--hijack-pane-height);
   display: flex;
   align-items: center;
-  opacity: 0.38;
-  transform: translateY(32px) scale(0.988);
+  opacity: 0.34;
+  transform: translateY(38px) scale(0.985);
   transition:
-    opacity 520ms ease,
-    transform 600ms cubic-bezier(0.2, 0.7, 0.2, 1);
+    opacity 560ms ease,
+    transform 660ms cubic-bezier(0.2, 0.7, 0.2, 1);
   will-change: transform, opacity;
 }
 
@@ -64,6 +64,41 @@
 .hijackPaneActive {
   opacity: 1;
   transform: translateY(0) scale(1);
+}
+
+.paneFxLayer {
+  --pane-enter-x: 0px;
+  --pane-enter-y: 26px;
+  position: relative;
+  width: 100%;
+  opacity: 0.78;
+  transform: translate3d(var(--pane-enter-x), var(--pane-enter-y), 0) scale(0.986);
+  transition:
+    opacity 460ms ease,
+    transform 520ms cubic-bezier(0.2, 0.7, 0.2, 1);
+  will-change: transform, opacity;
+}
+
+.paneFxLayerDockRight {
+  --pane-enter-x: 34px;
+}
+
+.paneFxLayerDockLeft {
+  --pane-enter-x: -34px;
+}
+
+.paneFxLayerFullBleed {
+  height: 100%;
+}
+
+.paneFxLayerFullBleed > * {
+  min-height: var(--hijack-pane-height);
+  height: 100%;
+}
+
+.hijackPaneActive .paneFxLayer {
+  opacity: 1;
+  transform: translate3d(0, 0, 0) scale(1);
 }
 
 .paneCenter {
@@ -91,6 +126,14 @@
   min-height: var(--hijack-pane-height);
   height: var(--hijack-pane-height);
   transform: none;
+}
+
+.fullBleedPaneCenter > .paneFxLayerFullBleed {
+  transform: translate3d(var(--pane-enter-x), var(--pane-enter-y), 0) scale(0.986);
+}
+
+.hijackPaneActive .fullBleedPaneCenter > .paneFxLayerFullBleed {
+  transform: translate3d(0, 0, 0) scale(1);
 }
 
 .introPane {
@@ -128,7 +171,18 @@
   transition: none;
 }
 
+.pageNoHijack .paneFxLayer {
+  opacity: 1;
+  transform: none;
+  transition: none;
+}
+
 .pageNoHijack .fullBleedPaneCenter > * {
+  min-height: auto;
+  height: auto;
+}
+
+.pageNoHijack .paneFxLayerFullBleed > * {
   min-height: auto;
   height: auto;
 }
@@ -170,8 +224,19 @@
     transition: none;
   }
 
+  .paneFxLayer {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
   .fullBleedPaneCenter > * {
     max-width: none;
+    min-height: auto;
+    height: auto;
+  }
+
+  .paneFxLayerFullBleed > * {
     min-height: auto;
     height: auto;
   }
@@ -184,5 +249,16 @@
     min-height: auto;
     grid-template-rows: none;
     gap: 12px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page::before,
+  .page::after,
+  .hijackPane,
+  .paneFxLayer,
+  .paneCenter > * {
+    transition: none !important;
+    animation: none !important;
   }
 }
