@@ -25,7 +25,8 @@
 - `title` (string): 대회/프로그램명
 - `subtitle` (string): 부제/주최 정보
 - `highlight` (string): 강조 텍스트 (예: 대상, 우수상)
-- `imageKey` (string): 카드 이미지 키 (렌더링 레이어에서 URL 매핑)
+- `imageKey` (string): 카드 이미지 키 (하위 호환용)
+- `additionalImageIds` (string[], optional): 상세 모달 캐러셀용 추가 이미지 ID 목록
 - `description` (string, optional): 카드 확장 상태에서 노출할 상세 설명
 - `teamMembers` (string[], optional): 수상 프로젝트 참여 인원 목록
 - `prize` (string, optional): 상금/지원금 정보
@@ -35,4 +36,7 @@
 
 1. `yearOrder`에 없는 연도는 UI에서 선택 탭이 보이지 않을 수 있습니다.
 2. `id`는 연도별로도 중복되지 않게 관리합니다.
-3. `imageKey`를 새로 추가할 때는 렌더링 코드의 매핑 사전도 함께 갱신합니다.
+3. 카드 이미지는 우선 `id`와 동일한 파일명(확장자 제외)을 `src/assets`에서 찾습니다.
+   - 예: `id: "2025-award-1"` → `src/assets/2025-award-1.png`
+4. `id` 매칭 파일이 없으면 `imageKey`와 동일한 파일명을 찾고, 그래도 없으면 placeholder로 폴백합니다.
+5. `additionalImageIds`는 상세 모달 캐러셀에서만 사용되며, 카드 썸네일에는 영향을 주지 않습니다.

@@ -10,6 +10,7 @@ export interface Award {
   subtitle: string
   highlight: string
   image: string
+  additionalImages: readonly string[]
   year: number
   description: string
   teamMembers: string[]
@@ -23,6 +24,7 @@ interface AwardSourceRecord {
   subtitle: string
   highlight: string
   imageKey: string
+  additionalImageIds?: string[]
   year: number
   description?: string
   teamMembers?: string[]
@@ -36,8 +38,78 @@ interface AwardsSource {
   awards: AwardSourceRecord[]
 }
 
-const imageRegistry: Readonly<Record<string, string>> = {
+const staticImageRegistry: Readonly<Record<string, string>> = {
   placeholder: awardPlaceholderImage,
+}
+
+// 로컬 에셋 폴더(src/assets) 내 이미지를 자동 로드합니다.
+// 파일명(확장자 제외)을 키로 사용합니다. 예: 2025-award-1.png -> "2025-award-1"
+const localAwardImageModules = import.meta.glob<string>(
+  '../../../assets/**/*.{png,jpg,jpeg,webp,avif,gif,svg}',
+  {
+    eager: true,
+    import: 'default',
+  },
+)
+
+function toImageKeyFromPath(path: string): string {
+  const fileName = path.split('/').pop() ?? ''
+  return fileName.replace(/\.[^/.]+$/, '').toLowerCase()
+}
+
+function normalizeAssetId(rawValue: unknown): string {
+  if (typeof rawValue !== 'string') {
+    return ''
+  }
+
+  return rawValue.trim().toLowerCase().replace(/\.[^/.]+$/, '')
+}
+
+const localAwardImageRegistry: Readonly<Record<string, string>> = Object.entries(
+  localAwardImageModules,
+).reduce<Record<string, string>>((accumulator, [path, imageUrl]) => {
+  const key = toImageKeyFromPath(path)
+  if (!key || key in accumulator) {
+    return accumulator
+  }
+
+  accumulator[key] = imageUrl
+  return accumulator
+}, {})
+
+function resolveAwardImage(award: AwardSourceRecord): string {
+  // 1) id와 동일한 파일명 우선 사용
+  const normalizedId = normalizeAssetId(award.id)
+  if (normalizedId && normalizedId in localAwardImageRegistry) {
+    return localAwardImageRegistry[normalizedId]
+  }
+
+  // 2) imageKey와 동일한 파일명 사용 (기존 imageKey 흐름 호환)
+  const normalizedImageKey = normalizeAssetId(award.imageKey)
+  if (normalizedImageKey && normalizedImageKey in localAwardImageRegistry) {
+    return localAwardImageRegistry[normalizedImageKey]
+  }
+
+  // 3) 정적 레지스트리(placeholder) 및 최종 기본 이미지 폴백
+  return staticImageRegistry[normalizedImageKey] ?? awardPlaceholderImage
+}
+
+function resolveAdditionalAwardImages(award: AwardSourceRecord): readonly string[] {
+  if (!Array.isArray(award.additionalImageIds)) {
+    return []
+  }
+
+  const uniqueIds = Array.from(
+    new Set(
+      award.additionalImageIds
+        .map((id) => normalizeAssetId(id))
+        .filter((id) => id.length > 0),
+    ),
+  )
+
+  return uniqueIds
+    .map((id) => localAwardImageRegistry[id] ?? null)
+    .filter((imageUrl): imageUrl is string => typeof imageUrl === 'string' && imageUrl.length > 0)
 }
 
 const typedAwardsSource: AwardsSource = awardsSource
@@ -87,7 +159,8 @@ export class AwardsRepository {
       title: award.title,
       subtitle: award.subtitle,
       highlight: award.highlight,
-      image: imageRegistry[award.imageKey] ?? awardPlaceholderImage,
+      image: resolveAwardImage(award),
+      additionalImages: resolveAdditionalAwardImages(award),
       year: award.year,
       description: award.description ?? defaultAwardDescription,
       teamMembers: Array.isArray(award.teamMembers) ? award.teamMembers : defaultAwardTeamMembers,

@@ -48,6 +48,26 @@
       "description": "상세 팝업 서비스 링크 섹션 제목"
     },
     {
+      "id": "modal.additionalAria",
+      "value": "추가 이미지",
+      "description": "상세 팝업 추가 이미지 캐러셀 aria-label"
+    },
+    {
+      "id": "modal.additionalTitle",
+      "value": "추가 이미지",
+      "description": "상세 팝업 추가 이미지 캐러셀 제목"
+    },
+    {
+      "id": "modal.additionalPreviousAria",
+      "value": "이전 추가 이미지",
+      "description": "상세 팝업 추가 이미지 캐러셀 이전 버튼 aria-label"
+    },
+    {
+      "id": "modal.additionalNextAria",
+      "value": "다음 추가 이미지",
+      "description": "상세 팝업 추가 이미지 캐러셀 다음 버튼 aria-label"
+    },
+    {
       "id": "yearNavigator.previousAria",
       "value": "Previous year",
       "description": "연도 선택 이전 버튼 aria-label"

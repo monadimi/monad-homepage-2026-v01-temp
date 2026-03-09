@@ -60,6 +60,34 @@
   object-fit: cover;
 }
 
+.modalHeroNavButton {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 3;
+  width: 36px;
+  height: 36px;
+  border: 1px solid rgba(255, 255, 255, 0.26);
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.44);
+  color: rgba(244, 247, 251, 0.94);
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.modalHeroNavButton:hover {
+  background: rgba(0, 0, 0, 0.62);
+}
+
+.modalHeroNavButtonPrev {
+  left: 12px;
+}
+
+.modalHeroNavButtonNext {
+  right: 12px;
+}
+
 .modalHeroGradient {
   position: absolute;
   inset: 0;
@@ -77,6 +105,20 @@
   bottom: 18px;
   display: grid;
   gap: 4px;
+}
+
+.modalHeroCounter {
+  position: absolute;
+  left: 50%;
+  bottom: 14px;
+  transform: translateX(-50%);
+  z-index: 3;
+  color: rgba(244, 247, 251, 0.86);
+  font-size: 12px;
+  line-height: 1;
+  padding: 4px 8px;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.42);
 }
 
 .modalTitle {
@@ -164,6 +206,26 @@
 
   .modalHero {
     height: 230px;
+  }
+
+  .modalHeroNavButton {
+    width: 30px;
+    height: 30px;
+    font-size: 18px;
+  }
+
+  .modalHeroNavButtonPrev {
+    left: 8px;
+  }
+
+  .modalHeroNavButtonNext {
+    right: 8px;
+  }
+
+  .modalHeroCounter {
+    bottom: 10px;
+    font-size: 11px;
+    padding: 3px 7px;
   }
 
   .modalTitle {

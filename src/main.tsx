@@ -3,6 +3,9 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import App from './app/App'
+import { GlobalStyles } from './core/theme/GlobalStyles'
+
+GlobalStyles.initialize()
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
