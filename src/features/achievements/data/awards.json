@@ -8,7 +8,7 @@
     {
       "year": 2025,
       "id": "2025-award-1",
-      "title": "SW미래채움 고등창의과학톤",
+      "title": "창의과학 신기술 경진대회",
       "subtitle": "부총리 겸 과학기술정보통신부 장관상",
       "highlight": "대상",
       "imageKey": "placeholder",
@@ -71,6 +71,9 @@
       "subtitle": "경희대학교",
       "highlight": "우수상",
       "imageKey": "placeholder",
+      "additionalImageIds": [
+        "2025-award-6-add"
+      ],
       "teamMembers": [],
       "prize": "₩500,000"
     },
