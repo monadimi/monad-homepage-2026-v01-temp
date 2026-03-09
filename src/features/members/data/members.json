@@ -60,54 +60,65 @@
           "id": "member-2-김호태",
           "name": "김호태",
           "code": "24EB",
-          "intro": "디자인 1황",
+          "intro": "김호태 24EB",
           "roles": [
             "designer"
           ],
-          "quote": "자신이 하고싶은 한마디",
+          "quote": "그림빼고 다합니다.",
           "github": "https://github.com/",
-          "githubLabel": "김호태 - Overview",
+          "githubLabel": "https://buly.kr/5UJTxej",
           "imageKey": "jesiwon",
           "achievements": [
-            "[작성 중]",
-            "디자인 goat"
+            "디미고 컴퓨터그래픽 전문교과 전교 1등",
+            "디미고 애니메이션 전문교과 전교 1등",
+            "2025 경기콘텐츠 창의학교 경진대회 최우수상",
+            "제 9회 벤처창업 아이템 경진대회 동상",
+            "제 1회 디미고 스타트업톤 3위",
+            "언리얼 엔진을 활용한 소울라이크 게임 개발",
+            "디미고 학생회 콘텐츠디자인부 차장"
           ],
           "stacks": [
             {
-              "id": "python",
-              "label": "Python",
-              "iconKey": "python",
-              "value": 0.88
-            },
-            {
-              "id": "typescript",
-              "label": "TypeScript",
-              "iconKey": "typescript",
-              "value": 0.52
-            },
-            {
-              "id": "c",
-              "label": "C",
-              "iconKey": "c",
-              "value": 0.74
-            },
-            {
-              "id": "llm",
-              "label": "LLM(NLP)",
-              "iconKey": "label",
+              "id": "blender",
+              "label": "Blender",
+              "iconKey": "Blender",
               "value": 1.0
             },
             {
-              "id": "react",
-              "label": "React",
-              "iconKey": "react",
-              "value": 0.36
+              "id": "figma",
+              "label": "Figma",
+              "iconKey": "Figma",
+              "value": 0.8
             },
             {
-              "id": "crawling",
-              "label": "Crawling",
-              "iconKey": "label",
-              "value": 0.69
+              "id": "ae",
+              "label": "Adobe AffterEffects",
+              "iconKey": "AffterEffects",
+              "value": 0.6
+            },
+            {
+              "id": "premiere",
+              "label": "Adobe Premiere",
+              "iconKey": "Premiere",
+              "value": 0.6
+            },
+            {
+              "id": "illustrator",
+              "label": "Adobe Illustrator",
+              "iconKey": "Illustrator",
+              "value": 0.3
+            },
+            {
+              "id": "photoshop",
+              "label": "Adobe Photoshop",
+              "iconKey": "Photoshop",
+              "value": 0.2
+            },
+            {
+              "id": "unreal",
+              "label": "Unreal Engine",
+              "iconKey": "Unreal Engine",
+              "value": 0.2
             }
           ]
         },
@@ -142,7 +153,7 @@
               "value": 0.88
             },
             {
-              "id": "typescript",
+              "id": "ts",
               "label": "TypeScript",
               "iconKey": "typescript",
               "value": 0.52
@@ -188,6 +199,7 @@
           "achievements": [
             "[작성 중]",
             "컴파일러 및 인터프리터 개발",
+            "엔닷 하드웨어 개발",
             "로켓 발사 경험"
           ],
           "stacks": [
@@ -195,37 +207,37 @@
               "id": "python",
               "label": "Python",
               "iconKey": "python",
-              "value": 0.88
+              "value": 0.7
             },
             {
-              "id": "typescript",
-              "label": "TypeScript",
-              "iconKey": "typescript",
-              "value": 0.52
+              "id": "haskell",
+              "label": "Haskell",
+              "iconKey": "haskell",
+              "value": 0.8
             },
             {
               "id": "c",
               "label": "C",
               "iconKey": "c",
-              "value": 0.74
-            },
-            {
-              "id": "llm",
-              "label": "LLM(NLP)",
-              "iconKey": "label",
               "value": 1.0
             },
             {
-              "id": "react",
-              "label": "React",
-              "iconKey": "react",
-              "value": 0.36
+              "id": "fortran",
+              "label": "Fortran",
+              "iconKey": "Fortran",
+              "value": 0.6
             },
             {
-              "id": "crawling",
-              "label": "Crawling",
-              "iconKey": "label",
-              "value": 0.69
+              "id": "nix",
+              "label": "nix",
+              "iconKey": "nix",
+              "value": 0.5
+            },
+            {
+              "id": "cpp",
+              "label": "C++",
+              "iconKey": "cpp",
+              "value": 0.6
             }
           ]
         },
@@ -320,7 +332,7 @@
               "value": 0.88
             },
             {
-              "id": "typescript",
+              "id": "ts",
               "label": "TypeScript",
               "iconKey": "typescript",
               "value": 0.52
@@ -378,7 +390,7 @@
               "value": 0.58
             },
             {
-              "id": "typescript",
+              "id": "ts",
               "label": "TypeScript",
               "iconKey": "TS",
               "value": 0.62
@@ -390,7 +402,7 @@
               "value": 0.26
             },
             {
-              "id": "javascript",
+              "id": "js",
               "label": "JavaScript",
               "iconKey": "JS",
               "value": 1.0
@@ -434,7 +446,7 @@
               "value": 0.69
             },
             {
-              "id": "javascript",
+              "id": "js",
               "label": "JavaScript",
               "iconKey": "JS",
               "value": 0.52
@@ -452,7 +464,7 @@
               "value": 0.36
             },
             {
-              "id": "typescript",
+              "id": "ts",
               "label": "Typescipt",
               "iconKey": "TS",
               "value": 0.45
