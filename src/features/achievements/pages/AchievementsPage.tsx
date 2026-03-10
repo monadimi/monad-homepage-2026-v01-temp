@@ -10,6 +10,17 @@ import { YearSelectorSection } from '../sections/YearSelectorSection/YearSelecto
 import styles from './AchievementsPage.module.css'
 
 const availableYears = AwardsRepository.getAvailableYears()
+const COVERAGE_START_YEAR = 2025
+const COVERAGE_START_MONTH_INDEX = 8 // September (0-indexed)
+
+function getElapsedYearsSinceCoverageStart(now: Date): number {
+  const elapsedMonths =
+    (now.getFullYear() - COVERAGE_START_YEAR) * 12 +
+    (now.getMonth() - COVERAGE_START_MONTH_INDEX)
+  const normalizedElapsedMonths = Math.max(elapsedMonths, 0)
+  const elapsedYears = normalizedElapsedMonths / 12
+  return Math.floor(elapsedYears * 10) / 10
+}
 
 export const AchievementsPage = memo(function AchievementsPage() {
   // 현재 선택 연도 상태
@@ -24,13 +35,11 @@ export const AchievementsPage = memo(function AchievementsPage() {
     () => AwardsRepository.getTotalAwardsCount(),
     [],
   )
-  // 데이터에 포함된 총 연도 수
-  const trackedYearCount = useMemo(
-    () => AwardsRepository.getTrackedYearCount(),
+  // 2025년 9월부터 경과한 연 수를 계산한 뒤, 소수점 첫째 자리에서 버림합니다.
+  const coverageYearCount = useMemo(
+    () => getElapsedYearsSinceCoverageStart(new Date()),
     [],
   )
-  // "OVER N YEARS" 문구는 요청에 맞춰 표시값을 1 감소시켜 계산합니다.
-  const coverageYearCount = Math.max(trackedYearCount - 1, 0)
   // 카드 데이터에 포함된 상금 전체 자동 합계
   const totalEarnAmount = useMemo(
     () => AwardsRepository.getTotalPrizeAmount(),
@@ -70,8 +79,8 @@ export const AchievementsPage = memo(function AchievementsPage() {
   const formattedYearCoverage = textFormat(
     'achievements',
     'hero.coverageTemplate',
-    { count: coverageYearCount, suffix: coverageYearCount > 1 ? 'S' : '' },
-    `OVER ${coverageYearCount} YEAR${coverageYearCount > 1 ? 'S' : ''}`,
+    { count: coverageYearCount.toFixed(1), suffix: coverageYearCount === 1 ? '' : 'S' },
+    `OVER ${coverageYearCount.toFixed(1)} YEAR${coverageYearCount === 1 ? '' : 'S'}`,
   )
   const totalEarnLabel = text('achievements', 'hero.totalEarnLabel', 'TOTAL EARN')
 
