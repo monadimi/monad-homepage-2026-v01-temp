@@ -3,9 +3,105 @@
   background: var(--colors-background-primary);
 }
 
-.heroVideo {
+.playerSurface {
+  position: relative;
   width: 100%;
-  height: auto;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: #000000;
+  cursor: pointer;
+  outline: none;
+}
+
+.playerSurface:focus-visible {
+  box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.72);
+}
+
+.heroVideo,
+.doomHost {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.heroVideo {
   object-fit: cover;
   display: block;
+}
+
+.doomHost {
+  opacity: 0;
+  pointer-events: none;
+  background: #000000;
+}
+
+.doomHostActive {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.doomHost :global(.jsdos-rso),
+.doomHost :global(.emulator-root),
+.doomHost :global(canvas),
+.doomHost :global(video),
+.doomHost :global(iframe) {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.statusOverlay {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-content: center;
+  gap: 10px;
+  padding: 24px;
+  text-align: center;
+  margin: 0;
+  font-size: clamp(14px, 1.4vw, 20px);
+  line-height: 1.6;
+}
+
+.statusOverlay {
+  background: rgba(0, 0, 0, 0.58);
+  color: #ffffff;
+  font-weight: 600;
+  backdrop-filter: blur(8px);
+}
+
+.focusButton {
+  position: absolute;
+  right: 18px;
+  bottom: 18px;
+  z-index: 2;
+  min-height: 38px;
+  padding: 0 14px;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.48);
+  color: #ffffff;
+  font-size: 12px;
+  line-height: 1;
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+}
+
+.focusButton:hover {
+  background: rgba(0, 0, 0, 0.64);
+}
+
+@media (max-width: 768px) {
+  .playerSurface {
+    aspect-ratio: 4 / 5;
+  }
+
+  .statusOverlay {
+    padding: 18px;
+  }
+
+  .focusButton {
+    right: 12px;
+    bottom: 12px;
+  }
 }
